@@ -14,15 +14,20 @@ class CreateImportInvoiceDetailsTable extends Migration
     public function up()
     {
         Schema::create('import_invoice_details', function (Blueprint $table) {
-            $table->increments('iid_id');
-            $table->string('product_name');
-            $table->string('size');
-            $table->string('color');
+            $table->increments('id');
             $table->string('amount');
             $table->string('price');
-            $table->integer('ii_fk')->unsigned();
+            $table->integer('import_invoice')->unsigned();
+            $table->integer('product')->unsigned();
             $table->string('status')->default(1);
             $table->timestamps();
+
+            $table->foreign('import_invoice')
+            ->references('id')->on('import_invoices')
+            ->onDelete('cascade');
+            $table->foreign('product')
+            ->references('id')->on('products')
+            ->onDelete('cascade');
         });
     }
 

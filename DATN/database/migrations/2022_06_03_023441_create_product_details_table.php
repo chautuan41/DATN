@@ -14,12 +14,16 @@ class CreateProductDetailsTable extends Migration
     public function up()
     {
         Schema::create('product_details', function (Blueprint $table) {
-            $table->increments('product_detail_id');
+            $table->increments('id');
             $table->string('amount');
             $table->string('size');
-            $table->integer('product_fk')->unsigned();
+            $table->integer('product')->unsigned();
             $table->string('status')->default(1);
             $table->timestamps();
+
+            $table->foreign('product')
+            ->references('id')->on('products')
+            ->onDelete('cascade');
         });
     }
 
