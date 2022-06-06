@@ -15,11 +15,11 @@ class CreateImportInvoiceDetailsTable extends Migration
     {
         Schema::create('import_invoice_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('amount');
-            $table->string('price');
+            $table->integer('amount');
+            $table->integer('price');
             $table->integer('import_invoice')->unsigned();
             $table->integer('product')->unsigned();
-            $table->string('status')->default(1);
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
 
             $table->foreign('import_invoice')
