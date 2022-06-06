@@ -23,7 +23,7 @@ class CreateAccountsTable extends Migration
             $table->string('date_of_birth');
             $table->string('avatar');
             $table->integer('role')->unsigned(); 
-            $table->string('status')->default(1);
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
 
             $table->foreign('role')

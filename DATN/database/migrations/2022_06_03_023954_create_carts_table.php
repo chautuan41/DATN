@@ -15,11 +15,11 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('amount');
-            $table->string('total');
+            $table->integer('amount');
+            $table->integer('total');
             $table->integer('account')->unsigned();
             $table->integer('product')->unsigned();
-            $table->string('status')->default(1);
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
 
             $table->foreign('product')

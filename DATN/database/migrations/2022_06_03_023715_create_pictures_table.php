@@ -18,7 +18,7 @@ class CreatePicturesTable extends Migration
             $table->string('main_picture');
             $table->string('link');
             $table->integer('product')->unsigned();
-            $table->string('status')->default(1);
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
 
             $table->foreign('product')

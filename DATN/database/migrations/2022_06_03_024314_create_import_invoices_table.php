@@ -16,12 +16,12 @@ class CreateImportInvoicesTable extends Migration
         Schema::create('import_invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sku');
-            $table->string('ii_id');
+            $table->string('iinvoices_id')->unique();
             $table->string('date');
-            $table->string('total');
+            $table->integer('total');
             $table->integer('account')->unsigned();
             $table->integer('supplier')->unsigned();
-            $table->string('status')->default(1);
+            $table->integer('status')->nullable()->default(1);
             $table->timestamps();
 
             $table->foreign('supplier')
