@@ -21,6 +21,7 @@ class CreateSuppliersTable extends Migration
             $table->string('address');
             $table->string('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -22,6 +22,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('account')->unsigned();
             $table->string('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('account')
             ->references('id')->on('accounts')

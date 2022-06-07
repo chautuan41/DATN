@@ -21,6 +21,7 @@ class CreateImportInvoiceDetailsTable extends Migration
             $table->integer('product')->unsigned();
             $table->string('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('import_invoice')
             ->references('id')->on('import_invoices')
