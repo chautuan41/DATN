@@ -18,6 +18,7 @@ class CreateProductTypesTable extends Migration
             $table->string('product_type_name');
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

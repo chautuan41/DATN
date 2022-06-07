@@ -23,6 +23,7 @@ class CreateImportInvoicesTable extends Migration
             $table->integer('supplier')->unsigned();
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('supplier')
             ->references('id')->on('suppliers')

@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->integer('supplier')->unsigned();
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('product_type')
             ->references('id')->on('product_types')

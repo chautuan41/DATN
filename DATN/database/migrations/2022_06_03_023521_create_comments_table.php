@@ -21,6 +21,7 @@ class CreateCommentsTable extends Migration
             $table->integer('account')->unsigned();
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('product')
             ->references('id')->on('products')

@@ -25,6 +25,7 @@ class CreateAccountsTable extends Migration
             $table->integer('role')->unsigned(); 
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('role')
             ->references('id')->on('roles')
