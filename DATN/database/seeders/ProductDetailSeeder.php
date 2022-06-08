@@ -17,15 +17,15 @@ class ProductDetailSeeder extends Seeder
     public function run()
     {
         DB::table('product_details')->insert([
-            [   'amount'=>'1111',
+            [   'amount'=>1111,
                 'size'=>'S',
                 'product' => 1,
                 'status'=>1],
-            [   'amount'=>'1607',
+            [   'amount'=>1607,
                 'size'=>'M',
                 'product' => 1,
                 'status'=>1],
-            [   'amount'=>'2001',
+            [   'amount'=>2001,
                 'size'=>'L',
                 'product' => 1,
                 'status'=>1],
