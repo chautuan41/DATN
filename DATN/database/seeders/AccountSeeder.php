@@ -27,5 +27,18 @@ class AccountSeeder extends Seeder
         $account->role = 1;
         $account->status = 1 ;
         $account->save();
+
+        DB::table('accounts')->insert([
+            [   
+                'email'=>'alexaki0005@gmail.com',
+                'password'=>bcrypt('1234567'),
+                'full_name'=>'Châu Trần',
+                'phone'=>'053999999',
+                'address'=>'Thailand',
+                'date_of_birth'=>'16/07/2001',
+                'avatar'=>'empty',
+                'role'=>1]
+            
+        ]);
     }
 }

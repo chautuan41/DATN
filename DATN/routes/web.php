@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\HTTP\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
 
-//oute::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/index', function () {
-    return view('user.index');
-});
+Route::get('/',[HomeController::class,'index'])->name('user.home');
+Route::get('/products/{id}',[HomeController::class,'proDetails'])->name('user.product');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+
+
+Auth::routes();
