@@ -21,7 +21,11 @@ class ProductTypeSeeder extends Seeder
                 'status'=>1],
             [   'product_type_name'=>'Shirt',
                 'status'=>1],
-            [   'product_type_name'=>'Jeans',
+            [   'product_type_name'=>'Pants',
+                'status'=>1],
+            [   'product_type_name'=>'Watches',
+                'status'=>1],
+            [   'product_type_name'=>'Fragrances',
                 'status'=>1],
         ]);
     }

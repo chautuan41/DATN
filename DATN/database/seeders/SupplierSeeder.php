@@ -20,19 +20,31 @@ class SupplierSeeder extends Seeder
                 'supplier_id'=>'SL_01',
                 'supplier_name'=>'Gucci',
                 'phone'=>'053999999',
-                'address'=>'Thailand',
+                'address'=>'Italia',
                 'status'=>1],
             [   
                 'supplier_id'=>'SL_02',
                 'supplier_name'=>'Dior',
                 'phone'=>'053888888',
-                'address'=>'Spain',
+                'address'=>'France',
                 'status'=>1],
             [   
                 'supplier_id'=>'SL_01',
-                'supplier_name'=>'LV',
+                'supplier_name'=>'Louis Vuitton',
                 'phone'=>'054777777',
-                'address'=>'Argentina',
+                'address'=>'France',
+                'status'=>1],
+            [   
+                'supplier_id'=>'SL_01',
+                'supplier_name'=>'Versace',
+                'phone'=>'054777777',
+                'address'=>'Italia',
+                'status'=>1],
+            [   
+                'supplier_id'=>'SL_01',
+                'supplier_name'=>'Rolex',
+                'phone'=>'054777777',
+                'address'=>'Switzerland ',
                 'status'=>1],
         ]);
     }
