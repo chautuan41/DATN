@@ -42,8 +42,8 @@ class HomeController extends Controller
         $dtPro = Product::find($id);
         //$dtProD = ProductDetail::find($id);
         $dtProT=ProductType::find($dtPro->product_type);
-        $dtProD = DB::table('product_details')
-        ->join('products', 'product_details.product', '=', 'products.id')
+        $dtProD = DB::table('sizes')
+        ->join('products', 'sizes.product', '=', 'products.id')
         ->where('products.id','=', $id)->get();
         //dd($dtProD);
         return view('user.productdetail',compact('dtProT','dtProD','dtPro'));
