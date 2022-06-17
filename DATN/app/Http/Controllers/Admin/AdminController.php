@@ -16,10 +16,10 @@ class AdminController extends Controller
     public function indexAdmin(){
         return view('dashboard.layout.dashboard-admin');
     }
-    // public function indexAdminDH(){
-    //     return view('layouts.adminwatches');
-    // }
-    // public function indexAdminCL(){
-    //     return view('layouts.adminclothing');
-    // }
+    public function indexAdminDH(){
+        return view('dashboard.layout.dashboard-watches');
+    }
+    public function indexAdminCL(){
+        return view('dashboard.layout.dashboard-clothing');
+    }
 }

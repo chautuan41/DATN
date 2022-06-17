@@ -45,7 +45,7 @@
         ***********************************-->
         <div class="nav-header" style="background-color:white">
             <div class="brand-logo">
-                <a href="{{route('admin.index')}}">
+                <a href="{{route('admin.indexDH')}}">
                     <!-- <b class="logo-abbr"><img src="{{asset('dashboard/images/logo.png')}}" alt=""> </b>
                     <span class="logo-compact"><img src="{{asset('dashboard/images/logo-compact.png')}}" alt=""></span> -->
                     <span class="brand-title">
@@ -301,13 +301,14 @@
                     <li class="nav-label">Table</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Table Data</span>
                         </a>
                         <ul aria-expanded="false">
                             <!-- <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
                             <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li> -->
-                            <li><a href="#" aria-expanded="false">Basic Table</a></li>
-                            <li><a href="#" aria-expanded="false">Data Table</a></li>
+                            <li><a href="#" aria-expanded="false">Watches</a></li>
+                            <li><a href="#" aria-expanded="false">Product Types</a></li>
+                            <li><a href="#" aria-expanded="false">Supplier</a></li>
                         </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
@@ -518,7 +519,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.index')}}">2001</a> 2022</p>
+                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.indexDH')}}">2001</a> 2022</p>
             </div>
         </div>  
         <!--**********************************

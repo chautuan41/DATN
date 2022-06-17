@@ -50,7 +50,7 @@ class AccountSeeder extends Seeder
                 'role'=>3
             ],
             [
-                'email'=>'adminclothes@gmail.com',
+                'email'=>'adminclothing@gmail.com',
                 'password'=>bcrypt('1234567'),
                 'full_name'=>'Admin Clothing Store',
                 'phone'=>'0907666666',
