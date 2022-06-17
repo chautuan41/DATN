@@ -48,22 +48,22 @@ public function login(Request $request)
         ], $request->get('remember'))) {
             return redirect()->intended(route('admin.index'));
         }
-        // elseif (Auth::guard('admin')->attempt([
-        //     'email' => $request->email,
-        //     'password' => $request->password,
-        //     'role' => 3,
-        //     'status' => 1,
-        //     ], $request->get('remember'))) {
-        //         return redirect()->intended(route('admin.indexDH'));
-        //     }
-        // elseif (Auth::guard('admin')->attempt([
-        //         'email' => $request->email,
-        //         'password' => $request->password,
-        //         'role' => 4,
-        //         'status' => 1,
-        //         ], $request->get('remember'))) {
-        //             return redirect()->intended(route('admin.indexCL'));
-        //         }
+        elseif (Auth::guard('admin')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 3,
+            'status' => 1,
+            ], $request->get('remember'))) {
+                return redirect()->intended(route('admin.indexDH'));
+            }
+        elseif (Auth::guard('admin')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => 4,
+                'status' => 1,
+                ], $request->get('remember'))) {
+                    return redirect()->intended(route('admin.indexCL'));
+                }
         else{
             return redirect()->back()->with("error","Đăng nhập không thành công");
         }
