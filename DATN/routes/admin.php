@@ -17,6 +17,7 @@ Route::group(['middleware' => ['auth:admin']], function(){
     Route::get('/',[Admin\AdminController::class,'indexAdmin'])->name('admin.index');
     Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
     Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
+    Route::get('seller',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
 
 });
 

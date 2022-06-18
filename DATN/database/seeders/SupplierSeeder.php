@@ -29,19 +29,19 @@ class SupplierSeeder extends Seeder
                 'address'=>'France',
                 'status'=>1],
             [   
-                'supplier_id'=>'SL_01',
+                'supplier_id'=>'SL_03',
                 'supplier_name'=>'Louis Vuitton',
                 'phone'=>'054777777',
                 'address'=>'France',
                 'status'=>1],
             [   
-                'supplier_id'=>'SL_01',
+                'supplier_id'=>'SL_04',
                 'supplier_name'=>'Versace',
                 'phone'=>'054777777',
                 'address'=>'Italia',
                 'status'=>1],
             [   
-                'supplier_id'=>'SL_01',
+                'supplier_id'=>'SL_05',
                 'supplier_name'=>'Rolex',
                 'phone'=>'054777777',
                 'address'=>'Switzerland ',

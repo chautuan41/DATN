@@ -60,6 +60,16 @@ class AccountSeeder extends Seeder
                 'role'=>4
             ],
             [   
+                'email'=>'adminseller@gmail.com',
+                'password'=>bcrypt('1234567'),
+                'full_name'=>'Admin Seller',
+                'phone'=>'0907797979',
+                'address'=>'VietNam',
+                'date_of_birth'=>'16/07/2001',
+                'avatar'=>'empty',
+                'role'=>5
+            ],
+            [   
                 'email'=>'nvk01@gmail.com',
                 'password'=>bcrypt('1234567'),
                 'full_name'=>'Thiện Trần',
@@ -67,7 +77,7 @@ class AccountSeeder extends Seeder
                 'address'=>'VietNam',
                 'date_of_birth'=>'16/07/2001',
                 'avatar'=>'empty',
-                'role'=>5
+                'role'=>6
             ],
             [   
                 'email'=>'nv01@gmail.com',
@@ -77,7 +87,7 @@ class AccountSeeder extends Seeder
                 'address'=>'Thailand',
                 'date_of_birth'=>'11/11/2001',
                 'avatar'=>'empty',
-                'role'=>6
+                'role'=>7
             ],
         ]);
     }
