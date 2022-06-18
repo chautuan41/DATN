@@ -64,10 +64,6 @@ class SizesTableSeeder extends Seeder
                 'size'=>'100ml',
                 'product' => 5,
                 'status'=>1],
-            [   
-                'size'=>'60ml',
-                'product' => 5,
-                'status'=>1],
         ]);
     }
 }

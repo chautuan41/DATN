@@ -64,10 +64,15 @@ public function login(Request $request)
                 ], $request->get('remember'))) {
                     return redirect()->intended(route('admin.indexCL'));
                 }
-        else{
-            return redirect()->back()->with("error","Đăng nhập không thành công");
-        }
-            
+        elseif (Auth::guard('admin')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => 5,
+                'status' => 1,
+                ], $request->get('remember'))) {
+                    return redirect()->intended(route('admin.indexSL'));
+                }
+        return redirect()->back()->with("error","Đăng nhập không thành công");
         return back()->withInput($request->only('email', 'remember'));
     }
 

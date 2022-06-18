@@ -22,4 +22,7 @@ class AdminController extends Controller
     public function indexAdminCL(){
         return view('dashboard.layout.dashboard-clothing');
     }
+    public function indexAdminSL(){
+        return view('dashboard.layout.dashboard-seller');
+    }
 }
