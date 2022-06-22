@@ -28,6 +28,9 @@ class ProductSeeder extends Seeder
                 'image'=>'T-Shirt.jpg',
                 'product_type' => 1,
                 'supplier' => 1,
+                'product_brand'=> 1,
+                'men' => 0,
+                'women' => 2,
                 'status'=>1],
 
             [   
@@ -41,6 +44,9 @@ class ProductSeeder extends Seeder
                 'image'=>'Shirt.jpg',
                 'product_type' => 2,
                 'supplier' => 2,
+                'product_brand'=> 2,
+                'men' => 0,
+                'women' => 2,
                 'status'=>1],
 
             [   'product_id'=>'PD_03',
@@ -53,6 +59,9 @@ class ProductSeeder extends Seeder
                 'image'=>'Pants.jpg',
                 'product_type' => 3,
                 'supplier' => 3,
+                'product_brand'=> 3,
+                'men' => 0,
+                'women' => 2,
                 'status'=>1],
 
             [   'product_id'=>'PD_04',
@@ -65,6 +74,9 @@ class ProductSeeder extends Seeder
                 'image'=>'Shorts.jpg',
                 'product_type' => 4,
                 'supplier' => 3,
+                'product_brand'=> 3,
+                'men' => 1,
+                'women' => 0,
                 'status'=>1],
 
             [   'product_id'=>'PD_04',
@@ -77,6 +89,9 @@ class ProductSeeder extends Seeder
                 'image'=>'Jeans.jpg',
                 'product_type' => 5,
                 'supplier' => 3,
+                'product_brand'=> 3,
+                'men' => 1,
+                'women' => 0,
                 'status'=>1],
 
             [   'product_id'=>'PD_05',
@@ -88,7 +103,25 @@ class ProductSeeder extends Seeder
                 'like'=>666,
                 'image'=>'Watches.jpg',
                 'product_type' => 6,
-                'supplier' => 5,
+                'supplier' => 4,
+                'product_brand'=> 4,
+                'men' => 1,
+                'women' => 0,
+                'status'=>1],
+
+            [   'product_id'=>'PD_05',
+                'sku'=>'SKU_04',
+                'product_name'=>'Watches',
+                'price'=>450,
+                'amount'=>2001,
+                'discount'=>0,
+                'like'=>666,
+                'image'=>'Watches.jpg',
+                'product_type' => 6,
+                'supplier' => 4,
+                'product_brand'=> 4,
+                'men' => 0,
+                'women' => 2,
                 'status'=>1],
 
             [   'product_id'=>'PD_06',
@@ -100,7 +133,10 @@ class ProductSeeder extends Seeder
                 'like'=>666,
                 'image'=>'Fragrances.jpg',
                 'product_type' => 7,
-                'supplier' => 4,
+                'supplier' => 5,
+                'product_brand'=> 5,
+                'men' => 1,
+                'women' => 0,
                 'status'=>1],
         ]);
     }

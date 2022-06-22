@@ -25,6 +25,9 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->integer('product_type')->unsigned();
             $table->integer('supplier')->unsigned();
+            $table->integer('product_brand')->unsigned();
+            $table->integer('men')->nullable()->default(1);
+            $table->integer('women')->nullable()->default(2);
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
@@ -34,6 +37,9 @@ class CreateProductsTable extends Migration
             ->onDelete('cascade');
             $table->foreign('supplier')
             ->references('id')->on('suppliers')
+            ->onDelete('cascade');
+            $table->foreign('product_brand')
+            ->references('id')->on('product_brands')
             ->onDelete('cascade');
         });
     }
