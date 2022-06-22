@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             AccountSeeder::class,
             SupplierSeeder::class,
             ProductTypeSeeder::class,
+            ProductBrandSeeder::class,
             ProductSeeder::class,
             SizesTableSeeder::class,
         ]);

@@ -30,7 +30,7 @@ class LoginController extends Controller
  */
 public function showLoginForm()
 {
-    return view('dashboard.auth.page-login');
+    return view('dashboard.page-login');
 }
 
 public function index()

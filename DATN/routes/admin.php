@@ -18,6 +18,9 @@ Route::group(['middleware' => ['auth:admin']], function(){
     Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
     Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
     Route::get('seller',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
+    Route::get('seller/{dtdd}/{id}',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
+
+    // Route::get('home',[Admin\AdminController::class,'home'])->name('admin.dashboard.home');
 
 });
 

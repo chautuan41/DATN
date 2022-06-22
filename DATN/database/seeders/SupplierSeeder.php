@@ -36,15 +36,15 @@ class SupplierSeeder extends Seeder
                 'status'=>1],
             [   
                 'supplier_id'=>'SL_04',
-                'supplier_name'=>'Versace',
-                'phone'=>'054777777',
-                'address'=>'Italia',
-                'status'=>1],
-            [   
-                'supplier_id'=>'SL_05',
                 'supplier_name'=>'Rolex',
                 'phone'=>'054777777',
                 'address'=>'Switzerland ',
+                'status'=>1],
+            [   
+                'supplier_id'=>'SL_05',
+                'supplier_name'=>'Versace',
+                'phone'=>'054777777',
+                'address'=>'Italia',
                 'status'=>1],
         ]);
     }

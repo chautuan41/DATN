@@ -14,7 +14,7 @@ use App\Models\Account;
 class AdminController extends Controller
 {
     public function indexAdmin(){
-        return view('dashboard.layout.dashboard-admin');
+        return view('dashboard.home.home');
     }
     public function indexAdminDH(){
         return view('dashboard.layout.dashboard-watches');
@@ -25,4 +25,8 @@ class AdminController extends Controller
     public function indexAdminSL(){
         return view('dashboard.layout.dashboard-seller');
     }
+
+    // public function home(){
+    //     return view('dashboard.home');
+    // }
 }
