@@ -18,10 +18,29 @@ Route::group(['middleware' => ['auth:admin']], function(){
     Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
     Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
     Route::get('seller',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
-    Route::get('seller/{dtdd}/{id}',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
 
-    // Route::get('home',[Admin\AdminController::class,'home'])->name('admin.dashboard.home');
+    //  Account
+        // -- User -- //
+    Route::get('/list/user',[Admin\AccountController::class,'listUser'])->name('admin.listUser');
 
+        // -- Staff -- //
+    Route::get('/list/staff',[Admin\AccountController::class,'listStaff'])->name('admin.listStaff');
+
+    //  Clothing
+
+    //  Watches
+
+    //  Product Type
+    Route::get('/pt/watches',[Admin\ProductTypeController::class,'ptWatches'])->name('admin.ptWatches');
+    Route::get('/pt/top',[Admin\ProductTypeController::class,'ptTop'])->name('admin.ptTop');
+    Route::get('/pt/bottom',[Admin\ProductTypeController::class,'ptBottom'])->name('admin.ptBottom');
+
+    //  Product Brand
+    Route::get('/pd/clothing',[Admin\ProductBrandController::class,'pdClothing'])->name('admin.pdClothing');
+    Route::get('/pd/watches',[Admin\ProductBrandController::class,'pdWatches'])->name('admin.pdWatches');
+
+    //  Supplier
+    Route::get('/supplier/clothing',[Admin\SupplierController::class,'supplierClothing'])->name('admin.supplierClothing');
+    Route::get('/supplier/watches',[Admin\SupplierController::class,'supplierWatches'])->name('admin.supplierWatches');
 });
-
 });             

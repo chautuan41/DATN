@@ -305,8 +305,8 @@
                         <ul aria-expanded="false">
                             <!-- <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
                             <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li> -->
-                            <li><a href="#" aria-expanded="false">Staff</a></li>
-                            <li><a href="#" aria-expanded="false">User</a></li>
+                            <li><a href="{{route('admin.listStaff')}}" aria-expanded="false">Staff</a></li>
+                            <li><a href="{{route('admin.listUser')}}" aria-expanded="false">User</a></li>
                         </ul>
                     </li>
                     <li>
