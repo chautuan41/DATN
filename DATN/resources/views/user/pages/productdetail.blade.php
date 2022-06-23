@@ -1,3 +1,4 @@
+@section('title') 2001 @endsection
 @extends('user.app')
 @section('content')
 <section class="single-product">
@@ -113,7 +114,7 @@
 						<span>Categories:</span>
 						<ul>
 							
-							<li><a href="product-single.html">{{$dtProT->product_type_name}}</a></li>
+							<li><a href="product-single.html">{{$dtProTid->product_type_name}}</a></li>
 						</ul>
 					</div>
 					<a href="cart.html" class="btn btn-main mt-20">Add To Cart</a>

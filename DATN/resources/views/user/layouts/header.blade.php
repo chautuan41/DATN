@@ -19,7 +19,7 @@
 								font-family="AustinBold, Austin" font-weight="bold">
 								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
 									<text id="AVIATO">
-										<tspan x="108.94" y="325"><img src="../user/images/logo.png" width="250px" ></tspan>
+										<tspan x="108.94" y="325"><img src="../assets/logo.png" width="250px" ></tspan>
 									</text>
 								</g>
 							</g>
@@ -95,7 +95,7 @@
 						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
 							role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->full_name }} </a>
 						<ul class="dropdown-menu">
-							<li><a href="typography.html">Profile</a></li>
+							<li><a href="{{route('user.profile',['id'=>Auth::user()->id])}}">Profile</a></li>
 							<li><a href="buttons.html">Purchase History</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a class="dropdown-item" href="{{ route('logout') }}"
@@ -112,7 +112,7 @@
 					@else
 					<!-- Languages -->
 					<li class="dropdown dropdown-slide">
-						<a href="login">Sign in</a>
+						<a href="/login">Sign in</a>
 					</li>
 					<!-- / Languages -->
 					@endif
