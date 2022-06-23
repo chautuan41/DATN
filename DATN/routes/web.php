@@ -17,11 +17,11 @@ use App\HTTP\Controllers\HomeController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::get('/',[HomeController::class,'index'])->name('user.home');
-Route::get('/products/{id}',[HomeController::class,'proDetails'])->name('user.product');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/products/{id}',[HomeController::class,'ProductDetails'])->name('user.product');
+
 
 
 Auth::routes();

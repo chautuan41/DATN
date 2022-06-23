@@ -16,16 +16,16 @@ class ProductBrandSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('product_brands')->insert([
-            [   'product_brand_name'=>'Gucci',
+        DB::table('brands')->insert([
+            [   'brand_name'=>'Gucci',
                 'status'=>1],
-            [   'product_brand_name'=>'Dior',
+            [   'brand_name'=>'Dior',
                 'status'=>1],
-            [   'product_brand_name'=>'Louis Vuitton',
+            [   'brand_name'=>'Louis Vuitton',
                 'status'=>1],
-            [   'product_brand_name'=>'Rolex',
+            [   'brand_name'=>'Rolex',
                 'status'=>1],
-            [   'product_brand_name'=>'Versace',
+            [   'brand_name'=>'Versace',
                 'status'=>1],
         ]);
     }

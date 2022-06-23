@@ -13,13 +13,13 @@
 				<div class="logo text-center">
 					<a href="#">
 						<!-- replace logo here -->
-						<svg width="135px" height="29px" viewBox="0 0 155 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
+						<svg width="5px" height="29px" viewBox="0 0 155 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink">
 							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
 								font-family="AustinBold, Austin" font-weight="bold">
 								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
 									<text id="AVIATO">
-										<tspan x="108.94" y="325">AVIATO</tspan>
+										<tspan x="108.94" y="325"><img src="../user/images/logo.png" width="250px" ></tspan>
 									</text>
 								</g>
 							</g>
@@ -88,16 +88,34 @@
 						</ul>
 					</li><!-- / Search -->
 
+					
+					@if (Auth::check())
 					<!-- Languages -->
-					<li class="commonSelect">
-						<select class="form-control">
-							<option>EN</option>
-							<option>DE</option>
-							<option>FR</option>
-							<option>ES</option>
-						</select>
-					</li><!-- / Languages -->
+					<li class="dropdown dropdown-slide">
+						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+							role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->full_name }} </a>
+						<ul class="dropdown-menu">
+							<li><a href="typography.html">Profile</a></li>
+							<li><a href="buttons.html">Purchase History</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form></li>
+						</ul>
+					</li><!-- / Languages -->
+					@else
+					<!-- Languages -->
+					<li class="dropdown dropdown-slide">
+						<a href="login">Sign in</a>
+					</li>
+					<!-- / Languages -->
+					@endif
 				</ul><!-- / .nav .navbar-nav .navbar-right -->
 			</div>
 		</div>

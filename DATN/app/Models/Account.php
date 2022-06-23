@@ -25,6 +25,7 @@ class Account extends Authenticatable
         'address',
         'date_of_birth',
         'avatar',
+        'role',
         'status',
     ];
 

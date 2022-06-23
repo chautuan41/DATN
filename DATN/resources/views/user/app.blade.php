@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
   ================================================== -->
   <meta charset="utf-8">
-  <title>Aviato | E-commerce template</title>
+  <title>@yield('title')</title>
 
   <!-- Mobile Specific Metas
   ================================================== -->
@@ -16,7 +16,7 @@
   <meta name="generator" content="Themefisher Constra HTML Template v1.0">
   
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="../user/images/favicon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="../user/images/favicon.ico" />
   
   <!-- Themefisher Icon font -->
   <link rel="stylesheet" href="../user/plugins/themefisher-font/style.css">
@@ -36,8 +36,8 @@
 
 <body id="body">
 
-@include('user.layout.header')
-@include('user.layout.sidebar')
+@include('user.layouts.header')
+@include('user.layouts.sidebar')
 @yield('content')
 <footer class="footer section text-center">
 	<div class="container">

@@ -1,3 +1,4 @@
+@section('title') 2001 @endsection
 @extends('user.app')
 @section('content')
 <div class="hero-slider">

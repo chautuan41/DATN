@@ -2,24 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\ProductDetail;
-use App\Models\ProductType;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -37,7 +26,7 @@ class HomeController extends Controller
         //dd($dtSP);
         return view('user.index',compact('dtSP','dtPro'));
     }
-    public function proDetails($id)
+    public function ProductDetails($id)
     {
         $dtPro = Product::find($id);
         //$dtProD = ProductDetail::find($id);
@@ -46,6 +35,7 @@ class HomeController extends Controller
         ->join('products', 'sizes.product', '=', 'products.id')
         ->where('products.id','=', $id)->get();
         //dd($dtProD);
-        return view('user.productdetail',compact('dtProT','dtProD','dtPro'));
+        return view('user.pages.productdetail',compact('dtProT','dtProD','dtPro'));
     }
+    
 }
