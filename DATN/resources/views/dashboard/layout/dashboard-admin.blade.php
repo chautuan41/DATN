@@ -310,6 +310,11 @@
                         </ul>
                     </li>
                     <li>
+                        <a class="" href="{{route('products')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Product</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Clothing</span>
                         </a>
@@ -332,6 +337,7 @@
                             <li><a href="#" aria-expanded="false">Professional</a></li>
                         </ul>
                     </li>
+                   
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Product Type</span>
@@ -444,6 +450,8 @@
     <script src="{{asset('dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
     <script src="{{asset('dashboard/js/dashboard/dashboard-1.js')}}"></script>
+
+     
 
 </body>
 
