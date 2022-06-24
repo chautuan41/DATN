@@ -54,15 +54,28 @@ class SizesTableSeeder extends Seeder
                 'size'=>'L',
                 'product' => 3,
                 'status'=>1],
-
+            
             [   
-                'size'=>'45mm',
+                'size'=>'S',
+                'product' => 4,
+                'status'=>1],
+            [   
+                'size'=>'M',
+                'product' => 4,
+                'status'=>1],
+            [   
+                'size'=>'L',
                 'product' => 4,
                 'status'=>1],
 
             [   
-                'size'=>'100ml',
+                'size'=>'45mm',
                 'product' => 5,
+                'status'=>1],
+
+            [   
+                'size'=>'100ml',
+                'product' => 6,
                 'status'=>1],
         ]);
     }

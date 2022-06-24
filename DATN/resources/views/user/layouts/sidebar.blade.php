@@ -37,11 +37,10 @@
 									<ul>
 										<li class="dropdown-header">Pages</li>
 										<li role="separator" class="divider"></li>
-										<li><a href="#">Shop</a></li>
-										<li><a href="#">Checkout</a></li>
-										<li><a href="#">Cart</a></li>
-										<li><a href="#">Pricing</a></li>
-										<li><a href="#">Confirmation</a></li>
+										<li><a href="{{route('user.shop')}}">Shop</a></li>
+										@foreach($dtProT as $ProT)
+										<li><a href="{{route('user.producttype',['id'=>$ProT->id])}}">{{$ProT->product_type_name}}</a></li>
+										@endforeach
 
 									</ul>
 								</div>

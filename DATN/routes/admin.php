@@ -30,6 +30,16 @@ Route::group(['middleware' => ['auth:admin']], function(){
 
     //  Watches
 
+    //  Product
+    Route::group(['prefix' => 'products'], function() {
+        Route::get('/',[Admin\ProductController::class, 'index'])->name('products');
+        Route::get('create',[Admin\ProductController::class, 'showCreate'])->name('products.create');
+        Route::post('create',[Admin\ProductController::class, 'create'])->name('products.create.post');
+        Route::get('edit/{ID}',[Admin\ProductController::class, 'showEdit'])->name('products.edit');
+        Route::post('edit/{ID}',[Admin\ProductController::class, 'edit'])->name('products.edit.post');
+        Route::get('delete/{ID}',[Admin\ProductController::class, 'delete'])->name('products.delete');
+    });
+
     //  Product Type
     Route::get('/pt/watches',[Admin\ProductTypeController::class,'ptWatches'])->name('admin.ptWatches');
     Route::get('/pt/top',[Admin\ProductTypeController::class,'ptTop'])->name('admin.ptTop');

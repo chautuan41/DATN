@@ -16,7 +16,7 @@
   <meta name="generator" content="Themefisher Constra HTML Template v1.0">
   
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="../user/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/favicon.ico')}}" />
   
   <!-- Themefisher Icon font -->
   <link rel="stylesheet" href="../user/plugins/themefisher-font/style.css">

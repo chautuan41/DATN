@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
-
+use Carbon\Carbon;
 class ProductSeeder extends Seeder
 {
     /**
@@ -16,8 +16,8 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
-            [   
+        $values = array(
+            array(
                 'product_id'=>'PD_01',
                 'sku'=>'SKU_01',
                 'product_name'=>'T-Shirt',
@@ -30,9 +30,9 @@ class ProductSeeder extends Seeder
                 'supplier' => 1,
                 'brand'=> 1,
                 'gender' => 0,
-                'status'=>1],
-
-            [   
+                'status'=>1,
+            ),
+            array(
                 'product_id'=>'PD_02',
                 'sku'=>'SKU_02',
                 'product_name'=>'Shirt',
@@ -45,9 +45,11 @@ class ProductSeeder extends Seeder
                 'supplier' => 2,
                 'brand'=> 2,
                 'gender' => 0,
-                'status'=>1],
+                'status'=>1,
+            ),
 
-            [   'product_id'=>'PD_03',
+            array(
+                'product_id'=>'PD_03',
                 'sku'=>'SKU_03',
                 'product_name'=>'Pants',
                 'price'=>450,
@@ -59,9 +61,11 @@ class ProductSeeder extends Seeder
                 'supplier' => 3,
                 'brand'=> 3,
                 'gender' => 0,
-                'status'=>1],
+                'status'=>1,
+            ),
 
-            [   'product_id'=>'PD_04',
+            array(
+                'product_id'=>'PD_04',
                 'sku'=>'SKU_03',
                 'product_name'=>'Shorts',
                 'price'=>450,
@@ -73,37 +77,11 @@ class ProductSeeder extends Seeder
                 'supplier' => 3,
                 'brand'=> 3,
                 'gender' => 1,
-                'status'=>1],
+                'status'=>1,
+            ),
 
-            [   'product_id'=>'PD_04',
-                'sku'=>'SKU_03',
-                'product_name'=>'Jeans',
-                'price'=>450,
-                'amount'=>2001,
-                'discount'=>0,
-                'like'=>666,
-                'image'=>'Jeans.jpg',
-                'product_type' => 5,
-                'supplier' => 3,
-                'brand'=> 3,
-                'gender' => 1,
-                'status'=>1],
-
-            [   'product_id'=>'PD_05',
-                'sku'=>'SKU_04',
-                'product_name'=>'Watches',
-                'price'=>450,
-                'amount'=>2001,
-                'discount'=>0,
-                'like'=>666,
-                'image'=>'Watches.jpg',
-                'product_type' => 6,
-                'supplier' => 4,
-                'brand'=> 4,
-                'gender' => 1,
-                'status'=>1],
-
-            [   'product_id'=>'PD_05',
+            array(
+                'product_id'=>'PD_05',
                 'sku'=>'SKU_04',
                 'product_name'=>'Watches',
                 'price'=>450,
@@ -115,9 +93,11 @@ class ProductSeeder extends Seeder
                 'supplier' => 4,
                 'brand'=> 4,
                 'gender' => 0,
-                'status'=>1],
-
-            [   'product_id'=>'PD_06',
+                'status'=>1
+            ),
+                
+            array(
+                'product_id'=>'PD_06',
                 'sku'=>'SKU_05',
                 'product_name'=>'Fragrances',
                 'price'=>450,
@@ -129,7 +109,13 @@ class ProductSeeder extends Seeder
                 'supplier' => 5,
                 'brand'=> 5,
                 'gender' => 1,
-                'status'=>1],
-        ]);
+                'status'=>1
+            ),   
+        );
+        for( $i = 0;  $i < count($values);  $i++ ){
+            Product::create($values[$i]);
+        }
+        
+        
     }
 }

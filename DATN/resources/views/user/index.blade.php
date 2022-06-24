@@ -92,7 +92,7 @@
 		<div class="row">
 			@foreach($dtPro as $SP)
 			<div class="col-md-4">
-			<a href="{{route('user.product',['id'=>$SP->id])}}"></a>
+			<a href="#"></a>
 				<div class="product-item">
 				
 					<div class="product-thumb">
@@ -100,7 +100,7 @@
 						<div class="preview-meta">
 							<ul>
 								<li>
-                                    <a href="{{route('user.product',['id'=>$SP->id])}}"><i class="tf-ion-ios-search-strong"></i></a>
+                                    <a href="{{route('user.productdetail',['id'=>$SP->id])}}"><i class="tf-ion-ios-search-strong"></i></a>
 								</li>
 								<li>
 			                        <a href="#!" ><i class="tf-ion-ios-heart"></i></a>
@@ -112,33 +112,7 @@
                       	</div>
 					</div>
 					<div class="product-content">
-						<h4><a href="{{route('user.product',['id'=>$SP->id])}}">{{$SP->product_name}}</a></h4>
-						<p class="price">${{$SP->price}}</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-			<a href="{{route('user.product',['id'=>$SP->id])}}"></a>
-				<div class="product-item">
-				
-					<div class="product-thumb">
-						<img class="img-responsive" src="../user/images/shop/products/ysl.jpg" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li>
-                                    <a href="{{route('user.product',['id'=>$SP->id])}}"><i class="tf-ion-ios-search-strong"></i></a>
-								</li>
-								<li>
-			                        <a href="#!" ><i class="tf-ion-ios-heart"></i></a>
-								</li>
-								<li>
-									<a href="#!"><i class="tf-ion-android-cart"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4><a href="{{route('user.product',['id'=>$SP->id])}}">{{$SP->product_name}}</a></h4>
+						<h4><a href="#">{{$SP->product_name}}</a></h4>
 						<p class="price">${{$SP->price}}</p>
 					</div>
 				</div>
