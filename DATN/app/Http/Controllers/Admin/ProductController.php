@@ -10,7 +10,7 @@ use Illuminate\Http\UploadedFile;
 use App\Models\ProductType;
 use App\Models\Supplier;
 use App\Models\Brand;
-
+use App\Models\Categories;
 
 class ProductController extends Controller
 {
@@ -22,10 +22,12 @@ class ProductController extends Controller
 
    function showCreate()
    {
-        $dtProT = ProductType::all();
+        
         $dtB = Brand::all();
         $dtS = Supplier::all();
-        return view('dashboard.product.create',compact('dtProT','dtB','dtS'));
+        $dtC = Categories::all();
+        $dtProT = ProductType::all();
+        return view('dashboard.product.create',compact('dtC','dtB','dtS','dtProT'));
    }
 
    function create(Request $req){
@@ -38,6 +40,7 @@ class ProductController extends Controller
        $Pro->amount = $req->amount;
        $Pro->discount = $req->discount;
        $Pro->like = $req->like;
+       $Pro->categories = $req->categories;
        $Pro->product_type = $req->product_type;
        $Pro->supplier = $req->supplier;
        $Pro->brand = $req->brand;
@@ -54,8 +57,9 @@ class ProductController extends Controller
        $dtProT = ProductType::all();
         $dtB = Brand::all();
         $dtS = Supplier::all();
+        $dtC = Categories::all();
         
-       return view('dashboard.product.edit',compact('dt','dtProT','dtB','dtS'));
+       return view('dashboard.product.edit',compact('dt','dtProT','dtB','dtS','dtC'));
    }
 
    function edit(Request $req, $id){       
@@ -68,6 +72,7 @@ class ProductController extends Controller
        $Pro->amount = $req->amount;
        $Pro->discount = $req->discount;
        $Pro->like = $req->like;
+       $Pro->categories = $req->categories;
        $Pro->product_type = $req->product_type;
        $Pro->supplier = $req->supplier;
        $Pro->brand = $req->brand;

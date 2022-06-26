@@ -8,7 +8,7 @@
 				<div class="content">
 					<h1 class="page-name">Dashboard</h1>
 					<ol class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
+						<li><a href="/">Home</a></li>
 						<li class="active">{{$dtProF->full_name}}</li>
 					</ol>
 				</div>

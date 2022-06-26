@@ -6,8 +6,8 @@
 		<div class="row">
 			<div class="col-md-6">
 				<ol class="breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="shop.html">Shop</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/shop">Shop</a></li>
 					<li class="active">Single Product</li>
 				</ol>
 			</div>

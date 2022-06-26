@@ -17,19 +17,31 @@ class ProductTypeSeeder extends Seeder
     public function run()
     {
         DB::table('product_types')->insert([
-            [   'product_type_name'=>'T-Shirt',
+            [   'product_type_name'=>'T-Shirt | Polo Shirt',
+                'categories'=>1,
                 'status'=>1],
             [   'product_type_name'=>'Shirt',
+                'categories'=>1,
                 'status'=>1],
-            [   'product_type_name'=>'Pants',
+            [   'product_type_name'=>'Pants | Shorts',
+                'categories'=>1,
                 'status'=>1],
-            [   'product_type_name'=>'Shorts',
+            [   'product_type_name'=>'Jackets | Coats',
+                'categories'=>1,
                 'status'=>1],
-            [   'product_type_name'=>'Jeans',
+            [   'product_type_name'=>'Denim',
+                'categories'=>1,
                 'status'=>1],
-            [   'product_type_name'=>'Watches',
+
+            [   'product_type_name'=>'Classic Rolex',
+                'categories'=>2,
                 'status'=>1],
+            [   'product_type_name'=>'Professional Rolex',
+                'categories'=>2,
+                'status'=>1],
+
             [   'product_type_name'=>'Fragrances',
+                'categories'=>3,
                 'status'=>1],
         ]);
     }
