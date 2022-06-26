@@ -46,8 +46,8 @@ Route::group(['middleware' => ['auth:admin']], function(){
     Route::get('/pt/bottom',[Admin\ProductTypeController::class,'ptBottom'])->name('admin.ptBottom');
 
     //  Product Brand
-    Route::get('/pd/clothing',[Admin\ProductBrandController::class,'pdClothing'])->name('admin.pdClothing');
-    Route::get('/pd/watches',[Admin\ProductBrandController::class,'pdWatches'])->name('admin.pdWatches');
+    Route::get('/pd/clothing',[Admin\BrandController::class,'pdClothing'])->name('admin.pdClothing');
+    Route::get('/pd/watches',[Admin\BrandController::class,'pdWatches'])->name('admin.pdWatches');
 
     //  Supplier
     Route::get('/supplier/clothing',[Admin\SupplierController::class,'supplierClothing'])->name('admin.supplierClothing');

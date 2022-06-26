@@ -22,14 +22,14 @@ class CreateAccountsTable extends Migration
             $table->string('address');
             $table->string('date_of_birth');
             $table->string('avatar');
-            $table->integer('role')->unsigned(); 
+            $table->integer('role')->unsigned();
             $table->integer('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('role')
             ->references('id')->on('roles')
-            ->onDelete('cascade'); 
+            ->onDelete('cascade');
         });
     }
 

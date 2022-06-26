@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('discount');
             $table->integer('like');
             $table->string('image');
+            $table->integer('categories')->unsigned();
             $table->integer('product_type')->unsigned();
             $table->integer('supplier')->unsigned();
             $table->integer('brand')->unsigned();
@@ -31,6 +32,9 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('categories')
+            ->references('id')->on('categories')
+            ->onDelete('cascade');
             $table->foreign('product_type')
             ->references('id')->on('product_types')
             ->onDelete('cascade');

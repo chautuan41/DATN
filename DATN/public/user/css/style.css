@@ -1088,6 +1088,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 .product-item .product-thumb img {
   width: 100%;
   height: auto;
+  background-size: cover;
 }
 
 .product-item .product-thumb .bage {

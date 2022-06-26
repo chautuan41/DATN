@@ -48,7 +48,7 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    
                                     <th>Product ID</th>
                                     <th>SKU</th>
                                     <th>Product Name</th>
@@ -56,6 +56,7 @@
                                     <th>Amount</th>
                                     <th>Discount</th>
                                     <th>Image</th>
+                                    <th>Categorie</th>
                                     <th>Product Type</th>
                                     <th>Supplier</th>
                                     <th>Brand</th>
@@ -67,7 +68,6 @@
                                 @forelse($dtPro as $Pro)
                                 @if($Pro->status == 1 && $Pro->role != 1)
                                 <tr>
-                                    <td>{{$Pro->id}}</td>
                                     <td>{{$Pro->product_id}}</td>
                                     <td>{{$Pro->sku	}}</td>
                                     <td>{{$Pro->product_name}}</td>
@@ -75,15 +75,18 @@
                                     <td>{{$Pro->amount}}</td>
                                     <td>{{$Pro->discount}}</td>
                                     <td>{{$Pro->image}}</td>
+                                    <td>{{$Pro->categories}}</td>
                                     <td>{{$Pro->product_type}}</td>
                                     <td>{{$Pro->supplier}}</td>
                                     <td>{{$Pro->brand}}</td>
                                     <td>{{$Pro->status}}</td>
                                     <td>
                                         <a href="{{route('products.edit',['ID'=>$Pro->id])}}" data-toggle="tooltip" data-placement="top" title="Edit"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
+                                                class="fa fa-pencil color-muted m-r-5"></i></a>
                                         <a href="{{route('products.delete',['ID'=>$Pro->id])}}" data-toggle="tooltip" data-placement="top" title="Close"><i
                                                 class="fa fa-close color-danger"></i></a>
+                                       
+                                        
                                     </td>
                                 </tr>
                                 @endif
@@ -95,7 +98,6 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                <th>#</th>
                                     <th>Product ID</th>
                                     <th>SKU</th>
                                     <th>Product Name</th>
@@ -103,6 +105,7 @@
                                     <th>Amout</th>
                                     <th>Discount</th>
                                     <th>Image</th>
+                                    <th>Categorie</th>
                                     <th>Product Type</th>
                                     <th>Supplier</th>
                                     <th>Brand</th>

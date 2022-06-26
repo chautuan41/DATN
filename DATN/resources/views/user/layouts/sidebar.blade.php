@@ -20,7 +20,7 @@
 
 					<!-- Home -->
 					<li class="dropdown ">
-						<a href="#">Home</a>
+						<a href="/">Home</a>
 					</li><!-- / Home -->
 
 
@@ -68,9 +68,23 @@
 								class="tf-ion-ios-arrow-down"></span></a>
 						<div class="dropdown-menu">
 							<div class="row">
-
-								<!-- Introduction -->
+							@foreach($dtC as $C)
+										<!-- Introduction -->
 								<div class="col-sm-3 col-xs-12">
+									<ul>
+										<li class="dropdown-header">{{$C->categories_name}}</li>
+										<li role="separator" class="divider"></li>
+										<li><a href="#">all {{$C->categories_name}}</a></li>
+										@foreach($dtProT as $ProT)
+										@if($ProT->categories==$C->id)
+										<li><a href="{{route('user.producttype',['id'=>$ProT->id])}}">{{$ProT->product_type_name}}</a></li>
+										@endif
+										@endforeach
+									</ul>
+								</div>
+							@endforeach
+								<!-- Introduction -->
+								<!-- <div class="col-sm-3 col-xs-12">
 									<ul>
 										<li class="dropdown-header">Introduction</li>
 										<li role="separator" class="divider"></li>
@@ -80,10 +94,10 @@
 										<li><a href="#">Coming Soon</a></li>
 										<li><a href="#">FAQ</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 								<!-- Contact -->
-								<div class="col-sm-3 col-xs-12">
+								<!-- <div class="col-sm-3 col-xs-12">
 									<ul>
 										<li class="dropdown-header">Dashboard</li>
 										<li role="separator" class="divider"></li>
@@ -92,10 +106,10 @@
 										<li><a href="#">Address</a></li>
 										<li><a href="#">Profile Details</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 								<!-- Utility -->
-								<div class="col-sm-3 col-xs-12">
+								<!-- <div class="col-sm-3 col-xs-12">
 									<ul>
 										<li class="dropdown-header">Utility</li>
 										<li role="separator" class="divider"></li>
@@ -103,14 +117,14 @@
 										<li><a href="#">Signin Page</a></li>
 										<li><a href="#">Forget Password</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 								<!-- Mega Menu -->
-								<div class="col-sm-3 col-xs-12">
+								<!-- <div class="col-sm-3 col-xs-12">
 									<a href="#">
 										<img class="img-responsive" src="../user/images/shop/header-img.jpg" alt="menu image" />
 									</a>
-								</div>
+								</div> -->
 							</div><!-- / .row -->
 						</div><!-- / .dropdown-menu -->
 					</li><!-- / Pages -->

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Brand;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductType;
@@ -34,12 +36,14 @@ class HomeController extends Controller
     {
         $dtSP = Product::all()->skip(0)->take(3);
         $dtProT = ProductType::all();
+        $dtC = Categories::all();
         $dtPro = DB::table('products')->orderBy('created_at', 'desc')->skip(0)->take(3)->get();
         //dd($dtSP);
-        return view('user.index',compact('dtSP','dtPro','dtProT'));
+        return view('user.index',compact('dtSP','dtPro','dtProT','dtC'));
     }
     public function ProductDetails($id)
     {
+        $dtC = Categories::all();
         $dtProT = ProductType::all();
         $dtPro = Product::find($id);
         //$dtProD = ProductDetail::find($id);
@@ -48,16 +52,18 @@ class HomeController extends Controller
         ->join('products', 'sizes.product', '=', 'products.id')
         ->where('products.id','=', $id)->get();
         //dd($dtProD);
-        return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro'));
+        return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro','dtC'));
     }
     public function Shop()
     {
+        $dtC = Categories::all();
         $dtSP = Product::all();
         $dtProT = ProductType::all();
-        return view('user.pages.shop',compact('dtSP','dtProT'));
+        return view('user.pages.shop',compact('dtSP','dtProT','dtC'));
     }
     public function ProductTypes($id)
     {
+        $dtC = Categories::all();
         $dtProT = ProductType::all();
         $dtProTid = ProductType::find($id);
         $dtPro = DB::table('product_types')
@@ -66,14 +72,15 @@ class HomeController extends Controller
         ->get();
         //dd($dtPro);
         
-        return view('user.pages.producttype',compact('dtProTid','dtProT','dtPro'));
+        return view('user.pages.producttype',compact('dtProTid','dtProT','dtPro','dtC'));
     }
     public function Profile($id)
     {
+        $dtC = Categories::all();
         $dtProT = ProductType::all();
         $dtProF = Account::find($id);
         //dd($dtProF);
-        return view('user.pages.profile',compact('dtProF','dtProT'));
+        return view('user.pages.profile',compact('dtProF','dtProT','dtC'));
     }
     // public function Cart($id)
     // {

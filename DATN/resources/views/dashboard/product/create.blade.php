@@ -78,8 +78,18 @@
                                                 <input type="text" class="form-control" id="val-currency" name="like" placeholder="0">
                                             </div>
                                         </div>
-                                        
-                                        
+                                        <div class="form-group row">
+                                            <label class="col-lg-4 col-form-label" for="val-skill">Categorie <span class="text-danger">*</span>
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <select class="form-control" id="val-skill" name="categories">
+                                                    <option value="">Please select</option>
+                                                    @foreach($dtC as $C)
+                                                    <option value="{{$C->id}}">{{$C->categories_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group row">
                                             <label class="col-lg-4 col-form-label" for="val-skill">Product Type <span class="text-danger">*</span>
                                             </label>
