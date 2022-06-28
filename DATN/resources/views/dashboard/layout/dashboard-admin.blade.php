@@ -299,60 +299,27 @@
                     </li>
                     <li class="nav-label">Table Data</li>
                     <li>
+                        <a href="{{route('admin.listRole')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Account Type</span>
+                        </a>
+                    </li>
+                    <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Account</span>
                         </a>
                         <ul aria-expanded="false">
-                            <!-- <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
-                            <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li> -->
                             <li><a href="{{route('admin.listStaff')}}" aria-expanded="false">Staff</a></li>
                             <li><a href="{{route('admin.listUser')}}" aria-expanded="false">User</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a class="" href="{{route('products')}}" aria-expanded="false">
+                        <a class="" href="{{route('admin.listProduct')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Product</span>
                         </a>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Clothing</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class="nav-label">TOP</li>
-                            <li><a href="#" aria-expanded="false">T-Shirt</a></li>
-                            <li><a href="#" aria-expanded="false">Shirt</a></li>
-                            <li class="nav-label">BOTTOM</li>
-                            <li><a href="#" aria-expanded="false">Jeans</a></li>
-                            <li><a href="#" aria-expanded="false">Pants</a></li>
-                            <li><a href="#" aria-expanded="false">Shorts</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Watches</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="#" aria-expanded="false">Classic</a></li>
-                            <li><a href="#" aria-expanded="false">Professional</a></li>
-                        </ul>
-                    </li>
-                   
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Product Type</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li class="nav-label">Clothing</li>
-                            <li><a href="#" aria-expanded="false">TOP</a></li>
-                            <li><a href="#" aria-expanded="false">BOTTOM</a></li>
-                            <li class="nav-label">Watches</li>
-                            <li><a href="#" aria-expanded="false">Watches</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Product Brand</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="#" aria-expanded="false">Clothing</a></li>
@@ -360,13 +327,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a href="{{route('admin.listBrand')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Brand</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.listSupplier')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Supplier</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="#" aria-expanded="false">Clothing</a></li>
-                            <li><a href="#" aria-expanded="false">Watches</a></li>
-                        </ul>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
                     <li>

@@ -1,0 +1,5 @@
+<!-- @foreach($lsRole as $role)
+@if($role->id == $staff->role)
+<td value="{{$role->id}}">{{$role->role_name}}</td>
+@endif
+@endforeach -->

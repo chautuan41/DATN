@@ -1,11 +1,13 @@
 @extends('dashboard.layout.dashboard-admin')
 @section('content')
 
+
+
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:void(0)">Account</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">User</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Supplier</a></li>
         </ol>
     </div>
 </div>
@@ -16,16 +18,17 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                <div class="header-left ">
+                    <div class="header-left ">
                         <p>
-                            <a href="{{route('admin.formAddUser')}}" class="btn btn-primary pull-right">Add User</a>
+                            <a href="{{route('admin.formAddSupplier')}}" class="btn btn-primary pull-right">Add
+                                Supplier</a>
                         </p>
                     </div>
                     <div class="header-content clearfix">
                         <div>
                             <div class="header-right">
                                 <div class="input-group icons">
-                                    <form type="get" action="{{route('admin.searchUser','lsUser')}}">
+                                    <form type="get" action="{{route('admin.searchSupplier','lsSupplier')}}">
                                         <input type="search" name="query" class="form-control" placeholder="Search">
                                     </form>
                                     <div class="input-group-prepend">
@@ -42,9 +45,8 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
-                                    <th>Email</th>
-                                    <th>Full Name</th>
-                                    <th>Date of Birth</th>
+                                    <th>Supplier ID</th>
+                                    <th>Supplier Name</th>
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Status</th>
@@ -52,35 +54,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($lsUser as $user)
-                                @if($user->status == 1 && $user->role == 1)
+                                @forelse($lsSupplier as $supplier)
+                                @if($supplier->status == 1)
                                 <tr>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->full_name}}</td>
-                                    <td>{{$user->date_of_birth}}</td>
-                                    <td>{{$user->phone}}</td>
-                                    <td>{{$user->address}}</td>
-                                    <td>{{$user->status}}</td>
+                                    <td>{{$supplier->supplier_id}}</td>
+                                    <td>{{$supplier->supplier_name}}</td>
+                                    <td>{{$supplier->phone}}</td>
+                                    <td>{{$supplier->address}}</td>
+                                    <td>{{$supplier->status}}</td>
                                     <td>
-                                        <a href="{{route('admin.formEditUser',['id_user' => $user->id])}}" data-toggle="tooltip" data-placement="top" title="Edit"
+                                        <a href="{{route('admin.formEditSupplier',['id_supplier'=>$supplier->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
-                                        <a href="{{route('admin.deleteUser',['id_user' => $user->id])}}" data-toggle="tooltip" data-placement="top" title="Delete"
+                                        <a href="{{route('admin.deleteSupplier',['id_supplier'=>$supplier->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"
                                             class="btn btn-light"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="7">Empty data</td>
+                                    <td colspan="5">Empty data</td>
                                 </tr>
                                 @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Email</th>
-                                    <th>Full Name</th>
-                                    <th>Date of Birth</th>
+                                    <th>Supplier ID</th>
+                                    <th>Supplier Name</th>
                                     <th>Phone</th>
                                     <th>Address</th>
                                     <th>Status</th>
