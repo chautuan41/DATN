@@ -24,6 +24,8 @@ class CreateAccountsTable extends Migration
             $table->string('avatar');
             $table->integer('role')->unsigned();
             $table->integer('status')->nullable()->default(1);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
 

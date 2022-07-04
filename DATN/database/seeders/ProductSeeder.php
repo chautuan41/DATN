@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
     {
         $values = array(
             array(
-                'product_id'=>'SLR',
+                
                 'sku'=>'SLR',
                 'product_name'=>'SAINT LAURENT REVERSE T-SHIRT',
                 'price'=>100,
@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
             array(
-                'product_id'=>'CFM',
+                
                 'sku'=>'CFM',
                 'product_name'=>'CLASSIC FIT MESH POLO SHIRT',
                 'price'=>110,
@@ -50,7 +50,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
             array(
-                'product_id'=>'DJK',
+                
                 'sku'=>'DJK',
                 'product_name'=>'DIOR AND JACK KEROUAC SHORT-SLEEVED SHIRT',
                 'price'=>1300,
@@ -67,7 +67,7 @@ class ProductSeeder extends Seeder
             ),
 
             array(
-                'product_id'=>'OZT',
+                
                 'sku'=>'OZT',
                 'product_name'=>'OZTRADAMUS PANTS',
                 'price'=>65,
@@ -83,7 +83,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
             array(
-                'product_id'=>'CT',
+                
                 'sku'=>'CT',
                 'product_name'=>'CLASSICS TOWELING WOMEN SHORTS',
                 'price'=>45,
@@ -99,7 +99,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
             array(
-                'product_id'=>'SGCT',
+                
                 'sku'=>'SGCT',
                 'product_name'=>'SQUARE G CHECK TWEED JACKET',
                 'price'=>3400,
@@ -116,7 +116,7 @@ class ProductSeeder extends Seeder
             ),
 
             array(
-                'product_id'=>'TO',
+                
                 'sku'=>'TO',
                 'product_name'=>'The Overcoat',
                 'price'=>2550,
@@ -132,7 +132,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
             array(
-                'product_id'=>'ME',
+                
                 'sku'=>'ME',
                 'product_name'=>'MEDUSA SLIM-FIT JEANS',
                 'price'=>816,
@@ -148,7 +148,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
             array(
-                'product_id'=>'LDJ',
+                
                 'sku'=>'LDJ',
                 'product_name'=>'LADY-DATEJUST',
                 'price'=>87000,
@@ -165,7 +165,7 @@ class ProductSeeder extends Seeder
             ),
 
             array(
-                'product_id'=>'SD',
+                
                 'sku'=>'SD',
                 'product_name'=>'SEA-DWELLER',
                 'price'=>18118,

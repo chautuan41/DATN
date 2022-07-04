@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\HTTP\Controllers\HomeController;
+use App\HTTP\Controllers\SearchController;
 use App\Models\ProductType;
 
 /*
@@ -20,23 +21,23 @@ use App\Models\ProductType;
 //     return view('welcome');
 // });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
-
 Route::get('/',[HomeController::class,'index'])->name('user.home');
 Route::get('/products/{id}',[HomeController::class,'ProductDetails'])->name('user.productdetail');
 Route::get('/shop',[HomeController::class,'Shop'])->name('user.shop');
 Route::get('/shop/{id}',[HomeController::class,'ProductTypes'])->name('user.producttype');
-Route::get('/profile/{id}',[HomeController::class,'Profile'])->name('user.profile');
-Route::get('/cart', function () {
-    $dtProT = ProductType::all();
-    return view('user.pages.cart',compact('dtProT'));
+
+Route::get('/search',[SearchController ::class,'getSearchAjax']);
+Route::post('/search',[SearchController ::class,'postSearchAjax'])->name('search');
+
+Route::group(['middleware' => ['auth:web']], function(){
+    Route::get('/profile/{id}',[HomeController::class,'Profile'])->name('user.profile');
+    Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('user.profile.edit');
+    Route::post('/cart/{id}',[HomeController::class,'addCart'])->name('user.cart.post');
+    Route::get('/checkout',[HomeController::class,'showCheckout'])->name('user.checkout');
+    Route::post('/checkout',[HomeController::class,'Checkout'])->name('user.checkout.post');
+    Route::get('/purchase-history',[HomeController::class,'Order'])->name('user.order');
+    Route::post('/comment/{id}',[HomeController ::class,'Comment'])->name('comment');
 });
-Route::get('/checkout', function () {
-    $dtProT = ProductType::all();
-    return view('user.pages.checkout',compact('dtProT'));
-});
-Route::get('/purchase-history', function () {
-    $dtProT = ProductType::all();
-    return view('user.pages.order',compact('dtProT'));
-});
+
 
 Auth::routes();

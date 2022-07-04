@@ -131,7 +131,7 @@
 				<div class="product-item">
 				
 					<div class="product-thumb">
-						<img class="img-responsive" src="../user/images/shop/products/TO1_C.jpg" alt="product-img" style="width:500px;height:600px;"/>
+						<img class="img-responsive" src="../user/images/shop/products/TO1_C.jpg" alt="product-img"/>
 						<div class="preview-meta">
 							<ul>
 								<li>
