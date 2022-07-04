@@ -57,6 +57,7 @@
                                 <tr>
                                     <td>{{$oin->id}}</td>
                                     <td>{{$oin->shipping_address}}</td>
+
                                     <td>{{$oin->date_time}}</td>
                                     <td>{{$oin->total}}</td>
                                     <td>{{$oin->account}}</td>
@@ -71,6 +72,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>#</th>
+                                    <th>Shipping Address</th>
                                     <th>Date</th>
                                     <th>Total</th>
                                     <th>Account</th>

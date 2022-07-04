@@ -16,25 +16,34 @@ class ImportInvoiceSeeder extends Seeder
     public function run()
     {
         DB::table('import_invoices')->insert([
+
             [   
+
+
                 'date' => Carbon::now('Asia/Ho_Chi_Minh'),
                 'total' => 100,
                 'account' => 1,
                 'supplier'=> 1,
                 'status'=>1],
+
             [   
+
                 'date' => Carbon::now('Asia/Ho_Chi_Minh'),
                 'total' => 299,
                 'account' => 1,
                 'supplier'=> 1,
                 'status'=>1],
+
             [   
+
                 'date' => Carbon::now('Asia/Ho_Chi_Minh'),
                 'total' => 399,
                 'account' => 1,
                 'supplier'=> 2,
                 'status'=>1],
+
             [   
+
                 'date' => Carbon::now('Asia/Ho_Chi_Minh'),
                 'total' => 499,
                 'account' => 1,

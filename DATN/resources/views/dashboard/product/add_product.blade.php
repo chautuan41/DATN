@@ -33,7 +33,6 @@
                         @endif
                         <form action="{{ route('admin.handleAddProduct') }}" method="post">
                             @csrf
-                           
                             <div class="form-group">
                                 <label for="exampleInputEmail1">SKU</label>
 

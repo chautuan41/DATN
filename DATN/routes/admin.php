@@ -11,7 +11,9 @@ Route::group(['prefix' => '/'], function () {
     Route::post('login', [Admin\LoginController::class, 'login'])->name('admin.handle.login');
 
     Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
+
     Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
+
 
     Route::group(['middleware' => ['auth:admin']], function(){
 

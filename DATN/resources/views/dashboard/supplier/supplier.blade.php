@@ -45,6 +45,7 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
+
                                     <th>Supplier Name</th>
                                     <th>Phone</th>
                                     <th>Address</th>
@@ -82,6 +83,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+
                                     <th>Supplier Name</th>
                                     <th>Phone</th>
                                     <th>Address</th>

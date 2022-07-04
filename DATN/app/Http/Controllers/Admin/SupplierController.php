@@ -24,7 +24,6 @@ class SupplierController extends Controller
 
     public function handleAddSupplier(Request $request)
     {
-       
         $sl = new Supplier();
         $sl->supplier_name = $request->supplier_name;
         $sl->phone = $request->phone;
@@ -52,7 +51,6 @@ class SupplierController extends Controller
         //     return redirect()->back()->with("error","Supplier already exists");
         // }
         $sl = Supplier::find($id_supplier);
-        $sl->supplier_id = $request->supplier_id;
         $sl->supplier_name = $request->supplier_name;
         $sl->phone = $request->phone;
         $sl->address = $request->address;

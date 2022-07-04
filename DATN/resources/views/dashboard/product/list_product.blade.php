@@ -41,7 +41,6 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
-                                <th>#</th>
                                     <th>SKU</th>
                                     <th>Product Name</th>
                                     <th>Price</th>
@@ -60,7 +59,7 @@
                                 @forelse($lsProduct as $product)
                                 @if($product->status == 1)
                                 <tr>
-                                <td>{{$product->id	}}</td>
+
                                     <td>{{$product->sku	}}</td>
                                     <td>{{$product->product_name}}</td>
                                     <td>${{$product->price}}</td>

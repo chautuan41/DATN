@@ -29,8 +29,8 @@ class ProductController extends Controller
         return view('dashboard.product.add_product',compact('dtC','dtB','dtS','dtProT'));
    }
 
-   public function handleAddProduct(Request $req){
-        
+   public function handleAddProduct(Request $req)
+   {
        $Pro = new Product();
        $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
@@ -67,7 +67,6 @@ class ProductController extends Controller
         //     return redirect()->back()->with("error","Product already exists");
         // }
        $Pro = Product::find($product_id);
-       $Pro->product_id = $req->product_id;
        $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
        $Pro->gender = $req->gender;

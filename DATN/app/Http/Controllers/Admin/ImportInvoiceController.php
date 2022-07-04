@@ -50,7 +50,6 @@ class ImportInvoiceController extends Controller
         
         
         $iinvoices = ImportInvoice::find($id_input);
-        $iinvoices->iinvoices_id = 'ok';
         $iinvoices->date = now('Asia/Ho_Chi_Minh');
         $iinvoices->total = $request->total;
         $iinvoices->account = $request->account;

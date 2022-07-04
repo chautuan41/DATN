@@ -17,6 +17,7 @@ class InvoicesSeeder extends Seeder
     public function run()
     {
         DB::table('invoices')->insert([
+
             [   
                 'date_time' => Carbon::now('Asia/Ho_Chi_Minh'),
                 'total' => 100,
@@ -42,6 +43,7 @@ class InvoicesSeeder extends Seeder
                 'date_time' => Carbon::now('Asia/Ho_Chi_Minh'),
                 'total' => 499,
                 'shipping_address' => 'Thailand',
+
                 'account' => 1,
                 'status'=>1],
         ]);
