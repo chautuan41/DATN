@@ -1,13 +1,11 @@
 @extends('dashboard.layout.dashboard-admin')
 @section('content')
 
-
-
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Supplier</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Out Invoices</a></li>
         </ol>
     </div>
 </div>
@@ -19,16 +17,16 @@
             <div class="card">
                 <div class="card-body">
                     <div class="header-left ">
-                        <p>
-                            <a href="{{route('admin.formAddSupplier')}}" class="btn btn-primary pull-right">Add
-                                Supplier</a>
-                        </p>
+                        <!-- <p>
+                            <a href="#" class="btn btn-primary pull-right">Add Input
+                                Invoices</a>
+                        </p> -->
                     </div>
                     <div class="header-content clearfix">
                         <div>
                             <div class="header-right">
                                 <div class="input-group icons">
-                                    <form type="get" action="{{route('admin.searchSupplier','lsSupplier')}}">
+                                    <form type="get" action="{{route('admin.searchOInvoices','lsOInvoice')}}">
                                         <input type="search" name="query" class="form-control" placeholder="Search">
                                     </form>
                                     <div class="input-group-prepend">
@@ -45,51 +43,34 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
-                                    <th>Supplier ID</th>
-                                    <th>Supplier Name</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Account</th>
                                     <th>Status</th>
-                                    <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($lsSupplier as $supplier)
-                                @if($supplier->status == 1)
+                                @forelse($lsOInvoice as $oin)
+                                @if($oin->status == 1)
                                 <tr>
-                                    <td>{{$supplier->supplier_id}}</td>
-                                    <td>{{$supplier->supplier_name}}</td>
-                                    <td>{{$supplier->phone}}</td>
-                                    <td>{{$supplier->address}}</td>
-                                    <td>{{$supplier->status}}</td>
-                                    <td>
-                                        <a href="{{route('admin.formEditSupplier',['id_supplier'=>$supplier->id])}}"
-                                            data-toggle="tooltip" data-placement="top" title="Edit"
-                                            class="btn btn-light"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.deleteSupplier',['id_supplier'=>$supplier->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a></button>
-
-
-                                    </td>
+                                    <td>{{$oin->date_time}}</td>
+                                    <td>{{$oin->total}}</td>
+                                    <td>{{$oin->account}}</td>
+                                    <td>{{$oin->status}}</td>
                                 </tr>
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="5">Empty data</td>
+                                    <td colspan="4">Empty data</td>
                                 </tr>
                                 @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Supplier ID</th>
-                                    <th>Supplier Name</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Account</th>
                                     <th>Status</th>
-                                    <th>Options</th>
                                 </tr>
                             </tfoot>
                         </table>

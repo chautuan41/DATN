@@ -32,7 +32,7 @@ class AccountSeeder extends Seeder
             [   
                 'email'=>'admin@gmail.com',
                 'password'=>bcrypt('1234567'),
-                'full_name'=>'Quản Lý',
+                'full_name'=>'Admin',
                 'phone'=>'0907999999',
                 'address'=>'VietNam',
                 'date_of_birth'=>'11/11/2001',
@@ -40,9 +40,9 @@ class AccountSeeder extends Seeder
                 'role'=>2
             ],
             [   
-                'email'=>'adminwatches@gmail.com',
+                'email'=>'watchesstaff@gmail.com',
                 'password'=>bcrypt('1234567'),
-                'full_name'=>'Admin Watches Store',
+                'full_name'=>'Watches Staff',
                 'phone'=>'0907888888',
                 'address'=>'VietNam',
                 'date_of_birth'=>'11/11/2001',
@@ -50,9 +50,9 @@ class AccountSeeder extends Seeder
                 'role'=>3
             ],
             [
-                'email'=>'adminclothing@gmail.com',
+                'email'=>'clothingstaff@gmail.com',
                 'password'=>bcrypt('1234567'),
-                'full_name'=>'Admin Clothing Store',
+                'full_name'=>'Clothing Staff',
                 'phone'=>'0907666666',
                 'address'=>'VietNam',
                 'date_of_birth'=>'16/07/2001',
@@ -60,9 +60,9 @@ class AccountSeeder extends Seeder
                 'role'=>4
             ],
             [   
-                'email'=>'adminseller@gmail.com',
+                'email'=>'warehousestaff@gmail.com',
                 'password'=>bcrypt('1234567'),
-                'full_name'=>'Admin Seller',
+                'full_name'=>'WareHouse Staff',
                 'phone'=>'0907797979',
                 'address'=>'VietNam',
                 'date_of_birth'=>'16/07/2001',

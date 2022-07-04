@@ -59,10 +59,15 @@
                                     <td>{{$role->role_name}}</td>
                                     <td>
                                         <a href="{{route('admin.formEditRole',['id_role' => $role->id])}}"
-                                            data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-light"><i
+                                            data-toggle="tooltip" data-placement="top" title="Edit"
+                                            class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
-                                        <a href="{{route('admin.deleteRole',['id_role' => $role->id])}}"
-                                            data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-light"><i class="fa fa-trash"></i></a>
+                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
+                                                href="{{route('admin.deleteRole',['id_role' => $role->id])}}"
+                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
+                                                    class="fa fa-trash"></i></a></button>
+
+
                                     </td>
                                 </tr>
                                 @endif

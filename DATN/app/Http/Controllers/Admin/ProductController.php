@@ -66,10 +66,10 @@ class ProductController extends Controller
    }
 
    public function handleEditProduct(Request $req, $product_id){       
-        $checkProduct = Product::where('product_id',$req->product_id)->first();
-        if($checkProduct == true){
-            return redirect()->back()->with("error","Product already exists");
-        }
+        // $checkProduct = Product::where('product_id',$req->product_id)->first();
+        // if($checkProduct == true){
+        //     return redirect()->back()->with("error","Product already exists");
+        // }
        $Pro = Product::find($product_id);
        $Pro->product_id = $req->product_id;
        $Pro->sku = $req->sku;

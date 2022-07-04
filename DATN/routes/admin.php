@@ -15,12 +15,12 @@ Route::group(['prefix' => '/'], function () {
     Route::group(['middleware' => ['auth:admin']], function(){
 
         Route::get('/',[Admin\AdminController::class,'indexAdmin'])->name('admin.index');
-        // Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
-        // Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
-        // Route::get('seller',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
+        Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
+        Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
+        Route::get('warehouse',[Admin\AdminController::class,'indexAdminWH'])->name('admin.indexWH');
 
-        //  Account
-        // -- User -- //
+        // -- Account -- //
+            // -- User -- //
         Route::group(['prefix' => 'user'], function() {
             Route::get('/',[Admin\AccountController::class,'listUser'])->name('admin.listUser');
             Route::get('add',[Admin\AccountController::class,'formAddUser'])->name('admin.formAddUser');
@@ -31,7 +31,7 @@ Route::group(['prefix' => '/'], function () {
             Route::get('search',[Admin\AccountController::class,'searchUser'])->name('admin.searchUser');
         });
     
-        // -- Staff -- //
+            // -- Staff -- //
         Route::group(['prefix' => 'staff'], function() {
             Route::get('/',[Admin\AccountController::class,'listStaff'])->name('admin.listStaff');
             Route::get('add',[Admin\AccountController::class,'formAddStaff'])->name('admin.formAddStaff');
@@ -53,7 +53,7 @@ Route::group(['prefix' => '/'], function () {
             Route::get('search',[Admin\RoleController::class,'searchRole'])->name('admin.searchRole');
         });
 
-        //  Product
+        // -- Product -- //
         Route::group(['prefix' => 'product'], function() {
             Route::get('/',[Admin\ProductController::class, 'listProduct'])->name('admin.listProduct');
             Route::get('add',[Admin\ProductController::class, 'formAddProduct'])->name('admin.formAddProduct');
@@ -64,7 +64,7 @@ Route::group(['prefix' => '/'], function () {
             Route::get('search',[Admin\ProductController::class,'searchProduct'])->name('admin.searchProduct');
         });
 
-        //  Product Brand
+        // -- Product Brand -- //
         Route::group(['prefix' => 'brand'], function() {
             Route::get('/',[Admin\BrandController::class,'listBrand'])->name('admin.listBrand');
             Route::get('add',[Admin\BrandController::class,'formAddBrand'])->name('admin.formAddBrand');
@@ -75,7 +75,7 @@ Route::group(['prefix' => '/'], function () {
             Route::get('search',[Admin\BrandController::class,'searchBrand'])->name('admin.searchBrand');
         });
         
-        //  Supplier
+        // -- Supplier -- //
         Route::group(['prefix' => 'supplier'], function() {
             Route::get('/',[Admin\SupplierController::class,'listSupplier'])->name('admin.listSupplier');
             Route::get('add',[Admin\SupplierController::class,'formAddSupplier'])->name('admin.formAddSupplier');
@@ -85,11 +85,53 @@ Route::group(['prefix' => '/'], function () {
             Route::post('edit/{id_supplier}',[Admin\SupplierController::class,'handleEditSupplier'])->name('admin.handleEditSupplier');
             Route::get('search',[Admin\SupplierController::class,'searchSupplier'])->name('admin.searchSupplier');
         });
+
+        // -- Categories -- //
+        Route::group(['prefix' => 'categories'], function() {
+            Route::get('/',[Admin\CategoriesController::class,'listCategories'])->name('admin.listCategories');
+            Route::get('add',[Admin\CategoriesController::class,'formAddCategories'])->name('admin.formAddCategories');
+            Route::post('add',[Admin\CategoriesController::class,'handleAddCategories'])->name('admin.handleAddCategories');
+            Route::get('delete/{id_cgr}',[Admin\CategoriesController::class,'deleteCategories'])->name('admin.deleteCategories');
+            Route::get('edit/{id_cgr}',[Admin\CategoriesController::class,'formEditCategories'])->name('admin.formEditCategories');
+            Route::post('edit/{id_cgr}',[Admin\CategoriesController::class,'handleEditCategories'])->name('admin.handleEditCategories');
+            Route::get('search',[Admin\CategoriesController::class,'searchCategories'])->name('admin.searchCategories');
+        });
+
+        // -- Product Type -- //
+        Route::group(['prefix' => 'product-type'], function() {
+            Route::get('/',[Admin\ProductTypeController::class,'listProductType'])->name('admin.listProductType');
+            Route::get('add',[Admin\ProductTypeController::class,'formAddProductType'])->name('admin.formAddProductType');
+            Route::post('add',[Admin\ProductTypeController::class,'handleAddProductType'])->name('admin.handleAddProductType');
+            Route::get('delete/{id_ProT}',[Admin\ProductTypeController::class,'deleteProductType'])->name('admin.deleteProductType');
+            Route::get('edit/{id_ProT}',[Admin\ProductTypeController::class,'formEditProductType'])->name('admin.formEditProductType');
+            Route::post('edit/{id_ProT}',[Admin\ProductTypeController::class,'handleEditProductType'])->name('admin.handleEditProductType');
+            Route::get('search',[Admin\ProductTypeController::class,'searchProductType'])->name('admin.searchProductType');
+        });
+
+        // -- Comments -- //
+        Route::group(['prefix' => 'comment'], function() {
+            Route::get('/',[Admin\CommentController::class,'listComment'])->name('admin.listComment');
+            Route::get('list-cofirm',[Admin\CommentController::class,'listConfirmComment'])->name('admin.listConfirmComment');
+            Route::get('confirm/{id_comment}',[Admin\CommentController::class,'confirmComment'])->name('admin.confirmComment');
+            Route::get('cancel/{id_comment}',[Admin\CommentController::class,'cancelComment'])->name('admin.cancelComment');
+            Route::get('hard-delete/{id_comment}',[Admin\CommentController::class,'hardDeleteCmt'])->name('admin.hardDeleteCmt');
+            Route::get('list-cofirm/search',[Admin\CommentController::class,'searchComment'])->name('admin.searchComment');
+        });
+
+        // -- Input Invoices -- //
+        Route::group(['prefix' => 'input-invoice'], function() {
+            Route::get('/',[Admin\ImportInvoiceController::class,'listIInvoices'])->name('admin.listIInvoices');
+            Route::get('add',[Admin\ImportInvoiceController::class,'formAddIInvoices'])->name('admin.formAddIInvoices');
+            Route::post('add',[Admin\ImportInvoiceController::class,'handleAddIInvoices'])->name('admin.handleAddIInvoices');
+            Route::get('edit/{id_input}',[Admin\ImportInvoiceController::class,'formEditIInvoices'])->name('admin.formEditIInvoices');
+            Route::post('edit/{id_input}',[Admin\ImportInvoiceController::class,'handleEditIInvoices'])->name('admin.handleEditIInvoices');
+            Route::get('delete/{id_input}',[Admin\ImportInvoiceController::class,'deleteIInvoices'])->name('admin.deleteIInvoices');
+            Route::get('search',[Admin\ImportInvoiceController::class,'searchIInvoices'])->name('admin.searchIInvoices');
+        });
+        // -- Ouput Invoices -- //
+        Route::group(['prefix' => 'output-invoice'], function() {
+            Route::get('/',[Admin\InvoiceController::class,'listOInvoices'])->name('admin.listOInvoices');
+            Route::get('search',[Admin\InvoiceController::class,'searchOInvoices'])->name('admin.searchOInvoices');
+        });
     });
-});             
-
-
-        //  Product Type
-        // Route::get('/pt/watches',[Admin\ProductTypeController::class,'ptWatches'])->name('admin.ptWatches');
-        // Route::get('/pt/top',[Admin\ProductTypeController::class,'ptTop'])->name('admin.ptTop');
-        // Route::get('/pt/bottom',[Admin\ProductTypeController::class,'ptBottom'])->name('admin.ptBottom');
+});

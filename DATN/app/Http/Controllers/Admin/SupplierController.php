@@ -51,10 +51,10 @@ class SupplierController extends Controller
     }
 
     public function handleEditSupplier(Request $request, $id_supplier){
-        $checkSupplier = Supplier::where('supplier_id',$request->supplier_id)->first();
-        if($checkSupplier == true){
-            return redirect()->back()->with("error","Supplier already exists");
-        }
+        // $checkSupplier = Supplier::where('supplier_id',$request->supplier_id)->first();
+        // if($checkSupplier == true){
+        //     return redirect()->back()->with("error","Supplier already exists");
+        // }
         $sl = Supplier::find($id_supplier);
         $sl->supplier_id = $request->supplier_id;
         $sl->supplier_name = $request->supplier_name;

@@ -1,9 +1,11 @@
 @extends('dashboard.layout.dashboard-admin')
 @section('content')
+
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Product</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)"> Categories</a></li>
         </ol>
     </div>
 </div>
@@ -16,15 +18,15 @@
                 <div class="card-body">
                     <div class="header-left ">
                         <p>
-                            <a href="{{route('admin.formAddProduct')}}" class="btn btn-primary pull-right">Add
-                                Product</a>
+                            <a href="{{route('admin.formAddCategories')}}" class="btn btn-primary pull-right">Add
+                                Categories</a>
                         </p>
                     </div>
                     <div class="header-content clearfix">
                         <div>
                             <div class="header-right">
                                 <div class="input-group icons">
-                                    <form type="get" action="{{route('admin.searchProduct','lsProduct')}}">
+                                    <form type="get" action="{{route('admin.searchCategories','lsCategories')}}">
                                         <input type="search" name="query" class="form-control" placeholder="Search">
                                     </form>
                                     <div class="input-group-prepend">
@@ -41,65 +43,41 @@
                         <table class="table table-striped table-bordered zero-configuration">
                             <thead>
                                 <tr>
-                                    <th>SKU</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Amount</th>
-                                    <th>Discount</th>
-                                    <th>Image</th>
-                                    <th>Categorie</th>
-                                    <th>Product Type</th>
-                                    <th>Supplier</th>
-                                    <th>Brand</th>
+                                    <th>ID</th>
+                                    <th>Categories</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($lsProduct as $product)
-                                @if($product->status == 1)
+                                @forelse($lsCategories as $cgr)
+                                @if($cgr->status == 1)
                                 <tr>
-                                    <td>{{$product->sku	}}</td>
-                                    <td>{{$product->product_name}}</td>
-                                    <td>${{$product->price}}</td>
-                                    <td>{{$product->amount}}</td>
-                                    <td>{{$product->discount}}</td>
-                                    <td>{{$product->image}}</td>
-                                    <td>{{$product->categories}}</td>
-                                    <td>{{$product->product_type}}</td>
-                                    <td>{{$product->supplier}}</td>
-                                    <td>{{$product->brand}}</td>
-                                    <td>{{$product->status}}</td>
+                                    <td>{{$cgr->id}}</td>
+                                    <td>{{$cgr->categories_name}}</td>
+                                    <td>{{$cgr->status}}</td>
                                     <td>
-                                        <a href="{{route('admin.formEditProduct',['product_id'=>$product->id])}}"
+                                        <a href="{{route('admin.formEditCategories',['id_cgr'=>$cgr->id])}}"
                                             data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
                                         <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.deleteProduct',['product_id'=>$product->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a></button>
+                                                href="{{route('admin.deleteCategories',['id_cgr'=>$cgr->id])}}"
+                                                data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="fa fa-trash"></i></a></button>
                                     </td>
                                 </tr>
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="12">Empty data</td>
+                                    <td colspan="4">Empty data</td>
                                 </tr>
                                 @endforelse
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>SKU</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Amout</th>
-                                    <th>Discount</th>
-                                    <th>Image</th>
-                                    <th>Categorie</th>
-                                    <th>Product Type</th>
-                                    <th>Supplier</th>
-                                    <th>Brand</th>
+                                    <th>ID</th>
+                                    <th>Categories</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>

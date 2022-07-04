@@ -45,7 +45,7 @@
         ***********************************-->
         <div class="nav-header" style="background-color:white">
             <div class="brand-logo">
-                <a href="{{route('admin.indexSL')}}">
+                <a href="{{route('admin.indexWH')}}">
                     <!-- <b class="logo-abbr"><img src="{{asset('dashboard/images/logo.png')}}" alt=""> </b>
                     <span class="logo-compact"><img src="{{asset('dashboard/images/logo-compact.png')}}" alt=""></span> -->
                     <span class="brand-title">
@@ -301,7 +301,7 @@
                     <li class="nav-label">Table</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Seller</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">WareHouse Staff</span>
                         </a>
                         <ul aria-expanded="false">
                             <!-- <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
@@ -519,7 +519,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.indexSL')}}">2001</a> 2022</p>
+                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.indexWH')}}">2001</a> 2022</p>
             </div>
         </div>  
         <!--**********************************

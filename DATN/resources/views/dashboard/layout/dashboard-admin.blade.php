@@ -252,38 +252,38 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a href="{{route('admin.index')}}" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
-                        <ul aria-expanded="false">
+                        <!-- <ul aria-expanded="false">
                             <li><a href="#">Home</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
-                    <li class="nav-label">Apps</li>
+                    <!-- <li class="nav-label">Apps</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
                         </a>
                         <ul aria-expanded="false">
-                            <!-- <li><a href="./app-profile.html">Profile</a></li>
-                            <li><a href="./app-calender.html">Calender</a></li> -->
+                            <li><a href="./app-profile.html">Profile</a></li>
+                            <li><a href="./app-calender.html">Calender</a></li>
                         </ul>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
                         </a>
                         <ul aria-expanded="false">
-                            <!-- <li><a href="./chart-flot.html">Flot</a></li>
+                            <li><a href="./chart-flot.html">Flot</a></li>
                             <li><a href="./chart-morris.html">Morris</a></li>
                             <li><a href="./chart-chartjs.html">Chartjs</a></li>
                             <li><a href="./chart-chartist.html">Chartist</a></li>
                             <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li> -->
+                            <li><a href="./chart-peity.html">Peity</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     
-                    <li>
+                    <!-- <li>
                         <a href="widgets.html" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
                         </a>
@@ -294,9 +294,9 @@
                             <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
                         </a>
                         <ul aria-expanded="false">
-                            <!-- <li><a href="./form-step.html">Step Form</a></li> -->
+                            <li><a href="./form-step.html">Step Form</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="nav-label">Table Data</li>
                     <li>
                         <a href="{{route('admin.listRole')}}" aria-expanded="false">
@@ -305,7 +305,7 @@
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Account</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Accounts</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="{{route('admin.listStaff')}}" aria-expanded="false">Staff</a></li>
@@ -314,26 +314,42 @@
                     </li>
                     <li>
                         <a class="" href="{{route('admin.listProduct')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Product</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Products</span>
                         </a>
                     </li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a  href="{{route('admin.listCategories')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="#" aria-expanded="false">Clothing</a></li>
-                            <li><a href="#" aria-expanded="false">Watches</a></li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.listProductType')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Product Type</span>
+                        </a>
                     </li>
                     <li>
                         <a href="{{route('admin.listBrand')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Brand</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Brands</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{route('admin.listSupplier')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Supplier</span>
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Suppliers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.listComment')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Comments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.listOInvoices')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Output Invoices</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.listIInvoices')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Input Invoices</span>
                         </a>
                     </li>
                     <!-- <li class="nav-label">Pages</li>
@@ -398,6 +414,10 @@
     <script src="{{asset('dashboard/js/settings.js')}}"></script>
     <script src="{{asset('dashboard/js/gleek.js')}}"></script>
     <script src="{{asset('dashboard/js/styleSwitcher.js')}}"></script>
+
+    <!-- <script src="{{asset('dashboard/plugins/tables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('dashboard/plugins/tables/js/datatable/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('dashboard/plugins/tables/js/datatable-init/datatable-basic.min.js')}}"></script> -->
 
     <!-- Chartjs -->
     <script src="{{asset('dashboard/plugins/chart.js/Chart.bundle.min.js')}}"></script>

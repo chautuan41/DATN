@@ -54,7 +54,7 @@ public function login(Request $request)
             'role' => 3,
             'status' => 1,
             ], $request->get('remember'))) {
-                return redirect()->intended(route('admin.index'));
+                return redirect()->intended(route('admin.indexDH'));
             }
         elseif (Auth::guard('admin')->attempt([
                 'email' => $request->email,
@@ -62,7 +62,7 @@ public function login(Request $request)
                 'role' => 4,
                 'status' => 1,
                 ], $request->get('remember'))) {
-                    return redirect()->intended(route('admin.index'));
+                    return redirect()->intended(route('admin.indexCL'));
                 }
         elseif (Auth::guard('admin')->attempt([
                 'email' => $request->email,
@@ -70,9 +70,9 @@ public function login(Request $request)
                 'role' => 5,
                 'status' => 1,
                 ], $request->get('remember'))) {
-                    return redirect()->intended(route('admin.index'));
+                    return redirect()->intended(route('admin.indexWH'));
                 }
-        return redirect()->back()->with("error","Đăng nhập không thành công");
+        return redirect()->back()->with("error","Login Failed");
         return back()->withInput($request->only('email', 'remember'));
     }
 

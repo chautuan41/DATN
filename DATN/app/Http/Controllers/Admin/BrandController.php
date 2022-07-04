@@ -45,10 +45,10 @@ class BrandController extends Controller
         return view('dashboard.brand.edit_brand',compact('id_brand','lsBrand'));
     }
     public function handleEditBrand(Request $request, $id_brand){
-        $checkBrand = Brand::where('brand_name',$request->brand_name)->first();
-        if($checkBrand == true){
-            return redirect()->back()->with("error","Brand already exists");
-        }
+        // $checkBrand = Brand::where('brand_name',$request->brand_name)->first();
+        // if($checkBrand == true){
+        //     return redirect()->back()->with("error","Brand already exists");
+        // }
         $brand = Brand::find($id_brand);
         $brand->brand_name = $request->brand_name;
         $brand->save();

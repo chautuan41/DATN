@@ -47,10 +47,10 @@ class RoleController extends Controller
         return view('dashboard.role.edit_role',compact('id_role','lsRole'));
     }
     public function handleEditRole(Request $request,$id_role){
-        $checkRole = Role::where('role_name',$request->role_name)->first();
-        if($checkRole == true){
-            return redirect()->back()->with("error","Role already exists");
-        }
+        // $checkRole = Role::where('role_name',$request->role_name)->first();
+        // if($checkRole == true){
+        //     return redirect()->back()->with("error","Role already exists");
+        // }
         $lsRole = Role::find($id_role);
         $lsRole->role_name = $request->role_name;
         $lsRole->save();
