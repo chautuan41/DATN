@@ -3,3 +3,23 @@
 <td value="{{$role->id}}">{{$role->role_name}}</td>
 @endif
 @endforeach -->
+
+
+<!-- // comment search
+<div class="header-content clearfix">
+                        <div>
+                            <div class="header-right">
+                                <div class="input-group icons">
+                                    <form type="get" action="{{route('admin.searchComment','lsComment')}}">
+                                        <input type="search" name="query" class="form-control" placeholder="Search">
+                                    </form>
+                                    <div class="input-group-prepend">
+                                        <button class="input-group-text bg-transparent border-0 pr-2 pr-sm-3"
+                                            id="basic-addon1"><i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    /// -->
