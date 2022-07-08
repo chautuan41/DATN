@@ -1,4 +1,4 @@
-@section('title') 2001 @endsection
+@section('title')Cart - 2001 @endsection
 @extends('user.app')
 @section('content')
 <section class="page-header">
@@ -6,10 +6,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="content">
-					<h1 class="page-name">Checkout</h1>
+					<h1 class="page-name">Cart</h1>
 					<ol class="breadcrumb">
 						<li><a href="index.html">Home</a></li>
-						<li class="active">checkout</li>
+						<li class="active">Cart</li>
 					</ol>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
                            <p class="price">Size: {{$Cart->size}}</p>
                            <p class="price">{{$Cart->quantity}} x ${{number_format($price)}}</p>
                            <a href="#"><span class="remove" >Edit</span> </a>|
-                           <a href="#!"><span class="remove" >Remove</span> </a>
+                           <a href="{{ route('user.cart.delete',['id'=>$Cart->id]) }}"><span class="remove" >Remove</span> </a>
                         <ul class="summary-prices">
                            <li>
                               <span>Subtotal:</span>

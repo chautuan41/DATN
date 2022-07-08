@@ -31,7 +31,7 @@
             <div class="col-md-4 col-xs-12 col-sm-4">
                 <!-- Site Logo -->
                 <div class="logo text-center">
-                    <a href="#">
+                    <a href="/">
                         <!-- replace logo here -->
                         <svg width="5px" height="29px" viewBox="0 0 155 29" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -39,7 +39,7 @@
                                 font-family="AustinBold, Austin" font-weight="bold">
                                 <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
                                     <text id="AVIATO">
-                                        <tspan x="108.94" y="325"><img src="../assets/logo.png" width="170px"></tspan>
+                                        <tspan x="108.94" y="325"><img src="{{asset('assets/logo.png')}}" width="170px"></tspan>
                                     </text>
                                 </g>
                             </g>
@@ -72,7 +72,7 @@
                                     <ul>
                                         <li><a href="{{route('user.profile',['id'=>Auth::user()->id])}}">Profile</a>
                                         </li>
-                                        <li><a href="buttons.html">Purchase History</a></li>
+                                        <li><a href="{{ route('user.order') }}">Purchase History</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -94,7 +94,7 @@
 
                     <!-- Search -->
                     <li class="dropdown search dropdown-slide">
-                        <a href="#!" class="dropdown-toggle"><i class="tf-ion-android-cart"></i>{{$cart}}</a>
+                        <a href="{{ route('user.cart') }}" class="dropdown-toggle"><i class="tf-ion-android-cart"></i>{{$cart}}</a>
                     </li><!-- / Search -->
                     @else
                     <!-- Search -->

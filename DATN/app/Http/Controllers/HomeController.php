@@ -49,10 +49,13 @@ class HomeController extends Controller
         $dtProT = ProductType::all();
         $dtC = Categories::all();
         $cart = Count(Cart::all());
-        
-        //dd($a);
-        $dtSP = Product::all()->skip(0)->take(3);
-        $dtPro = DB::table('products')->orderBy('created_at', 'desc')->skip(0)->take(3)->get();
+        $dtSP = DB::table('invoice_details')
+        ->join('products', 'invoice_details.product', '=', 'products.id')
+        ->where('invoice_details.status',1)
+        ->orderBy('invoice_details.amount', 'desc')
+        ->skip(0)->take(6)->get();
+        //dd($dtSP);
+        $dtPro = DB::table('products')->orderBy('created_at', 'desc')->skip(0)->take(6)->get();
         //dd($total);
         return view('user.index',compact('dtSP','dtPro','dtProT','dtC','cart'));
     }
@@ -89,49 +92,38 @@ class HomeController extends Controller
         return redirect()->route('user.productdetail', ['id' => $id]);
        
     }
-    public function Shop()
-    {
-        $dtC = Categories::all();
-        $dtSP = Product::all();
-        $dtProT = ProductType::all();
-        return view('user.pages.shop',compact('dtSP','dtProT','dtC'));
-    }
-    public function ProductTypes($id)
-    {
-        $cart = Count(Cart::all());
-        $dtC = Categories::all();
-        $dtProT = ProductType::all();
-        $dtProTid = ProductType::find($id);
-        $dtPro = DB::table('product_types')
-        ->join('products', 'products.product_type', '=', 'product_types.id')
-        ->where('products.product_type','=', $id)
-        ->get();
-        //dd($dtPro);
-        
-        return view('user.pages.producttype',compact('dtProTid','dtProT','dtPro','dtC','cart'));
-    }
+    
     public function Profile($id)
     {
         $dtC = Categories::all();
         $dtProT = ProductType::all();
         $dtProF = Account::find($id);
+        $cart = Count(Cart::all());
         //dd($dtProF);
-        return view('user.pages.profile',compact('dtProF','dtProT','dtC'));
+        return view('user.pages.profile',compact('dtProF','dtProT','dtC','cart'));
     }
 
-    public function Cart()
+    public function showeditProfile($id)
     {
         $dtC = Categories::all();
         $dtProT = ProductType::all();
-
-   
-        $dtCart = DB::table('carts')
-        ->join('products','carts.product','=','products.id')
-        ->where('account','=', Auth::user()->id)
-        ->get();;
-        
-        return view('user.pages.cart',compact('dtCart','dtProT','dtC'));
+        $dtProF = Account::find($id);
+        $cart = Count(Cart::all());
+        //dd($dtProF);
+        return view('user.pages.editprofile',compact('dtProF','dtProT','dtC','cart'));
     }
+
+    public function editProfile(Request $req, $id)
+    {
+        $Acc=Account::find($id);
+        $Acc->full_name = $req->name;
+        $Acc->address = $req->adddress;
+        $Acc->phone = $req->phone;
+        $Acc->date_of_birth = $req->birth;
+        $Acc->save();
+        return redirect()->route('user.profile',$id);
+    }
+    
     public function addCart(Request $req, $id)
     {
        
@@ -158,21 +150,30 @@ class HomeController extends Controller
             $cart -> save();
         }
       
-        return redirect()->route('user.checkout');
+        return redirect()->route('user.cart');
     }
 
-    public function showCheckout()
+    public function showCart()
     {
         $dtC = Categories::all();
         $dtProT = ProductType::all();
         $cart = Count(Cart::all());
-        $dtCart = DB::table('carts')
-        ->join('products','carts.product','=','products.id')
+        $dtCart = DB::table('products')
+        ->join('carts','carts.product','=','products.id')
         ->where('account','=', Auth::user()->id)
         ->get();
-        
+        //dd($dtCart);
         return view('user.pages.checkout',compact('dtProT','dtC','dtCart','cart'));
     }
+
+    public function deleteCart($id)
+    {
+        $delete = Cart::find($id);
+        $delete->delete();
+        
+        return redirect()->route('user.cart');
+    }
+
     public function checkout(Request $req)
     {
        
@@ -208,12 +209,60 @@ class HomeController extends Controller
     }
     public function order()
     {
-        $dtC = Categories::all();
         $dtProT = ProductType::all();
-
-        $dtProF = Account::find();
-        //dd($dtProF);
-        return view('user.pages.profile',compact('dtProF','dtProT','dtC'));
+        $dtC = Categories::all();
+        $cart = Count(Cart::all());
+        $dtInv = Invoice::where('account',Auth::user()->id)->get();
+        $dtInvD = InvoiceDetail::all();
+        //dd($dtInv);
+        return view('user.pages.order',compact('dtProT','dtC','cart','dtInv','dtInvD'));
     }
+
+    public function OrderDetailsId($id)
+    {
+        
+        $dtInvD = DB::table('products')
+        ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
+        ->where('invoice_details.invoice','=', $id)
+        ->get();
+        //dd($dtInvD);
+        return response()->json(['data'=>$dtInvD],200);                      
+    }
+
+    public function OrderDetails()
+    {
+        $dtProT = ProductType::all();
+        $dtC = Categories::all();
+        $cart = Count(Cart::all());
+        $dtInvD = DB::table('products')
+        ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
+        ->get();
+        //dd($dtInvD);
+        return view('user.pages.orderdetails',compact('dtProT','dtC','cart','dtInvD'));
+    }
+
+    function upload(Request $request)
+    {
+       
+       if($request->hasFile('files')){
+            $file = $request->file('files');
+            $name = $file->getClientOriginalName();
+            $exection = $file->getClientOriginalExtension();
+            $file_name= 'user/images/profile/'.$name;
+            
+            $file->move(public_path('user/images/profile'), $name);
+            $acc = Account::find($request->id);
+            $acc->avatar = $file_name;
+            $acc->save();
+            //echo public_path().'/uploads/';
+            
+        }
+        return redirect()->route('user.profile',Auth::user()->id);
+        
+        
+
+    }
+
+    
     
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,16 +20,37 @@ class CartController extends Controller
         return view('dashboard.cart.index',compact('dtInv'));
     }
 
-   function showCreate()
+   function invoicedetails($id)
    {
-        
+    $dtInvD = DB::table('products')
+    ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
+    ->where('invoice_details.invoice','=', $id)
+    ->where('invoice_details.status','=', 0)
+    ->get();
+    //dd($dtInvD);
+    return response()->json(['data'=>$dtInvD],200);
        
         //return view('dashboard.product.create',compact('dtC','dtB','dtS','dtProT'));
    }
 
-   function create(Request $req){
+   function processed($id){
        
-      //return redirect()->route('products',compact('dtPro'));
+    $dtInv = Invoice::find($id);
+    $dtInv->status=1;
+    $dtInv->save();
+
+    $dtInvD = DB::table('invoices')
+    ->join('invoice_details', 'invoice_details.invoice', '=', 'invoices.id')
+    ->where('invoice_details.invoice','=', $id)
+    ->where('invoice_details.status','=', 0)
+    ->get();
+    for($i=0;$i<count($dtInvD);$i++){
+        $InvD = InvoiceDetail::find($dtInvD[$i]->id);
+        $InvD->status = 1;
+        $InvD->save();
+    }
+    
+      return redirect()->route('admin.cart');
    }
 
 

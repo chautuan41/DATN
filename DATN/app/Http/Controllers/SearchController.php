@@ -16,15 +16,11 @@ class SearchController extends Controller
 
     public function getSearchAjax(Request $request)
     {
-        $dtSP=DB::table('products')
-        ->join('product_types','products.product_type','product_types.id')
-        ->where('product_name', 'LIKE', "%{$request->country_name}%")
-        ->where('product_type_name', 'LIKE', "%{$request->country_name}%")
-        ->get();
+        
          $dtC = Categories::all();
          $dtProT = ProductType::all();
          $cart = Count(Cart::all());
-        return view('user.searchajax',compact('dtSP','dtProT','dtC','cart'));
+        return view('user.searchajax',compact('dtProT','dtC','cart'));
     }
     function postSearchAjax(Request $request)
     {
@@ -55,15 +51,13 @@ class SearchController extends Controller
 
           
 
-       </div><!-- / .row -->
-   </div>';
+            </div><!-- / .row -->
+            </div>';
            echo $output;
        }
        else{
         $dtSP=DB::table('products')
-        ->join('product_types','products.product_type','product_types.id')
         ->where('product_name', 'LIKE', "%{$request->country_name}%")
-        ->where('product_type_name', 'LIKE', "%{$request->country_name}%")
         ->get();
          $dtC = Categories::all();
          $dtProT = ProductType::all();

@@ -1,4 +1,4 @@
-@section('title')Shop - 2001 @endsection
+@section('title')Search - 2001 @endsection
 @extends('user.app')
 @section('content')
 <section class="page-header">
@@ -6,10 +6,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="content">
-					<h1 class="page-name">Shop</h1>
+					<h1 class="page-name">Search</h1>
 					<ol class="breadcrumb">
 						<li><a href="/">Home</a></li>
-						<li class="active">shop</li>
+						<li class="active">Search</li>
 					</ol>
 				</div>
 			</div>

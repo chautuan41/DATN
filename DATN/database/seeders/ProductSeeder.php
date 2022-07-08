@@ -19,6 +19,38 @@ class ProductSeeder extends Seeder
         $values = array(
             array(
                 
+                'sku'=>'TO',
+                'product_name'=>'The Overcoat',
+                'price'=>2550,
+                'amount'=>100,
+                'discount'=>0,
+                'like'=>0,
+                'image'=>'TO1_C.jpg',
+                'categories' => 1,
+                'product_type' => 4,
+                'supplier' => 10,
+                'brand'=> 10,
+                'gender' => 1,
+                'status'=>1,
+            ),
+            array(
+                
+                'sku'=>'ME',
+                'product_name'=>'MEDUSA SLIM-FIT JEANS',
+                'price'=>816,
+                'amount'=>100,
+                'discount'=>0,
+                'like'=>0,
+                'image'=>'ME1_D.jpg',
+                'categories' => 1,
+                'product_type' => 5,
+                'supplier' => 5,
+                'brand'=> 5,
+                'gender' => 1,
+                'status'=>1,
+            ),
+            array(
+                
                 'sku'=>'SLR',
                 'product_name'=>'SAINT LAURENT REVERSE T-SHIRT',
                 'price'=>100,
@@ -31,22 +63,6 @@ class ProductSeeder extends Seeder
                 'supplier' => 6,
                 'brand'=> 6,
                 'gender' => 1,
-                'status'=>1,
-            ),
-            array(
-                
-                'sku'=>'CFM',
-                'product_name'=>'CLASSIC FIT MESH POLO SHIRT',
-                'price'=>110,
-                'amount'=>100,
-                'discount'=>0,
-                'like'=>0,
-                'image'=>'CFM1_P.jpg',
-                'categories' => 1,
-                'product_type' => 1,
-                'supplier' => 7,
-                'brand'=> 7,
-                'gender' => 0,
                 'status'=>1,
             ),
             array(
@@ -84,6 +100,23 @@ class ProductSeeder extends Seeder
             ),
             array(
                 
+                'sku'=>'CFM',
+                'product_name'=>'CLASSIC FIT MESH POLO SHIRT',
+                'price'=>110,
+                'amount'=>100,
+                'discount'=>0,
+                'like'=>0,
+                'image'=>'CFM1_P.jpg',
+                'categories' => 1,
+                'product_type' => 1,
+                'supplier' => 7,
+                'brand'=> 7,
+                'gender' => 0,
+                'status'=>1,
+            ),
+            
+            array(
+                
                 'sku'=>'CT',
                 'product_name'=>'CLASSICS TOWELING WOMEN SHORTS',
                 'price'=>45,
@@ -115,38 +148,7 @@ class ProductSeeder extends Seeder
                 'status'=>1,
             ),
 
-            array(
-                
-                'sku'=>'TO',
-                'product_name'=>'The Overcoat',
-                'price'=>2550,
-                'amount'=>100,
-                'discount'=>0,
-                'like'=>0,
-                'image'=>'TO1_C.jpg',
-                'categories' => 1,
-                'product_type' => 4,
-                'supplier' => 10,
-                'brand'=> 10,
-                'gender' => 1,
-                'status'=>1,
-            ),
-            array(
-                
-                'sku'=>'ME',
-                'product_name'=>'MEDUSA SLIM-FIT JEANS',
-                'price'=>816,
-                'amount'=>100,
-                'discount'=>0,
-                'like'=>0,
-                'image'=>'ME1_D.jpg',
-                'categories' => 1,
-                'product_type' => 5,
-                'supplier' => 5,
-                'brand'=> 5,
-                'gender' => 1,
-                'status'=>1,
-            ),
+            
             array(
                 
                 'sku'=>'LDJ',

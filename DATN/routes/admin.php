@@ -12,8 +12,7 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
 
-    Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
-
+   
 
     Route::group(['middleware' => ['auth:admin']], function(){
 
@@ -22,6 +21,9 @@ Route::group(['prefix' => '/'], function () {
         Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
         Route::get('warehouse',[Admin\AdminController::class,'indexAdminWH'])->name('admin.indexWH');
 
+        Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
+        Route::get('cart/{id}',[Admin\CartController::class,'invoicedetails'])->name('admin.cart.get');
+        Route::get('processed/{id}',[Admin\CartController::class,'processed'])->name('admin.cart.post');
         // -- Account -- //
             // -- User -- //
         Route::group(['prefix' => 'user'], function() {
@@ -59,8 +61,8 @@ Route::group(['prefix' => '/'], function () {
         // -- Product -- //
         Route::group(['prefix' => 'product'], function() {
             Route::get('/',[Admin\ProductController::class, 'listProduct'])->name('admin.listProduct');
-            Route::get('add',[Admin\ProductController::class, 'formAddProduct'])->name('admin.formAddProduct');
-            Route::post('add',[Admin\ProductController::class, 'handleAddProduct'])->name('admin.handleAddProduct');
+            Route::get('create',[Admin\ProductController::class, 'formAddProduct'])->name('admin.formAddProduct');
+            Route::post('create',[Admin\ProductController::class, 'handleAddProduct'])->name('admin.handleAddProduct');
             Route::get('delete/{product_id}',[Admin\ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
             Route::get('edit/{product_id}',[Admin\ProductController::class, 'formEditProduct'])->name('admin.formEditProduct');
             Route::post('edit/{product_id}',[Admin\ProductController::class, 'handleEditProduct'])->name('admin.handleEditProduct');

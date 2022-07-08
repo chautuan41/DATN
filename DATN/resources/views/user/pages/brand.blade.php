@@ -1,4 +1,4 @@
-@section('title'){{$dtProTid->product_type_name}} - 2001 @endsection
+@section('title'){{$dtBid->brand_name}} - 2001 @endsection
 @extends('user.app')
 @section('content')
 <section class="page-header">
@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content">
-                    <h1 class="page-name">{{$dtProTid->product_type_name}}</h1>
+                    <h1 class="page-name">{{$dtBid->brand_name}}</h1>
                     <ol class="breadcrumb">
                         <li><a href="/">Home</a></li>
                         <li class="active">shop</li>
-                        <li class="active">{{$dtProTid->product_type_name}}</li>
+                        <li class="active">{{$dtBid->brand_name}}</li>
                     </ol>
                 </div>
             </div>
@@ -80,18 +80,14 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h4><a href="product-single.html">{{$Pro->product_name}}</a></h4>
+                                <h4><a href="{{route('user.productdetail',['id'=>$Pro->id])}}">{{$Pro->product_name}}</a></h4>
                                 <p class="price">${{$Pro->price}}</p>
                             </div>
                         </div>
                     </div>
-
                     @endforeach
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>

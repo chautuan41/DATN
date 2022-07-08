@@ -1,4 +1,4 @@
-@section('title'){{$dtProTid->product_type_name}} - 2001 @endsection
+@section('title'){{$dtCid->categories_name}} - 2001 @endsection
 @extends('user.app')
 @section('content')
 <section class="page-header">
@@ -6,11 +6,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content">
-                    <h1 class="page-name">{{$dtProTid->product_type_name}}</h1>
+                    <h1 class="page-name">{{$dtCid->categories_name}}</h1>
                     <ol class="breadcrumb">
                         <li><a href="/">Home</a></li>
                         <li class="active">shop</li>
-                        <li class="active">{{$dtProTid->product_type_name}}</li>
+                        <li class="active">{{$dtCid->categories_name}}</li>
                     </ol>
                 </div>
             </div>
@@ -85,13 +85,9 @@
                             </div>
                         </div>
                     </div>
-
                     @endforeach
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>
