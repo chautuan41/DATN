@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
             ProductTypeSeeder::class,
             ProductSeeder::class,
             SizesTableSeeder::class,
-            CommentSeeder::class,
-            ImportInvoiceSeeder::class,
-            InvoicesSeeder::class,
+            // CommentSeeder::class,
+            // ImportInvoiceSeeder::class,
+            // InvoicesSeeder::class,
         ]);
     }
 }

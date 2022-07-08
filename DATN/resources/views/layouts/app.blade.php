@@ -1,83 +1,71 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+
+   <!-- Basic Page Needs
+  ================================================== -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title')</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Construction Html5 Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="author" content="Themefisher">
+    <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/favicon.ico')}}" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Themefisher Icon font -->
+    <link rel="stylesheet" href="{{asset('user/plugins/themefisher-font/style.css')}}">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="{{asset('user/plugins/bootstrap/css/bootstrap.min.css')}}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Animate css -->
+    <link rel="stylesheet" href="{{asset('user/plugins/animate/animate.css')}}">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="{{asset('user/plugins/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('user/plugins/slick/slick-theme.css')}}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{asset('user/css/style.css')}}">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+<body id="body">
+    
+    @yield('content')
+ <!-- 
+    Essential Scripts
+    =====================================-->
 
-                    </ul>
+    <!-- Main jQuery -->
+    <script src="{{asset('user/plugins/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="{{asset('user/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- Bootstrap Touchpin -->
+    <script src="{{asset('user/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js')}}"></script>
+    <!-- Instagram Feed Js -->
+    <script src="{{asset('user/plugins/instafeed/instafeed.min.js')}}"></script>
+    <!-- Video Lightbox Plugin -->
+    <script src="{{asset('user/plugins/ekko-lightbox/dist/ekko-lightbox.min.js')}}"></script>
+    <!-- Count Down Js -->
+    <script src="{{asset('user/plugins/syo-timer/build/jquery.syotimer.min.js')}}"></script>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+    <!-- slick Carousel -->
+    <script src="{{asset('user/plugins/slick/slick.min.js')}}"></script>
+    <script src="{{asset('user/plugins/slick/slick-animation.min.js')}}"></script>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+    <!-- Google Mapl -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+    <script type="text/javascript" src="{{asset('user/plugins/google-map/gmap.js')}}"></script>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+    <!-- Main Js File -->
+    <script src="{{asset('user/js/script.js')}}"></script>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
 </body>
+
 </html>

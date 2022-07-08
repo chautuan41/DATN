@@ -40,12 +40,12 @@
     }
 
     var defaults = {
-      min: 0,
+      min: 1,
       max: 100,
       initval: '',
       replacementval: '',
-      step: 1,
-      decimals: 0,
+      step: 2,
+      decimals: 1,
       stepinterval: 100,
       forcestepdivisibility: 'round', // none | floor | round | ceil
       stepintervaldelay: 500,

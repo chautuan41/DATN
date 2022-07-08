@@ -1,4 +1,4 @@
-@section('title') 2001 @endsection
+@section('title'){{$dtPro->product_name}} - 2001 @endsection
 @extends('user.app')
 @section('content')
 <section class="single-product">
@@ -119,7 +119,7 @@
                         <div class="product-quantity">
                             <span>Quantity:</span>
                             <div class="product-quantity-slider">
-                                <input id="product-quantity" type="text" value="1" name="quantity">
+                                <input id="product-quantity" type="text" value="1" name="quantity" max="5">
                             </div>
                         </div>
                         <div class="product-category">

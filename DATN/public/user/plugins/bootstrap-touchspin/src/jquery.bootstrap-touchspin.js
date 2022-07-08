@@ -36,7 +36,7 @@
       max: 100,
       initval: '',
       replacementval: '',
-      step: 1,
+      step: 2,
       decimals: 0,
       stepinterval: 100,
       forcestepdivisibility: 'round', // none | floor | round | ceil

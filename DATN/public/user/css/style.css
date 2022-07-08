@@ -218,9 +218,11 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .btn:focus {
-  color: #ddd;
+  color: black;
 }
-
+.btnfo .btn:focus{
+  background-color: transparent !important;
+}
 .w-100 {
   width: 100%;
 }
@@ -1162,8 +1164,8 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .product-item .product-content h4 {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   margin-top: 15px;
   margin-bottom: 6px;
 }
@@ -1664,7 +1666,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 @media (max-width: 480px) {
-  .dashboard-menu li a {
+  .dashboard-menu li a span{
     padding: 10px 5px;
   }
 }
@@ -1697,7 +1699,8 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 }
 
 .dashboard-user-profile .user-img {
-  width: 180px;
+  width: 200px;
+  height:200px;
 }
 
 .dashboard-user-profile .user-profile-list {
