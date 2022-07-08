@@ -70,19 +70,19 @@ class AccountSeeder extends Seeder
                 'role'=>5
             ],
             [   
-                'email'=>'ctyuan41@gmail.com',
+                'email'=>'sellerstaff@gmail.com',
                 'password'=>bcrypt('1234567'),
-                'full_name'=>'Thiện Trần',
+                'full_name'=>'Seller Staff',
                 'phone'=>'09073686868',
                 'address'=>'VietNam',
                 'date_of_birth'=>'16/07/2001',
                 'avatar'=>'empty',
-                'role'=>1
+                'role'=>6
             ],
             [   
-                'email'=>'nv01@gmail.com',
+                'email'=>'ctyuan41@gmail.com',
                 'password'=>bcrypt('1234567'),
-                'full_name'=>'Tuấn Võ',
+                'full_name'=>'Nhân viên bán hàng',
                 'phone'=>'0907111111',
                 'address'=>'Thailand',
                 'date_of_birth'=>'11/11/2001',

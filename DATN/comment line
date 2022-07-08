@@ -23,3 +23,50 @@
                         </div>
                     </div>
                     /// -->
+<!-- {{route('admin.personalInfo','lsAdmin')}} -->
+
+
+
+<!-- <div class="header-right" style="padding:200px">
+    <div class="row">
+        <div class="col-lg-3">
+            <p>Main Image</p>
+            <form action="/delete-img/{{$Pro->id}}" method="post">
+                <button class="btn text-danger">X </button>
+                @csrf
+                @method('delete')
+            </form>
+            <img src="/image/{{$Pro->image}}" alt="" class="img-reponsive" style="max-height:100px; max-width: 100px;"
+                srcset="">
+            <br>
+
+            <p>Main Image</p>
+
+            @foreach($Pro->pictures as $pic)
+
+            <form action="/delete-img/{{$pic->id}}" method="post">
+                <button class="btn text-danger">X </button>
+                @csrf
+                @method('delete')
+            </form>
+            <img src="/pictures/{{$pic->link}}" alt="" class="img-reponsive" style="max-height:100px; max-width: 100px;"
+                srcset="">
+
+            @endforeach
+        </div>
+    </div>
+</div> -->
+
+<!-- <li>
+    <a class="has-arrow" href="{{route('admin.listCategories')}}" aria-expanded="false">
+        <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
+    </a>
+
+    <ul aria-expanded="false">
+        @foreach($CT as $c)
+        <li><a href="{{ route('admin.indexLayoutAdmin',['id' => $c->id]) }}"
+                aria-expanded="false">{{$c->categories_name}}</a></li>
+        @endforeach
+    </ul>
+
+</li> -->

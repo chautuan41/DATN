@@ -45,7 +45,7 @@
         ***********************************-->
         <div class="nav-header" style="background-color:white">
             <div class="brand-logo">
-                <a href="{{route('admin.indexCL')}}">
+                <a href="{{route('admin.indexSL')}}">
                     <span class="brand-title">
                         <img src="{{asset('assets/logo.png')}}" style="width:100%; height:100%;margin-top: -30px;margin-left:-3.30px" alt="">
                     </span>
@@ -88,7 +88,9 @@
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-heading d-flex justify-content-between">
+                                    
                                 </div>
+                                
                             </div>
                         </li>
                         <li class="icons dropdown">
@@ -98,7 +100,9 @@
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
                                 <div class="dropdown-content-heading d-flex justify-content-between">
+                                   
                                 </div>
+                                
                             </div>
                         </li>
                         <li class="icons dropdown d-none d-md-flex">
@@ -123,8 +127,9 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="{{route('admin.personalInfoCL',['id_staff'=>Auth::user()->id])}}"><i class="icon-user"></i> <span>Profile</span></a>
-                                        
+                                            <a href="{{route('admin.personalInfoSL',['id_staff'=>Auth::user()->id])}}"><i class="icon-user"></i> <span>Profile</span></a>
+                                        </li>
+                                       
                                         <hr class="my-2">
                                         <li><a href="{{route('admin.logout')}}"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
@@ -147,18 +152,19 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a class="has-arrow" href="{{route('admin.indexCL')}}" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Clothing</span>
+                        <a href="javascript:void()" aria-expanded="false">
+                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">WareHouse Staff</span>
                         </a>
+                        <!-- <ul aria-expanded="false">
+                            <li><a href="#">Home</a></li>
+                        </ul> -->
                     </li>
+                    
                     <li class="nav-label">Table</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Clothing</span>
+                        <a href="{{route('admin.cart')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Output Invoices</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{route('admin.listWaitIInvoices')}}" aria-expanded="false">Imports Of Goods</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -171,6 +177,7 @@
             Content body start
         ***********************************-->
         <div class="content-body">
+
         @yield('content')
             <!-- #/ container -->
         </div>
@@ -184,7 +191,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.indexCL')}}">2001</a> 2022</p>
+                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.indexSL')}}">2001</a> 2022</p>
             </div>
         </div>  
         <!--**********************************

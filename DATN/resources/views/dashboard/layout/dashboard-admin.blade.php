@@ -13,9 +13,14 @@
     <link href="{{asset('dashboard/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
     <!-- Chartist -->
     <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist/css/chartist.min.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
+    <link rel="stylesheet"
+        href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
+
+    <!-- <script src="{{asset('vendor/laravel-filemanager/js/filemanager.js')}}"></script> -->
+    <!-- <link rel="stylesheet" href="{{asset('vendor/laravel-filemanager/css/cropper.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/laravel-filemanager/css/lfm.css')}}"> -->
 
 </head>
 
@@ -35,7 +40,7 @@
         Preloader end
     ********************-->
 
-    
+
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -50,7 +55,8 @@
                     <!-- <b class="logo-abbr"><img src="{{asset('dashboard/images/logo.png')}}" alt=""> </b>
                     <span class="logo-compact"><img src="{{asset('dashboard/images/logo-compact.png')}}" alt=""></span> -->
                     <span class="brand-title">
-                        <img src="{{asset('assets/logo.png')}}" style="width:100%; height:100%;margin-top: -30px;margin-left:-3.30px" alt="">
+                        <img src="{{asset('assets/logo.png')}}"
+                            style="width:100%; height:100%;margin-top: -30px;margin-left:-3.30px" alt="">
                     </span>
                 </a>
             </div>
@@ -62,9 +68,9 @@
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">    
+        <div class="header">
             <div class="header-content clearfix">
-                
+
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -199,8 +205,8 @@
                             </div>
                         </li>
                         <li class="icons dropdown d-none d-md-flex">
-                            <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
-                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                            <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
+                                <span>English</span> <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
                             </a>
                             <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -212,7 +218,7 @@
                             </div>
                         </li>
                         <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
                                 <img src="{{asset('dashboard/images/user/1.png')}}" height="40" width="40" alt="">
                             </div>
@@ -220,19 +226,21 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="#"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="{{route('admin.personalInfo',['id_admin'=>Auth::user()->id])}}"><i
+                                                    class="icon-user"></i> <span>Profile</span></a>
                                         </li>
                                         <!-- <li>
                                             <a href="javascript:void()">
                                                 <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                             </a>
                                         </li> -->
-                                        
+
                                         <hr class="my-2">
                                         <!-- <li>
                                             <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                         </li> -->
-                                        <li><a href="{{route('admin.logout')}}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{{route('admin.logout')}}"><i class="icon-key"></i>
+                                                <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -248,7 +256,7 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="nk-sidebar">           
+        <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
@@ -283,7 +291,7 @@
                             <li><a href="./chart-peity.html">Peity</a></li>
                         </ul>
                     </li> -->
-                    
+
                     <!-- <li>
                         <a href="widgets.html" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
@@ -319,11 +327,6 @@
                         </a>
                     </li>
                     <li>
-                        <a  href="{{route('admin.listCategories')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{route('admin.listProductType')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Product Type</span>
                         </a>
@@ -344,7 +347,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.cart')}}" aria-expanded="false">
+                        <a href="{{route('admin.listOInvoices')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Output Invoices</span>
                         </a>
                     </li>
@@ -382,23 +385,23 @@
             Content body start
         ***********************************-->
         <div class="content-body">
-        @yield('content')
-            
+            @yield('content')
+
             <!-- #/ container -->
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
-        
-        
+
+
         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.index')}}">2001</a> 2022</p>
+                <p>2001 &copy; ALL RIGHTS RESERVED <a href="{{route('admin.index')}}">2001</a> 2022</p>
             </div>
-        </div>  
+        </div>
         <!--**********************************
             Footer end
         ***********************************-->
@@ -410,7 +413,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="{{asset('dashboard/plugins/common/common.min.js')}}"></script> 
+    <script src="{{asset('dashboard/plugins/common/common.min.js')}}"></script>
     <script src="{{asset('dashboard/js/custom.min.js')}}"></script>
     <script src="{{asset('dashboard/js/settings.js')}}"></script>
     <script src="{{asset('dashboard/js/gleek.js')}}"></script>
@@ -427,7 +430,7 @@
     <!-- Datamap -->
     <script src="{{asset('dashboard/plugins/d3v3/index.js')}}"></script>
     <script src="{{asset('dashboard/plugins/topojson/topojson.min.js')}}"></script>
-    <script src="{{asset('dashboard/plugins/datamaps/datamaps.world.min.js')}}"></script> 
+    <script src="{{asset('dashboard/plugins/datamaps/datamaps.world.min.js')}}"></script>
     <!-- Morrisjs -->
     <script src="{{asset('dashboard/plugins/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('dashboard/plugins/morris/morris.min.js')}}"></script>
@@ -439,8 +442,27 @@
     <script src="{{asset('dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
     <script src="{{asset('dashboard/js/dashboard/dashboard-1.js')}}"></script>
+    <!-- <script src="{{asset('dashboard/ckeditor/ckeditor.js')}}"></script> -->
+    <!-- <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script> -->
 
-     
+    <!-- <script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script> -->
+    <!-- <script>
+    CKEDITOR.replace(ckeditor01);
+    </script> -->
+    <!-- <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script> -->
+    <!-- <script>
+    var options = {
+        filebrowserImageBrowseUrl: 'laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: 'laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: 'laravel-filemanager?type=Files',
+        filebrowserUploadUrl: 'laravel-filemanager/upload?type=Files&_token='
+    };
+    </script>
+    //
+    <script>
+    CKEDITOR.replace('my-editor', options);
+    </script> -->
+
 
 </body>
 

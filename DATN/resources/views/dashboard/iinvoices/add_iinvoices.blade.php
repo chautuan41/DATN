@@ -1,4 +1,4 @@
-@extends('dashboard.layout.dashboard-admin')
+@extends('dashboard.layout.dashboard-clothing')
 @section('content')
 <div class="container-fluid">
     <div>
@@ -35,24 +35,24 @@
                         @csrf
                         
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Total</label>
-                            <input class="form-control" name="total" type="text" value="" placeholder="Total" required>
-                            @if($errors->has('date'))
-                            <span>{{$errors->first('date')}}</span>
+                            <label for="exampleInputEmail1">Amount</label>
+                            <input class="form-control" name="amount" type="text" value="" placeholder="Amount" required>
+                            @if($errors->has('amount'))
+                            <span>{{$errors->first('amount')}}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Account</label>
-                            <input class="form-control" name="account" type="text" value="" placeholder="Account" required>
+                            <label for="exampleInputEmail1">Price</label>
+                            <input class="form-control" name="price" type="text" value="" placeholder="Price" required>
                             @if($errors->has('account'))
                             <span>{{$errors->first('account')}}</span>
                             @endif
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Supplier</label>
-                            <input class="form-control" name="supplier" type="text" value="" placeholder="Supplier" required>
-                            @if($errors->has('supplier'))
-                            <span>{{$errors->first('supplier')}}</span>
+                            <label for="exampleInputEmail1">Product</label>
+                            <input class="form-control" name="product" type="text" value="" placeholder="Product" required>
+                            @if($errors->has('product'))
+                            <span>{{$errors->first('product')}}</span>
                             @endif
                         </div>
                         <div class="tile-footer">

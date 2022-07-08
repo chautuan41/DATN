@@ -21,6 +21,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'TO',
                 'product_name'=>'The Overcoat',
+                'description'=> 'description',
                 'price'=>2550,
                 'amount'=>100,
                 'discount'=>0,
@@ -37,6 +38,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'ME',
                 'product_name'=>'MEDUSA SLIM-FIT JEANS',
+                'description'=> 'description',
                 'price'=>816,
                 'amount'=>100,
                 'discount'=>0,
@@ -53,6 +55,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'SLR',
                 'product_name'=>'SAINT LAURENT REVERSE T-SHIRT',
+                'description'=> 'description',
                 'price'=>100,
                 'amount'=>100,
                 'discount'=>0,
@@ -69,6 +72,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'DJK',
                 'product_name'=>'DIOR AND JACK KEROUAC SHORT-SLEEVED SHIRT',
+                'description'=> 'description',
                 'price'=>1300,
                 'amount'=>100,
                 'discount'=>0,
@@ -86,6 +90,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'OZT',
                 'product_name'=>'OZTRADAMUS PANTS',
+                'description'=> 'description',
                 'price'=>65,
                 'amount'=>100,
                 'discount'=>0,
@@ -102,6 +107,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'CFM',
                 'product_name'=>'CLASSIC FIT MESH POLO SHIRT',
+                'description'=> 'description',
                 'price'=>110,
                 'amount'=>100,
                 'discount'=>0,
@@ -119,6 +125,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'CT',
                 'product_name'=>'CLASSICS TOWELING WOMEN SHORTS',
+                'description'=> 'description',
                 'price'=>45,
                 'amount'=>100,
                 'discount'=>0,
@@ -135,6 +142,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'SGCT',
                 'product_name'=>'SQUARE G CHECK TWEED JACKET',
+                'description'=> 'description',
                 'price'=>3400,
                 'amount'=>100,
                 'discount'=>0,
@@ -153,6 +161,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'LDJ',
                 'product_name'=>'LADY-DATEJUST',
+                'description'=> 'description',
                 'price'=>87000,
                 'amount'=>5,
                 'discount'=>0,
@@ -170,6 +179,7 @@ class ProductSeeder extends Seeder
                 
                 'sku'=>'SD',
                 'product_name'=>'SEA-DWELLER',
+                'description'=> 'description',
                 'price'=>18118,
                 'amount'=>5,
                 'discount'=>0,
