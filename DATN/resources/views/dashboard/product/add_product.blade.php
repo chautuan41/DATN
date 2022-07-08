@@ -31,7 +31,7 @@
                         <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                         @endif
-                        <form action="{{ route('admin.handleAddProduct') }}" method="post">
+                        <form action="{{ route('admin.handleAddProduct') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">SKU</label>
@@ -45,6 +45,14 @@
 
                                 <input type="text" class="form-control" id="val-username" name="product_name"
                                     placeholder="Product Name">
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="exampleInputEmail1">Description</label>
+
+                                <input type="text" class="form-control" id="val-username" name="description"
+                                    value="" placeholder="Description">
 
                             </div>
                             <div class="form-group">
@@ -127,11 +135,20 @@
                                 </select>
 
                             </div>
+                            <!-- <div class="form-group">
+                                <label for="exampleInputEmail1">Image</label>
+                                <textarea placeholder="Image" class="form-control" name="image" id="my-editor"
+                                    cols="30" rows="10"></textarea>
+
+                            </div> -->
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label>
+                                <input type="file" class="form-control" name="image">
+                            </div>
 
-                                <input type="text" class="form-control" id="val-username" name="image"
-                                    placeholder="Image">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Images</label>
+                                <input type="file" class="form-control" name="pictures[]" multiple>
 
                             </div>
 
@@ -140,6 +157,7 @@
                                     onclick="return confirm('Are you sure?')">Add Product</button>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>
