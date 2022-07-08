@@ -130,6 +130,13 @@ class AccountController extends Controller
         return redirect()->route('admin.listStaff');
     }
 
+    public function resetPW($id_staff){
+        $staff = Account::find($id_staff);
+        $staff->password = Hash::make('123456789');
+        $staff->save();
+        return redirect()->route('admin.listStaff');
+    }
+
     public function searchStaff(){
         $search_text=$_GET['query'];
         $lsStaff = Account::where('full_name','LIKE','%'.$search_text.'%')->where('status','=',1)->get();

@@ -10,6 +10,26 @@
         <li class="breadcrumb-item"><a href="#">Add Product</a></li>
     </ul>
 </div>
+<div class="header-right" style="padding:200px">
+            <p>Main Image</p>
+            <form action="#" method="post">
+            @csrf
+                
+            </form>
+            <img src="#" alt="" class="img-reponsive" style="max-height:100px; max-width: 100px;"
+                srcset="">
+            <br>
+
+            <p>All Images</p>
+
+
+            <form action="#" method="post">
+                @csrf
+            </form>
+            <img src="" alt="" class="img-reponsive" style="max-height:100px; max-width: 100px;"
+                srcset="">
+      
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
@@ -31,30 +51,30 @@
                         <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                         @endif
-                        <form action="{{ route('admin.handleEditProduct',['product_id'=>$dt->id]) }}" method="post">
+                        <form action="{{ route('admin.handleEditProduct',['product_id'=>$dt->id]) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Product ID</label>
-
-                                <input type="text" class="form-control" id="val-username" name="product_id"  value="{{$dt->product_id}}"
-                                    placeholder="Product ID" >
-                                @if($errors->has('product_id'))
-                                <span>{{$errors->first('product_id')}}</span>
-                                @endif
-
-                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">SKU</label>
 
-                                <input type="text" class="form-control" id="val-username" name="sku" value="{{$dt->sku}}" placeholder="SKU">
+                                <input type="text" class="form-control" id="val-username" name="sku"
+                                    value="{{$dt->sku}}" placeholder="SKU">
 
                             </div>
                             <div class="form-group">
 
                                 <label for="exampleInputEmail1">Product Name</label>
 
-                                <input type="text" class="form-control" id="val-username" name="product_name" value="{{$dt->product_name}}"
-                                    placeholder="Product Name">
+                                <input type="text" class="form-control" id="val-username" name="product_name"
+                                    value="{{$dt->product_name}}" placeholder="Product Name">
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="exampleInputEmail1">Description</label>
+
+                                <input type="text" class="form-control" id="val-username" name="description"
+                                    value="{{$dt->description}}" placeholder="Description">
 
                             </div>
                             <div class="form-group">
@@ -62,7 +82,14 @@
                                 <label for="exampleInputEmail1">Gender</label>
 
                                 <select class="form-control" id="val-skill" name="gender">
-                                    <option value="">Please select</option>
+                                    <option value="{{$dt->gender}}">
+                                        @if($dt->gender == 0)
+                                        Women
+                                        @endif
+                                        @if($dt->gender == 1)
+                                        Men
+                                        @endif
+                                    </option>
                                     <option value="0">Women</option>
                                     <option value="1">Men</option>
                                 </select>
@@ -71,33 +98,40 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Price</label>
 
-                                <input type="text" class="form-control" id="val-currency" name="price"  value="{{$dt->price}}" placeholder="$">
+                                <input type="text" class="form-control" id="val-currency" name="price"
+                                    value="{{$dt->price}}" placeholder="$">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Amount</label>
 
-                                <input type="text" class="form-control" id="val-currency" name="amount" value="{{$dt->amount}}" placeholder="0">
+                                <input type="text" class="form-control" id="val-currency" name="amount"
+                                    value="{{$dt->amount}}" placeholder="0">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Discount</label>
 
-                                <input type="text" class="form-control" id="val-currency" name="discount" value="{{$dt->discount}}"
-                                    placeholder="$">
+                                <input type="text" class="form-control" id="val-currency" name="discount"
+                                    value="{{$dt->discount}}" placeholder="$">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Like</label>
 
-                                <input type="text" class="form-control" id="val-currency" name="like" value="{{$dt->like}}" placeholder="0">
+                                <input type="text" class="form-control" id="val-currency" name="like"
+                                    value="{{$dt->like}}" placeholder="0">
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Categorie</label>
 
                                 <select class="form-control" id="val-skill" name="categories">
-                                    <option value="">Please select</option>
+                                    @foreach($dtC as $C)
+                                    @if($C->id == $dt->categories)
+                                    <option value="{{$C->id}}">{{$C->categories_name}}</option>
+                                    @endif
+                                    @endforeach
                                     @foreach($dtC as $C)
                                     <option value="{{$C->id}}">{{$C->categories_name}}</option>
                                     @endforeach
@@ -108,7 +142,11 @@
                                 <label for="exampleInputEmail1">Product Type</label>
 
                                 <select class="form-control" id="val-skill" name="product_type">
-                                    <option value="">Please select</option>
+                                    @foreach($dtProT as $dtPT)
+                                    @if($dtPT->id == $dt->product_type)
+                                    <option value="{{$dtPT->id}}">{{$dtPT->product_type_name}}</option>
+                                    @endif
+                                    @endforeach
                                     @foreach($dtProT as $ProT)
                                     <option value="{{$ProT->id}}">{{$ProT->product_type_name}}</option>
                                     @endforeach
@@ -119,7 +157,11 @@
                                 <label for="exampleInputEmail1">Supplier</label>
 
                                 <select class="form-control" id="val-skill" name="supplier">
-                                    <option value="">Please select</option>
+                                    @foreach($dtS as $S)
+                                    @if($S->id == $dt->supplier)
+                                    <option value="{{$S->id}}">{{$S->supplier_name}}</option>
+                                    @endif
+                                    @endforeach
                                     @foreach($dtS as $S)
                                     <option value="{{$S->id}}">{{$S->supplier_name}}</option>
                                     @endforeach
@@ -130,7 +172,11 @@
                                 <label for="exampleInputEmail1">Brand</label>
 
                                 <select class="form-control" id="val-skill" name="brand">
-                                    <option value="">Please select</option>
+                                    @foreach($dtB as $B)
+                                    @if($B->id == $dt->brand)
+                                    <option value="{{$B->id}}">{{$B->brand_name}}</option>
+                                    @endif
+                                    @endforeach
                                     @foreach($dtB as $B)
                                     <option value="{{$B->id}}">{{$B->brand_name}}</option>
                                     @endforeach
@@ -140,8 +186,13 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label>
 
-                                <input type="text" class="form-control" id="val-username" name="image" value="{{$dt->image}}"
-                                    placeholder="Image">
+                                <input type="file" class="form-control" name="image">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Images</label>
+                                <input type="file" class="form-control" name="pictures[]" multiple>
 
                             </div>
 

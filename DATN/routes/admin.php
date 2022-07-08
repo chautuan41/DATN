@@ -12,9 +12,11 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
 
-   
+    Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
+
 
     Route::group(['middleware' => ['auth:admin']], function(){
+        
 
         Route::get('/',[Admin\AdminController::class,'indexAdmin'])->name('admin.index');
         Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
@@ -24,6 +26,36 @@ Route::group(['prefix' => '/'], function () {
         Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
         Route::get('cart/{id}',[Admin\CartController::class,'invoicedetails'])->name('admin.cart.get');
         Route::get('processed/{id}',[Admin\CartController::class,'processed'])->name('admin.cart.post');
+
+        // -- Admin -- //
+        Route::group(['prefix' => 'admin'], function() {
+            Route::get('information/{id_admin}',[Admin\AdminController::class,'personalInfo'])->name('admin.personalInfo');
+            Route::post('information/{id_admin}',[Admin\AdminController::class,'handlePersonalInfo'])->name('admin.handlePersonalInfo');
+            Route::get('changepw/{id_admin}',[Admin\AdminController::class,'formChangePW'])->name('admin.formChangePW');
+            Route::post('changepw/{id_admin}',[Admin\AdminController::class,'handleChangePW'])->name('admin.handleChangePW');
+        });
+        // -- Clothing -- //
+        Route::group(['prefix' => 'clothing'], function() {
+            Route::get('information/{id_staff}',[Admin\AdminController::class,'personalInfoCL'])->name('admin.personalInfoCL');
+            Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoCL'])->name('admin.handlePersonalInfoCL');
+            Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWCL'])->name('admin.formChangePWCL');
+            Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWCL'])->name('admin.handleChangePWCL');
+        });
+        // -- Watches -- //
+        Route::group(['prefix' => 'watches'], function() {
+            Route::get('information/{id_staff}',[Admin\AdminController::class,'personalInfoWC'])->name('admin.personalInfoWC');
+            Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoWC'])->name('admin.handlePersonalInfoWC');
+            Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWWC'])->name('admin.formChangePWWC');
+            Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWWC'])->name('admin.handleChangePWWC');
+        });
+        // -- WareHouse -- //
+        Route::group(['prefix' => 'warehouse'], function() {
+            Route::get('information/{id_staff}',[Admin\AdminController::class,'personalInfoWH'])->name('admin.personalInfoWH');
+            Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoWH'])->name('admin.handlePersonalInfoWH');
+            Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWWH'])->name('admin.formChangePWWH');
+            Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWWH'])->name('admin.handleChangePWWH');
+        });
+
         // -- Account -- //
             // -- User -- //
         Route::group(['prefix' => 'user'], function() {
@@ -44,6 +76,7 @@ Route::group(['prefix' => '/'], function () {
             Route::get('delete/{id_staff}',[Admin\AccountController::class,'deleteStaff'])->name('admin.deleteStaff');
             Route::get('edit/{id_staff}',[Admin\AccountController::class,'formEditStaff'])->name('admin.formEditStaff');
             Route::post('edit/{id_staff}',[Admin\AccountController::class,'handleEditStaff'])->name('admin.handleEditStaff');
+            Route::get('resetpw/{id_staff}',[Admin\AccountController::class,'resetPW'])->name('admin.resetPW');
             Route::get('search',[Admin\AccountController::class,'searchStaff'])->name('admin.searchStaff');
         });
 
@@ -61,14 +94,18 @@ Route::group(['prefix' => '/'], function () {
         // -- Product -- //
         Route::group(['prefix' => 'product'], function() {
             Route::get('/',[Admin\ProductController::class, 'listProduct'])->name('admin.listProduct');
-            Route::get('create',[Admin\ProductController::class, 'formAddProduct'])->name('admin.formAddProduct');
-            Route::post('create',[Admin\ProductController::class, 'handleAddProduct'])->name('admin.handleAddProduct');
+            Route::get('add',[Admin\ProductController::class, 'formAddProduct'])->name('admin.formAddProduct');
+            Route::post('add',[Admin\ProductController::class, 'handleAddProduct'])->name('admin.handleAddProduct');
             Route::get('delete/{product_id}',[Admin\ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
             Route::get('edit/{product_id}',[Admin\ProductController::class, 'formEditProduct'])->name('admin.formEditProduct');
             Route::post('edit/{product_id}',[Admin\ProductController::class, 'handleEditProduct'])->name('admin.handleEditProduct');
             Route::get('search',[Admin\ProductController::class,'searchProduct'])->name('admin.searchProduct');
+            // Route::group(['prefix' => 'laravel-filemanager', 'middleware'] , function () {
+            //     \UniSharp\LaravelFilemanager\Lfm::routes();
+            // });
+            // Route::delete('delete-img/{id}',[Admin\ProductController::class,'destroy'])->name('admin.destroy');
         });
-
+        
         // -- Product Brand -- //
         Route::group(['prefix' => 'brand'], function() {
             Route::get('/',[Admin\BrandController::class,'listBrand'])->name('admin.listBrand');
@@ -126,6 +163,7 @@ Route::group(['prefix' => '/'], function () {
         // -- Input Invoices -- //
         Route::group(['prefix' => 'input-invoice'], function() {
             Route::get('/',[Admin\ImportInvoiceController::class,'listIInvoices'])->name('admin.listIInvoices');
+            Route::get('waitfor',[Admin\ImportInvoiceController::class,'listWaitIInvoices'])->name('admin.listWaitIInvoices');
             Route::get('add',[Admin\ImportInvoiceController::class,'formAddIInvoices'])->name('admin.formAddIInvoices');
             Route::post('add',[Admin\ImportInvoiceController::class,'handleAddIInvoices'])->name('admin.handleAddIInvoices');
             Route::get('edit/{id_input}',[Admin\ImportInvoiceController::class,'formEditIInvoices'])->name('admin.formEditIInvoices');
@@ -138,5 +176,9 @@ Route::group(['prefix' => '/'], function () {
             Route::get('/',[Admin\InvoiceController::class,'listOInvoices'])->name('admin.listOInvoices');
             Route::get('search',[Admin\InvoiceController::class,'searchOInvoices'])->name('admin.searchOInvoices');
         });
+
+        
     });
+    
+
 });

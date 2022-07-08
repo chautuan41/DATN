@@ -11,13 +11,16 @@ use App\Models\ProductType;
 use App\Models\Supplier;
 use App\Models\Brand;
 use App\Models\Categories;
+use App\Models\Picture;
+
 
 class ProductController extends Controller
 {
     //
     public function listProduct(){
         $lsProduct = Product::all();
-        return view('dashboard.product.list_product',compact('lsProduct'));
+        $images = Picture::all();
+        return view('dashboard.product.list_product',compact('lsProduct','images'));
     }
 
     public function formAddProduct()
@@ -34,6 +37,7 @@ class ProductController extends Controller
        $Pro = new Product();
        $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
+       $Pro->description = $req->description;
        $Pro->gender = $req->gender;
        $Pro->price = $req->price;
        $Pro->amount = $req->amount;
@@ -43,8 +47,27 @@ class ProductController extends Controller
        $Pro->product_type = $req->product_type;
        $Pro->supplier = $req->supplier;
        $Pro->brand = $req->brand;
-       $Pro->image = $req->image;
-       $Pro -> save();
+
+        if($req->hasfile('image')){
+            $file = $req->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/',$filename);
+            $Pro->image = $filename;
+        }
+        $Pro -> save();
+
+        if($req->hasfile("pictures")){
+            $files = $req->file('pictures');
+            foreach($files as $file){
+                $imageName = time().'_'.$file->getClientOriginalName();
+                $req['product'] = $Pro->id;
+                $req['link']=$imageName;
+                $file->move(\public_path("/all_images"),$imageName);
+                Picture::create($req->all());
+            }
+        }
+      
        $dtPro = Product::all();
       return redirect()->route('admin.listProduct',compact('dtPro'));
    }
@@ -57,8 +80,8 @@ class ProductController extends Controller
         $dtB = Brand::all();
         $dtS = Supplier::all();
         $dtC = Categories::all();
-        
-       return view('dashboard.product.edit_product',compact('dt','dtProT','dtB','dtS','dtC'));
+        $images = Picture::all();
+       return view('dashboard.product.edit_product',compact('dt','dtProT','dtB','dtS','dtC','images'));
    }
 
    public function handleEditProduct(Request $req, $product_id){       
@@ -69,6 +92,7 @@ class ProductController extends Controller
        $Pro = Product::find($product_id);
        $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
+       $Pro->description = $req->description;
        $Pro->gender = $req->gender;
        $Pro->price = $req->price;
        $Pro->amount = $req->amount;
@@ -78,8 +102,27 @@ class ProductController extends Controller
        $Pro->product_type = $req->product_type;
        $Pro->supplier = $req->supplier;
        $Pro->brand = $req->brand;
-       $Pro->image = $req->image;
+
+       if($req->hasfile('image')){
+        $file = $req->file('image');
+        $extension = $file->getClientOriginalExtension();
+        $filename = time().'.'.$extension;
+        $file->move('uploads/',$filename);
+        $Pro->image = $filename;
+    }
        $Pro -> save();
+
+       if($req->hasfile("pictures")){
+        $files = $req->file('pictures');
+        foreach($files as $file){
+            $imageName = time().'_'.$file->getClientOriginalName();
+            $req['product'] = $Pro->id;
+            $req['link']=$imageName;
+            $file->move(\public_path("/all_images"),$imageName);
+            Picture::create($req->all());
+        }
+    }
+
        $dtPro = Product::all();
 
       return redirect()->route('admin.listProduct',compact('dtPro'));
@@ -93,8 +136,27 @@ class ProductController extends Controller
        return redirect()->route('admin.listProduct',compact('dtPro'));
    } 
    public function searchProduct(){
-    $search_text=$_GET['query'];
-    $lsProduct=Product::where('product_name','LIKE','%'.$search_text.'%')->where('status','=',1)->get();
-    return view('dashboard.product.list_product',compact('lsProduct'));
-}
+        $search_text=$_GET['query'];
+        $lsProduct=Product::where('product_name','LIKE','%'.$search_text.'%')->where('status','=',1)->get();
+        return view('dashboard.product.list_product',compact('lsProduct'));
+    }
+
+    // public function destroy($id){
+    //     $Pro = Product::findOrFail($id);
+
+    //     if(File::exists("image/".$Pro->image)){
+    //         File::delete("image/".$Pro->image);
+    //     }
+
+    //     $pictures = Pictures::where("product",$Pro->id)->get();
+
+    //     foreach($pictures as $pic){
+    //         if(File::exists("pictures/".$pic->link)){
+    //             File::delete("pictures/".$pic->link);
+    //         }
+    //     }
+    //     $Pro->delete();
+    //     return back();
+    // }
+
 }

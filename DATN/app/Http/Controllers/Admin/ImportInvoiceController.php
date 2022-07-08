@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ImportInvoice;
+use App\Models\ImportInvoiceDetail;
+use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -17,6 +20,12 @@ class ImportInvoiceController extends Controller
         $lsIInvoice = ImportInvoice::all();
         return view('dashboard.iinvoices.iinvoices',compact('lsIInvoice'));
     }
+
+    public function listWaitIInvoices(){
+        $lsIInvoice = ImportInvoice::all();
+        return view('dashboard.iinvoices.waitii',compact('lsIInvoice'));
+    }
+
     public function formAddIInvoices(){
         return view('dashboard.iinvoices.add_iinvoices');
     }
@@ -28,7 +37,7 @@ class ImportInvoiceController extends Controller
         $iinvoices->total = $request->total;
         $iinvoices->account = $request->account;
         $iinvoices->supplier = $request->supplier;
-        $iinvoices->status = 1;
+        $iinvoices->status = 0;
         $iinvoices->save();
         return redirect()->back()->with("success","Add Input Invoices successful");
     }
