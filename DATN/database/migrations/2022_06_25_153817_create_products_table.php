@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('sku');
             $table->string('product_name');
+            $table->string('description');
             $table->integer('price');
             $table->integer('amount');
             $table->integer('gender')->nullable()->default(1);
