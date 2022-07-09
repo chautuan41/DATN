@@ -148,8 +148,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Images</label>
-                                <input type="file" class="form-control" name="pictures[]" multiple>
-
+                                    <input type="file" class="form-control" name="images[]" accept="image/*" multiple>
                             </div>
 
                             <div class="tile-footer">

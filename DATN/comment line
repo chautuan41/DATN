@@ -70,3 +70,18 @@
     </ul>
 
 </li> -->
+
+<!-- //image multiple
+
+<div class="form-group">
+                <label for="exampleInputEmail1">Images</label>
+                <br>
+                @foreach($images as $img)
+                @if($img->product == $dt->id)
+                <img src="{{asset('all_images/'.$img->pictures)}}" alt="" style="width:150px; height:150px">
+                @endif
+                @endforeach
+               <div class="form-grounp" style="margin-top:10px">
+               <input type="file" class="form-control" name="pictures[]" multiple>
+               </div>
+            </div> -->

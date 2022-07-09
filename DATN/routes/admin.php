@@ -106,6 +106,9 @@ Route::group(['prefix' => '/'], function () {
             Route::get('delete/{product_id}',[Admin\ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
             Route::get('edit/{product_id}',[Admin\ProductController::class, 'formEditProduct'])->name('admin.formEditProduct');
             Route::post('edit/{product_id}',[Admin\ProductController::class, 'handleEditProduct'])->name('admin.handleEditProduct');
+            Route::get('product-images/{product_id}',[Admin\ProductController::class, 'images'])->name('admin.images');
+            Route::get('delete-product-images/{product_id}',[Admin\ProductController::class, 'deleteImages'])->name('admin.deleteImages');
+            Route::post('add-product-images/{product_id}',[Admin\ProductController::class, 'addImages'])->name('admin.addImages');
             Route::get('search',[Admin\ProductController::class,'searchProduct'])->name('admin.searchProduct');
             // Route::group(['prefix' => 'laravel-filemanager', 'middleware'] , function () {
             //     \UniSharp\LaravelFilemanager\Lfm::routes();

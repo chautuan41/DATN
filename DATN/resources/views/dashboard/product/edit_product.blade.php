@@ -10,32 +10,21 @@
         <li class="breadcrumb-item"><a href="#">Add Product</a></li>
     </ul>
 </div>
-<div class="header-right" style="padding:200px">
-            <p>Main Image</p>
-            <form action="#" method="post">
-            @csrf
-                
-            </form>
-            <img src="#" alt="" class="img-reponsive" style="max-height:100px; max-width: 100px;"
-                srcset="">
-            <br>
-
-            <p>All Images</p>
-
-
-            <form action="#" method="post">
-                @csrf
-            </form>
-            <img src="" alt="" class="img-reponsive" style="max-height:100px; max-width: 100px;"
-                srcset="">
-      
+<div class="header-right" style="padding: 0px 300px 0px 0px">
+    <div class="container">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Image</label>
+                <br>
+                <img src="{{asset('uploads/'.$dt->image)}}" alt="" style="width:250px; height:250px">
+            </div>
+    </div>
 </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
             <div class="tile">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-9">
                         @if (session('error'))
                         <div class="alert alert-danger">
                             {{ session('error') }}
@@ -59,6 +48,9 @@
 
                                 <input type="text" class="form-control" id="val-username" name="sku"
                                     value="{{$dt->sku}}" placeholder="SKU">
+                                @if($errors->has('sku'))
+                                <span>{{$errors->first('sku')}}</span>
+                                @endif
 
                             </div>
                             <div class="form-group">
@@ -185,17 +177,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Image</label>
-
-                                <input type="file" class="form-control" name="image">
-
+                                    <input type="file" class="form-control" name="image">
                             </div>
-
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Images</label>
-                                <input type="file" class="form-control" name="pictures[]" multiple>
-
+                                    <input type="file" class="form-control" name="images[]" accept="image/*" multiple>
                             </div>
-
                             <div class="tile-footer">
                                 <button type="submit" class="btn btn-primary"
                                     onclick="return confirm('Are you sure?')">Update</button>

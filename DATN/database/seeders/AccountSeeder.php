@@ -70,6 +70,7 @@ class AccountSeeder extends Seeder
                 'role'=>5
             ],
             [   
+
                 'email'=>'sellerstaff@gmail.com',
                 'password'=>bcrypt('1234567'),
                 'full_name'=>'Seller Staff',
