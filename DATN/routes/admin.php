@@ -17,8 +17,9 @@ Route::group(['prefix' => '/'], function () {
 
     Route::group(['middleware' => ['auth:admin']], function(){
         
-
+        
         Route::get('/',[Admin\AdminController::class,'indexAdmin'])->name('admin.index');
+        Route::get('layout/{id}',[Admin\AdminController::class,'indexLayoutAdmin'])->name('admin.indexLayoutAdmin');
         Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
         Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
         Route::get('warehouse',[Admin\AdminController::class,'indexAdminWH'])->name('admin.indexWH');

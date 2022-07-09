@@ -45,7 +45,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Product Type</th>
-                                    <th>Categories</th>
+                                    <!-- <th>Categories</th> -->
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>
@@ -56,7 +56,7 @@
                                 <tr>
                                     <td>{{$ptype->id}}</td>
                                     <td>{{$ptype->product_type_name}}</td>
-                                    <td>{{$ptype->categories}}</td>
+                                    <!-- <td>{{$ptype->categories}}</td> -->
                                     <td>{{$ptype->status}}</td>
                                     <td>
                                         <a href="{{route('admin.formEditProductType',['id_ProT'=>$ptype->id])}}"
@@ -80,7 +80,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Product Type</th>
-                                    <th>Categories</th>
+                                    <!-- <th>Categories</th> -->
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>2001</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/icon.jpg')}}">
@@ -326,11 +327,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.listCategories')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{route('admin.listProductType')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Product Type</span>
                         </a>
@@ -351,7 +347,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.listOInvoices')}}" aria-expanded="false">
+                        <a href="{{route('admin.cart')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Output Invoices</span>
                         </a>
                     </li>
@@ -448,7 +444,7 @@
     <script src="{{asset('dashboard/js/dashboard/dashboard-1.js')}}"></script>
     <!-- <script src="{{asset('dashboard/ckeditor/ckeditor.js')}}"></script> -->
     <!-- <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script> -->
-    
+
     <!-- <script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script> -->
     <!-- <script>
     CKEDITOR.replace(ckeditor01);

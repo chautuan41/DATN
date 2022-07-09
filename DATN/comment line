@@ -56,3 +56,17 @@
         </div>
     </div>
 </div> -->
+
+<!-- <li>
+    <a class="has-arrow" href="{{route('admin.listCategories')}}" aria-expanded="false">
+        <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
+    </a>
+
+    <ul aria-expanded="false">
+        @foreach($CT as $c)
+        <li><a href="{{ route('admin.indexLayoutAdmin',['id' => $c->id]) }}"
+                aria-expanded="false">{{$c->categories_name}}</a></li>
+        @endforeach
+    </ul>
+
+</li> -->

@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Account;
 use App\Models\InvoiceDetail;
 use App\Models\Invoice;
+use App\Models\Categories;
 
 class AdminController extends Controller
 {
+    public function indexLayoutAdmin(){
+        $CT = Categories::all();
+        return view('dashboard.layout.dashboard-admin',compact('CT'));
+    }
+
     public function indexAdmin(){
         $dtInvD = DB::table('invoice_details')
         ->where('status','=', 1)

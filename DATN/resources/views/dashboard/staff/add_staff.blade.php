@@ -78,7 +78,9 @@
                                 <select class="form-control" id="val-skill" name="role">
                                     <option value="">Please select</option>
                                     @foreach($rl as $role)
+                                    @if($role->id != 1)
                                     <option value="{{$role->id}}">{{$role->role_name}}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
