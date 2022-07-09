@@ -1,4 +1,4 @@
-@extends('dashboard.layout.dashboard-admin')
+@extends('dashboard.layout.dashboard-seller')
 @section('content')
 <div class="row page-titles mx-0">
     <div class="col p-md-0">

@@ -347,7 +347,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.cart')}}" aria-expanded="false">
+                        <a href="{{route('admin.listOInvoices')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Output Invoices</span>
                         </a>
                     </li>

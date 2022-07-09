@@ -27,7 +27,7 @@ class RoleSeeder extends Seeder
                 'status'=>1],
             [   'role_name'=>'WareHouse Staff',
                 'status'=>1],
-            [   'role_name'=>'Nhân viên kho',
+            [   'role_name'=>'Seller Staff',
                 'status'=>1],
             [   'role_name'=>'Nhân viên bán hàng',
                 'status'=>1],

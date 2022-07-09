@@ -12,8 +12,6 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
 
-    Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
-
 
     Route::group(['middleware' => ['auth:admin']], function(){
         
@@ -23,10 +21,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
         Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
         Route::get('warehouse',[Admin\AdminController::class,'indexAdminWH'])->name('admin.indexWH');
-
-        Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
-        Route::get('cart/{id}',[Admin\CartController::class,'invoicedetails'])->name('admin.cart.get');
-        Route::get('processed/{id}',[Admin\CartController::class,'processed'])->name('admin.cart.post');
+        Route::get('seller',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
 
         // -- Admin -- //
         Route::group(['prefix' => 'admin'], function() {
@@ -55,6 +50,17 @@ Route::group(['prefix' => '/'], function () {
             Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoWH'])->name('admin.handlePersonalInfoWH');
             Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWWH'])->name('admin.formChangePWWH');
             Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWWH'])->name('admin.handleChangePWWH');
+        });
+
+        // -- Seller -- //
+        Route::group(['prefix' => 'seller'], function() {
+            Route::get('information/{id_staff}',[Admin\AdminController::class,'personalInfoSL'])->name('admin.personalInfoSL');
+            Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoSL'])->name('admin.handlePersonalInfoSL');
+            Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWSL'])->name('admin.formChangePWSL');
+            Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWSL'])->name('admin.handleChangePWSL');
+            Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
+            Route::get('cart/{id}',[Admin\CartController::class,'invoicedetails'])->name('admin.cart.get');
+            Route::get('processed/{id}',[Admin\CartController::class,'processed'])->name('admin.cart.post');
         });
 
         // -- Account -- //
