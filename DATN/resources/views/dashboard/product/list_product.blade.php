@@ -48,6 +48,7 @@
                                     <th>Amount</th>
                                     <th>Discount</th>
                                     <th>Image</th>
+                                    <th>Image Details</th>
                                     <!-- <th>Categorie</th>
                                     <th>Product Type</th>
                                     <th>Supplier</th>
@@ -68,8 +69,9 @@
                                     <td>{{$product->amount}}</td>
                                     <td>{{$product->discount}}</td>
                                     <td>
-                                        <img src="{{asset('uploads/'.$product->image)}}" alt="">
+                                        <img src="{{asset('uploads/'.$product->image)}}" alt="" style="width:90px; height:90px">
                                     </td>
+                                    <td><a href="{{route('admin.images',['product_id'=>$product->id])}}">View Images</a></td>
                                     <!-- <td>{{$product->categories}}</td>
                                     <td>{{$product->product_type}}</td>
                                     <td>{{$product->supplier}}</td>
@@ -102,6 +104,7 @@
                                     <th>Amout</th>
                                     <th>Discount</th>
                                     <th>Image</th>
+                                    <th>Image Details</th>
                                     <!-- <th>Categorie</th>
                                     <th>Product Type</th>
                                     <th>Supplier</th>
