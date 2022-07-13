@@ -7,7 +7,8 @@
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Role</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Account
+                                Type</a></li>
         </ol>
     </div>
 </div>

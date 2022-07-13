@@ -61,7 +61,9 @@
                                         
                                         @endforeach
                                         @foreach($rl as $role)
+                                        @if($role->id != 1)
                                         <option value="{{$role->id}}">{{$role->role_name}}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
