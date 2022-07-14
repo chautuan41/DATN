@@ -25,7 +25,8 @@
                     <div class="header-content clearfix">
                         <div>
                             <div class="header-right">
-                                <!-- <div class="input-group icons">
+
+                                <div class="input-group icons">
                                     <form type="get" action="{{route('admin.searchIInvoices','lsIInvoice')}}">
                                         <input type="search" name="query" class="form-control" placeholder="Search">
                                     </form>
@@ -34,7 +35,8 @@
                                             id="basic-addon1"><i class="mdi mdi-magnify"></i>
                                         </button>
                                     </div>
-                                </div> -->
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,6 +59,7 @@
                                 <tr>
                                     <td>{{$iin->date}}</td>
                                     <td>{{$iin->total}}</td>
+
                                     @foreach($Acc as $acc)
                                     @if($acc->id == $iin->account)
                                     <td>{{$acc->email}}</td>
@@ -69,6 +72,7 @@
                                     @endif
                                     @endforeach
                                     <td>Waiting for confirmation</td>
+                                    <td>{{$iin->status}}</td>
                                     <td>
                                         <!-- <a href="#"
                                             data-toggle="tooltip" data-placement="top" title="Edit"

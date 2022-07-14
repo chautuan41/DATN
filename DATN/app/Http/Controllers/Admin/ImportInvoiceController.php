@@ -42,6 +42,8 @@ class ImportInvoiceController extends Controller
         return view('dashboard.iinvoices.iistaff',compact('lsIInvoice','Sup','Acc'));
     }
 
+    
+
     public function formAddIInvoices(){
         $Pro = Product::all();
         $Sup = Supplier::all();
@@ -86,7 +88,7 @@ class ImportInvoiceController extends Controller
         $Pro->save();
 
         $II = ImportInvoice::find($request->import_invoice);
-        $II->total = $request->price * $request->amount;
+        $II->total += $request->price * $request->amount;
         $II->save();
 
         return response()->json([

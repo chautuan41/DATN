@@ -41,7 +41,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
                                     {{-- <button type="submit" id="form-add" data-url="#" class="btn btn-primary btn_showne" >
                                         Complete
@@ -118,6 +117,7 @@
         </div>
         <a class="btn btn-primary pull-right" data-url="{{route('admin.handleAddIInvoices')}}" id="hdn"
             href="#">Confirm</a>
+
     </div>
 
 </div>
@@ -184,10 +184,12 @@ $("#hdn").click(function(event) {
                 $('p#idcthdne').html(response.idcthd);
                 alert(hoadonnhap_id);
             }
+
         },
         error: function(error) {
             alert('Please enter enough information');
         }
+
 
     });
     $.ajax({
@@ -197,6 +199,7 @@ $("#hdn").click(function(event) {
         error: function(error) {
             alert('Please enter enough information');
         }
+
     });
 });
 $("#form-add-cthd").click(function(event) {
