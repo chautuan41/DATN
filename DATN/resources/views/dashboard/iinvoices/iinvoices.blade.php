@@ -18,8 +18,13 @@
                 <div class="card-body">
                     <div class="header-left ">
                         <p>
-                            <a href="{{route('admin.formAddIInvoices')}}" class="btn btn-primary pull-right">Add Input
+                            <a href="{{route('admin.listIInvoices')}}" class="btn btn-primary pull-right"> Input
                                 Invoices</a>
+                        </p>
+                    </div>
+                    <div class="header-left ">
+                        <p>
+                            <a href="{{route('admin.listWaitIInvoices')}}" class="btn btn-primary pull-right">Confirm Orders</a>
                         </p>
                     </div>
                     <div class="header-content clearfix">
@@ -61,15 +66,15 @@
                                     <td>{{$iin->supplier}}</td>
                                     <td>{{$iin->status}}</td>
                                     <td>
-                                        <a href="{{route('admin.formEditIInvoices',['id_input'=>$iin->id])}}"
+                                        <!-- <a href="#"
                                             data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
+                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp; -->
 
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.deleteIInvoices',['id_input'=>$iin->id])}}"
+                                        <!-- <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
+                                                href="#"
                                                 data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="fa fa-trash"></i></a></button>
+                                                <i class="fa fa-trash"></i></a></button> -->
                                     </td>
                                 </tr>
                                 @endif

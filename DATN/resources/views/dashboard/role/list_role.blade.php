@@ -8,7 +8,7 @@
     <div class="col p-md-0">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Account
-                                Type</a></li>
+                    Type</a></li>
         </ol>
     </div>
 </div>
@@ -63,10 +63,10 @@
                                             data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.deleteRole',['id_role' => $role->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a></button>
+                                        <a href="{{route('admin.deleteRole',['id_role' => $role->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')"><i
+                                                class="fa fa-trash"></i></a>
 
 
                                     </td>

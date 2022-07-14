@@ -118,9 +118,16 @@ Route::group(['prefix' => '/'], function () {
             Route::get('delete/{product_id}',[Admin\ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
             Route::get('edit/{product_id}',[Admin\ProductController::class, 'formEditProduct'])->name('admin.formEditProduct');
             Route::post('edit/{product_id}',[Admin\ProductController::class, 'handleEditProduct'])->name('admin.handleEditProduct');
+
             Route::get('product-images/{product_id}',[Admin\ProductController::class, 'images'])->name('admin.images');
             Route::get('delete-product-images/{product_id}',[Admin\ProductController::class, 'deleteImages'])->name('admin.deleteImages');
             Route::post('add-product-images/{product_id}',[Admin\ProductController::class, 'addImages'])->name('admin.addImages');
+
+            Route::get('product-sizes/{product_id}',[Admin\ProductController::class, 'sizes'])->name('admin.sizes');
+            Route::get('delete-product-sizes/{product_id}',[Admin\ProductController::class, 'deleteSizes'])->name('admin.deleteSizes');
+            Route::get('hide-product-sizes/{product_id}',[Admin\ProductController::class, 'hideSizes'])->name('admin.hideSizes');
+            Route::post('add-product-sizes/{product_id}',[Admin\ProductController::class, 'handleAddSizes'])->name('admin.handleAddSizes');
+            
             Route::get('search',[Admin\ProductController::class,'searchProduct'])->name('admin.searchProduct');
             // Route::group(['prefix' => 'laravel-filemanager', 'middleware'] , function () {
             //     \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -185,13 +192,22 @@ Route::group(['prefix' => '/'], function () {
         // -- Input Invoices -- //
         Route::group(['prefix' => 'input-invoice'], function() {
             Route::get('/',[Admin\ImportInvoiceController::class,'listIInvoices'])->name('admin.listIInvoices');
+
+            Route::get('iistaff',[Admin\ImportInvoiceController::class,'listIIStaff'])->name('admin.listIIStaff');
+
             Route::get('waitfor',[Admin\ImportInvoiceController::class,'listWaitIInvoices'])->name('admin.listWaitIInvoices');
+            Route::get('confirm/{id_input}',[Admin\ImportInvoiceController::class,'confirmInvoices'])->name('admin.confirmInvoices');
+            
             Route::get('add',[Admin\ImportInvoiceController::class,'formAddIInvoices'])->name('admin.formAddIInvoices');
             Route::post('add',[Admin\ImportInvoiceController::class,'handleAddIInvoices'])->name('admin.handleAddIInvoices');
+            Route::post('handle',[Admin\ImportInvoiceController::class,'xulycreatectsp'])->name('admin.xulycreatectsp');
             Route::get('edit/{id_input}',[Admin\ImportInvoiceController::class,'formEditIInvoices'])->name('admin.formEditIInvoices');
             Route::post('edit/{id_input}',[Admin\ImportInvoiceController::class,'handleEditIInvoices'])->name('admin.handleEditIInvoices');
             Route::get('delete/{id_input}',[Admin\ImportInvoiceController::class,'deleteIInvoices'])->name('admin.deleteIInvoices');
             Route::get('search',[Admin\ImportInvoiceController::class,'searchIInvoices'])->name('admin.searchIInvoices');
+
+            Route::get('add-p',[Admin\ImportInvoiceController::class, 'addProduct'])->name('admin.addProduct');
+            Route::post('add-p',[Admin\ImportInvoiceController::class, 'handleaddProduct'])->name('admin.handleaddProduct');
         });
         // -- Ouput Invoices -- //
         Route::group(['prefix' => 'output-invoice'], function() {

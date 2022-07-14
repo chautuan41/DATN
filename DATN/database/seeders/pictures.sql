@@ -41,7 +41,7 @@ CREATE TABLE `pictures` (
 -- Đang đổ dữ liệu cho bảng `pictures`
 --
 
-INSERT INTO `pictures` (`id`, `link`, `product`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `pictures` (`id`, `image`, `product`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'images/shop/product/picture/SL221101M-1.jpg', 1, 1, '2022-07-13 04:26:09', '2022-07-13 04:26:09', NULL),
 (2, 'images/shop/product/picture/SL221101M-2.jpg', 1, 1, '2022-07-13 04:26:09', '2022-07-13 04:26:09', NULL),
 (3, 'images/shop/product/picture/SL221101M-3.jpg', 1, 1, '2022-07-13 04:26:09', '2022-07-13 04:26:09', NULL),

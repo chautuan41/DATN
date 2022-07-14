@@ -3,7 +3,7 @@
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Product</a></li>
         </ol>
     </div>
@@ -54,6 +54,7 @@
                                     <th>Product Type</th>
                                     <th>Supplier</th>
                                     <th>Brand</th> -->
+                                    <th>Size Details</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>
@@ -70,23 +71,27 @@
                                     <td>{{$product->amount}}</td>
                                     <td>{{$product->discount}}</td>
                                     <td>
-                                        <img src="{{asset($product->image)}}" style="width:70px;height:70px;border-radius:100%;" alt="">
+                                        <img src="{{asset($product->image)}}"
+                                            style="width:70px;height:70px;border-radius:100%;" alt="">
                                     </td>
-                                    <td><a href="{{route('admin.images',['product_id'=>$product->id])}}">View Images</a></td>
+                                    <td><a href="{{route('admin.images',['product_id'=>$product->id])}}">View Images</a>
+                                    </td>
                                     <!-- <td>{{$product->categories}}</td>
                                     <td>{{$product->product_type}}</td>
                                     <td>{{$product->supplier}}</td>
                                     <td>{{$product->brand}}</td> -->
+                                    <td><a href="{{route('admin.sizes',['product_id'=>$product->id])}}">View Size</a>
+                                    </td>
                                     <td>{{$product->status}}</td>
                                     <td>
                                         <a href="{{route('admin.formEditProduct',['product_id'=>$product->id])}}"
                                             data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.deleteProduct',['product_id'=>$product->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a></button>
+                                        <a href="{{route('admin.deleteProduct',['product_id'=>$product->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')"><i
+                                                class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endif
@@ -110,6 +115,7 @@
                                     <th>Product Type</th>
                                     <th>Supplier</th>
                                     <th>Brand</th> -->
+                                    <th>Size Details</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>
