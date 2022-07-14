@@ -57,16 +57,19 @@
                                 <tr>
                                     <td>{{$oin->id}}</td>
                                     <td>{{$oin->shipping_address}}</td>
-
                                     <td>{{$oin->date_time}}</td>
                                     <td>{{$oin->total}}</td>
-                                    <td>{{$oin->account}}</td>
+                                    @foreach($lsAcc as $acc)
+                                    @if($acc->id == $oin->account)
+                                    <td value="{{$acc->id}}">{{$acc->account}}</td>
+                                    @endif
+                                    @endforeach
                                     <td>{{$oin->status}}</td>
                                 </tr>
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="4">Empty data</td>
+                                    <td colspan="6">Empty data</td>
                                 </tr>
                                 @endforelse
                             </tbody>

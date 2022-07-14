@@ -28,7 +28,7 @@
                                 <div class='item'>
                                 <a href="product-single.html" class="pull-right" style="font-size: 30px;"><i
                                             class="heart tf-ion-ios-heart-outline"></i></a>
-                                    <img src='{{asset($ProP->link)}}' alt='' data-zoom-image="{{$ProP->link}}" />
+                                    <img src='{{asset($ProP->image)}}' alt='' data-zoom-image="{{$ProP->image}}" />
                                 </div>
                                 @endforeach
 
@@ -51,7 +51,7 @@
                             </li>
                             @foreach($dtProP as $ProP)
                             <li data-target='#carousel-custom' data-slide-to='1'>
-                                <img src='{{asset($ProP->link)}}' alt='' />
+                                <img src='{{asset($ProP->image)}}' alt='' />
                             </li>
                             @endforeach
                         </ol>

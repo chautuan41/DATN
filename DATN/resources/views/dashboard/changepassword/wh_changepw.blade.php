@@ -1,4 +1,4 @@
-@extends('dashboard.layout.dashboard-admin')
+@extends('dashboard.layout.dashboard-warehouse')
 @section('content')
 
 <div class="container-fluid">

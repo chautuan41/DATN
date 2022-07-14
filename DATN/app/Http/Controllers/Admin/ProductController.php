@@ -58,16 +58,18 @@ class ProductController extends Controller
         }
         $Pro -> save();
 
-        if($req->hasfile("pictures")){
-            $files = $req->file('pictures');
+
+        if($req->has("images")){
             $i=1;
-            foreach($files as $file){
+            foreach($req->file('images') as $image){
                 $imageName = $req->sku.'-'.$i++.'.'.$file->getClientOriginalExtension();
                 $imageName= 'images/shop/product/picture/'.$imageName;
-                $req['product'] = $Pro->id;
-                $req['link']=$imageName;
-                $file->move('images/shop/product/picture/',$imageName);
-                Picture::create($req->all());
+                $image->move('images/shop/product/picture/',$imageName);
+                Picture::create([
+                    'product'=>$Pro->id,
+                    'image'=>$imageName
+                ]);
+
             }
         }
       
@@ -75,11 +77,40 @@ class ProductController extends Controller
       return redirect()->route('admin.listProduct',compact('dtPro'));
    }
 
+   public function images($product_id){
+        $Pro = Product::find($product_id);
+        $IMG = Picture::all();
+        return view('dashboard.product.all_image',compact('Pro','IMG'));
+    }
+    public function addImages(Request $req, $product_id){
+        $Pro = Product::find($product_id);
+        $IMG = Picture::all();
+        if($req->has("images")){
+            foreach($req->file('images') as $image){
+                $imageName = $Pro['product_name'].'-image-'.time().rand(1,1000).'.'.$image->extension();
+                $image->move(public_path("all_images"),$imageName);
+                Picture::create([
+                    'product'=>$Pro->id,
+                    'image'=>$imageName
+                ]);
+            }
+        }
+        return redirect()->back()->with("success","Delete Successful");
+    }
+    
+    public function deleteImages($product_id){
+        $image = Picture::find($product_id)->forceDelete();
+        $Pro = Product::find($product_id);
+        $IMG = Picture::all();
+    //    return view('dashboard.product.all_image',compact('Pro','IMG'));
+        // return redirect()->route('admin.images',compact('Pro','IMG'));
+        return redirect()->back()->with("success","Delete Successful");
+    }
 
    public function formEditProduct($product_id)
    {
-       $dt = Product::find($product_id);
-       $dtProT = ProductType::all();
+        $dt = Product::find($product_id);
+        $dtProT = ProductType::all();
         $dtB = Brand::all();
         $dtS = Supplier::all();
         $dtC = Categories::all();
@@ -117,22 +148,21 @@ class ProductController extends Controller
     }
        $Pro -> save();
 
-       if($req->hasfile("pictures")){
-        $files = $req->file('pictures');
-        $i=1;
-        foreach($files as $file){
+       if($req->has("images")){
+        $i=0;
+        foreach($req->file('images') as $image){
             $imageName = $req->sku.'-'.$i++.'.'.$file->getClientOriginalExtension();
-            $imageName= 'images/shop/product/picture/'.$imageName;
-            $req['product'] = $Pro->id;
-            $req['link']=$imageName;
-            $file->move('images/shop/product/picture/',$imageName);
-            Picture::create($req->all());
+                $imageName= 'images/shop/product/picture/'.$imageName;
+                $image->move('images/shop/product/picture/',$imageName);
+            Picture::create([
+                'product'=>$Pro->id,
+                'image'=>$imageName
+            ]);
+
         }
     }
-
        $dtPro = Product::all();
-
-      return redirect()->route('admin.listProduct',compact('dtPro'));
+       return redirect()->route('admin.listProduct',compact('dtPro'));
    }
 
    public function deleteProduct($id){       

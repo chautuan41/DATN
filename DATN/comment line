@@ -56,3 +56,32 @@
         </div>
     </div>
 </div> -->
+
+<!-- <li>
+    <a class="has-arrow" href="{{route('admin.listCategories')}}" aria-expanded="false">
+        <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
+    </a>
+
+    <ul aria-expanded="false">
+        @foreach($CT as $c)
+        <li><a href="{{ route('admin.indexLayoutAdmin',['id' => $c->id]) }}"
+                aria-expanded="false">{{$c->categories_name}}</a></li>
+        @endforeach
+    </ul>
+
+</li> -->
+
+<!-- //image multiple
+
+<div class="form-group">
+                <label for="exampleInputEmail1">Images</label>
+                <br>
+                @foreach($images as $img)
+                @if($img->product == $dt->id)
+                <img src="{{asset('all_images/'.$img->pictures)}}" alt="" style="width:150px; height:150px">
+                @endif
+                @endforeach
+               <div class="form-grounp" style="margin-top:10px">
+               <input type="file" class="form-control" name="pictures[]" multiple>
+               </div>
+            </div> -->
