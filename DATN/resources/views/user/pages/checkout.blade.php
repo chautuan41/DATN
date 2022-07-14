@@ -32,15 +32,14 @@
                      $total += $subtotal ;
                      @endphp
                      <div class="media product-card">
-                        <a class="pull-left" href="product-single.html">
+                        <a class="pull-left" href="{{route('user.productdetail',['id'=>$Cart->id])}}">
                            <img class="media-object" src="{{asset($Cart->image)}}" alt="Image" />
                         </a>
                         <div class="media-body">
-                           <h4 class="media-heading"><a href="product-single.html">{{$Cart->product_name}}</a></h4>
+                           <h4 class="media-heading"><a href="{{route('user.productdetail',['id'=>$Cart->id])}}">{{$Cart->product_name}}</a></h4>
                            <p class="price">Size: {{$Cart->size}}</p>
                            <p class="price">{{$Cart->quantity}} x ${{number_format($price)}}</p>
-                           <a href="#"><span class="remove" >Edit</span> </a>|
-                           <a href="{{ route('user.cart.delete',['id'=>$Cart->id]) }}"><span class="remove" >Remove</span> </a>
+                           <a href="{{ route('user.cart.delete',['id'=>$Cart->icart]) }}"><span class="remove" >Remove</span> </a>
                         <ul class="summary-prices">
                            <li>
                               <span>Subtotal:</span>

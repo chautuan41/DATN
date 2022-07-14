@@ -20,14 +20,12 @@
                             <!-- me art lab slider -->
                             <div class='carousel-inner '>
                                 <div class='item active'>
-                                    <a href="product-single.html" class="pull-right" style="font-size: 30px;"><i
-                                            class="heart tf-ion-ios-heart-outline"></i></a>
+                                    
                                     <img src='{{asset($dtPro->image)}}' alt='' data-zoom-image="{{$dtPro->image}}" />
                                 </div>
                                 @foreach($dtProP as $ProP)
                                 <div class='item'>
-                                <a href="product-single.html" class="pull-right" style="font-size: 30px;"><i
-                                            class="heart tf-ion-ios-heart-outline"></i></a>
+                                    
                                     <img src='{{asset($ProP->image)}}' alt='' data-zoom-image="{{$ProP->image}}" />
                                 </div>
                                 @endforeach
@@ -49,8 +47,9 @@
                             <li data-target='#carousel-custom' data-slide-to='0' class='active'>
                                 <img src='{{asset($dtPro->image)}}' alt='' />
                             </li>
+                            @php $i=1; @endphp
                             @foreach($dtProP as $ProP)
-                            <li data-target='#carousel-custom' data-slide-to='1'>
+                            <li data-target='#carousel-custom' data-slide-to='{{$i++}}'>
                                 <img src='{{asset($ProP->image)}}' alt='' />
                             </li>
                             @endforeach
@@ -63,7 +62,8 @@
                     @csrf
                     <div class="single-product-details">
                         <h2>{{$dtPro->product_name}}</h2>
-                        <p class="product-price">${{number_format($dtPro->discount != 0 ? $dtPro->discount : $dtPro->price)}}</p>
+                        <p class="product-price">
+                            ${{number_format($dtPro->discount != 0 ? $dtPro->discount : $dtPro->price)}}</p>
 
                         <p class="product-description mt-20">
                             {{$dtPro->description}}
@@ -94,10 +94,12 @@
                             </ul>
                         </div>
                         <div class="product-category">
-
+                        <a href="{{route('user.favourite.add',['id'=>$dtPro->id])}}" style="font-size: 30px;"><i
+                                            class="heart tf-ion-ios-heart-outline"></i></a>
                         </div>
-
+                       
                         <button type="submit" class="btn btn-main mt-20">Add To Cart</button>
+                       
                     </div>
                 </form>
             </div>
@@ -213,111 +215,41 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <div class="product-item">
+            @foreach($dtProR as $R)
+            @if($R->id != $dtPro->id )
+            <div class="col-md-3 ">
+                <div class="product-item ">
                     <div class="product-thumb">
+                        @if($R->discount!=0)
                         <span class="bage">Sale</span>
-                        <img class="img-responsive" src="images/shop/products/product-5.jpg" alt="product-img" />
+                        @endif
+                        <img class="img-responsive" src="{{asset($R->image)}}" alt="product-img" />
                         <div class="preview-meta">
                             <ul>
                                 <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search"></i>
-                                    </span>
+                                    <a href="{{route('user.productdetail',['id'=>$R->id])}}"><i
+                                            class="tf-ion-ios-search-strong"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
+                                    <a href="{{route('user.favourite.add',['id'=>$R->id])}}"><i
+                                            class="tf-ion-ios-heart"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                    <a class="like" data-url="{{ route('user.like',$R->id)}}"><i
+                                            class="tf-ion-thumbsup"></i></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="product-content">
-                        <h4><a href="product-single.html">Reef Boardsport</a></h4>
-                        <p class="price">$200</p>
+                        <h4><a href="product-single.html">{{$R->product_name}}</a></h4>
+                        <p class="price">${{number_format($R->discount != 0 ? $R->discount : $R->price)}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-1.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search-strong"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Rainbow Shoes</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-2.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Strayhorn SP</a></h4>
-                        <p class="price">$230</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="product-item">
-                    <div class="product-thumb">
-                        <img class="img-responsive" src="images/shop/products/product-3.jpg" alt="product-img" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <span data-toggle="modal" data-target="#product-modal">
-                                        <i class="tf-ion-ios-search"></i>
-                                    </span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="tf-ion-android-cart"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="product-single.html">Bradley Mid</a></h4>
-                        <p class="price">$200</p>
-                    </div>
-                </div>
-            </div>
+            @endif
+            @endforeach
+
 
         </div>
     </div>

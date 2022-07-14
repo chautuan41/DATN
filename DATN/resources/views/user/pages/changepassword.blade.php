@@ -36,21 +36,17 @@
                         </div>
                         <div class="media-body">
                             <div class="col-md-6 col-md-4">
-                                <form class="text-left clearfix" method="POST" action="{{ route('password.update') }}">
+                                <form class="text-left clearfix" method="POST" action="{{ route('profile.change.post',$dtProF->id) }}">
                                     @csrf
-                                    <input type="hidden" name="token" value="{{ $token }}">
-                                    
                                     <div class="form-group">
-                                        <span>Email:</span><input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus
-                                
-                                            value="{{$dtProF->email}}" required>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required>
                                     </div>
                                     <div class="form-group">
-                                        <span>Password:</span><input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"
-                                        placeholder="Password" required>
+                                        <input id="newpassword" type="password" class="form-control @error('password') is-invalid @enderror" name="newpassword" required autocomplete="new-password"
+                                        placeholder="New Password" required>
                                     </div>
                                     <div class="form-group">
-                                        <span>Confirm Password:</span><input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"
+                                        <input id="password-confirm" type="password" class="form-control" name="confirmation" required autocomplete="new-password"
                                         placeholder="Confirm Password" required>
                                     </div>
                                     <div class="form-group">

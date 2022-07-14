@@ -58,7 +58,7 @@
                     @if (Auth::check())
                     <!-- Search -->
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle"><i class="tf-ion-ios-heart"></i>2</a>
+                        <a href="{{ route('user.favourite') }}" class="dropdown-toggle"><i class="tf-ion-ios-heart"></i></a>
                     </li><!-- / Search -->
 
                     <!-- Search -->
@@ -99,7 +99,7 @@
                     @else
                     <!-- Search -->
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle"><i class="tf-ion-ios-heart"></i></a>
+                        <a href="{{ route('user.favourite') }}" class="dropdown-toggle"><i class="tf-ion-ios-heart"></i></a>
                     </li><!-- / Search -->
 
                     <!-- Search -->
@@ -112,7 +112,7 @@
 
                     <!-- Search -->
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle"><i class="tf-ion-android-cart"></i></a>
+                        <a href="{{ route('user.cart') }}" class="dropdown-toggle"><i class="tf-ion-android-cart"></i></a>
                     </li><!-- / Search -->
                     @endif
 

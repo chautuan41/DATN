@@ -22,8 +22,9 @@ class AdminController extends Controller
 
 
     public function indexAdmin(){
+        $date1=now()->toDateString();
         $dtInvD = DB::table('invoice_details')
-        ->where('status','=', 1)
+        ->where('status','=', 2)
         ->get();
         //dd($dtInvD);
         $acc=DB::table('accounts')
@@ -32,10 +33,19 @@ class AdminController extends Controller
         ->get();
         $acc=count($acc);
         $dtInv=DB::table('invoices')
-        ->where('status','=', 1)
+        ->where('status','=', 2)
         ->get();
         //dd($dtInvD);
-        return view('dashboard.home.home',compact('dtInvD','acc','dtInv'));
+        $dtInvS=DB::table('invoices')
+            ->where('status','=', 2)
+            ->where('created_at','LIKE', "%{$date1}%")
+            ->get();
+        $stats = Invoice::select(DB::raw("year(date_time) as year"),DB::raw("SUM(total) as count"))
+            ->where('status',2)
+            ->orderBy('date_time')
+            ->groupBy(DB::raw("year(date_time)"))
+            ->get();
+        return view('dashboard.home.home',compact('dtInvD','acc','dtInv','stats','dtInvS'));
     }
     public function indexAdminDH(){
         return view('dashboard.layout.dashboard-watches');

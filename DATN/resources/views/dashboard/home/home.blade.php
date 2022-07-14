@@ -25,6 +25,10 @@
 @foreach($dtInv as $Inv)
 @php $total+=$Inv->total @endphp
 @endforeach
+@php $revenue=0; @endphp
+@foreach($dtInvS as $Inv)
+@php $revenue += $Inv->total @endphp
+@endforeach
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-lg-3 col-sm-6">
@@ -42,9 +46,9 @@
         <div class="col-lg-3 col-sm-6">
             <div class="card gradient-2">
                 <div class="card-body">
-                    <h3 class="card-title text-white">Net Profit</h3>
+                    <h3 class="card-title text-white">Sale Revenue</h3>
                     <div class="d-inline-block">
-                        <h2 class="text-white">$ 8541</h2>
+                        <h2 class="text-white">$ {{$revenue}}</h2>
                         <p class="text-white mb-0">{{$date->toFormattedDateString()}}</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
@@ -86,7 +90,7 @@
                             <div>
                                 <h4 class="mb-1">Product Sales</h4>
                                 <p>Total Earnings of the Month</p>
-                                <h3 class="m-0">$ 12,555</h3>
+                                <h3 class="m-0">$ {{$total}}</h3>
                             </div>
                             <div>
                                 <ul>
@@ -97,24 +101,9 @@
                             </div>
                         </div>
                         <div class="chart-wrapper">
-                            <canvas id="chart_widget_2"></canvas>
+                            <div id="bar-chart2"></div>
                         </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="w-100 mr-2">
-                                    <h6>Pixel 2</h6>
-                                    <div class="progress" style="height: 6px">
-                                        <div class="progress-bar bg-danger" style="width: 40%"></div>
-                                    </div>
-                                </div>
-                                <div class="ml-2 w-100">
-                                    <h6>iPhone X</h6>
-                                    <div class="progress" style="height: 6px">
-                                        <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

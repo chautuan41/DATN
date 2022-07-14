@@ -15,9 +15,11 @@ use App\Models\Categories;
 use App\Models\Comment;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
+use App\Models\Favourite;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -49,11 +51,11 @@ class HomeController extends Controller
         $dtProT = ProductType::all();
         $dtC = Categories::all();
         $cart = Count(Cart::all());
-        $dtSP = DB::table('invoice_details')
-        ->join('products', 'invoice_details.product', '=', 'products.id')
+        $dtSP = DB::table('products')
+        ->select('products.*')
+        ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
         ->where('invoice_details.status',2)
-        ->orderBy('invoice_details.amount', 'desc')
-        ->skip(0)->take(6)->get();
+        ->skip(0)->take(6)->distinct()->get();
         //dd($dtSP);
         $dtPro = DB::table('products')
         ->orderBy('created_at', 'desc')
@@ -79,8 +81,11 @@ class HomeController extends Controller
         ->select('comments.status','comments.date_time','comments.comment','accounts.full_name','accounts.avatar')
         ->where('product','=', $id)
         ->get();
-        //dd($dtProD);
-        return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro','dtC','cart','dtCm','dtProP'));
+        $dtProR=DB::table('products')
+        ->where('product_type','=', $dtPro->product_type)->distinct()
+        ->get()->skip(0)->take(5);
+        //dd($dtProR);
+        return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro','dtC','cart','dtCm','dtProP','dtProR'));
     }
     public function Comment(Request $req, $id)
     {
@@ -129,6 +134,38 @@ class HomeController extends Controller
         $Acc->save();
         return redirect()->route('user.profile',$id);
     }
+
+    public function showChange($id)
+    {
+        $dtC = Categories::all();
+        $dtProT = ProductType::all();
+        $dtProF = Account::find($id);
+        $cart = Count(Cart::all());
+        return view('user.pages.changepassword',compact('dtProF','dtProT','dtC','cart'));
+        
+    }
+
+    public function changePassword(Request $req, $id)
+    {
+        
+        $Acc=Account::find($id);
+        if(!(Hash::check($req->password, $Acc->password))){
+            return redirect()->back();
+        }
+        if($req->newpassword!=$req->confirmation){
+            return redirect()->back();
+        }
+        $req->validate([
+            'password' => 'required',
+            'newpassword' => 'required|string|min:7',
+            'confirmation' => 'required|same:newpassword',
+        ]);
+        
+        $Acc->password = bcrypt($req->confirmation);
+        $Acc->save();
+        
+        return redirect()->route('user.profile',$id);
+    }
     
     public function addCart(Request $req, $id)
     {
@@ -163,34 +200,69 @@ class HomeController extends Controller
     {
         $dtC = Categories::all();
         $dtProT = ProductType::all();
-        $cart = Count(Cart::all());
+        
         $dtCart = DB::table('products')
         ->join('carts','carts.product','=','products.id')
         ->where('account','=', Auth::user()->id)
+        ->select('products.*','carts.id as icart', 'carts.total','carts.quantity','carts.size')
         ->get();
+        $cart = Count($dtCart);
         //dd($dtCart);
         return view('user.pages.checkout',compact('dtProT','dtC','dtCart','cart'));
     }
-
-    public function favourite()
-    {
-        $dtC = Categories::all();
-        $dtProT = ProductType::all();
-        $cart = Count(Cart::all());
-        $dtCart = DB::table('products')
-        ->join('carts','carts.product','=','products.id')
-        ->where('account','=', Auth::user()->id)
-        ->get();
-        //dd($dtCart);
-        return view('user.pages.cart',compact('dtProT','dtC','dtCart','cart'));
-    }
-
     public function deleteCart($id)
     {
         $delete = Cart::find($id);
         $delete->delete();
         
         return redirect()->route('user.cart');
+    }
+
+    public function favourite()
+    {
+        $dtC = Categories::all();
+        $dtProT = ProductType::all();
+        $dtCart = DB::table('products')
+        ->join('carts','carts.product','=','products.id')
+        ->where('account','=', Auth::user()->id)
+        ->select('products.*','carts.id as icart', 'carts.total','carts.quantity','carts.size')
+        ->get();
+        
+        $dtF = DB::table('products')
+        ->join('favourites','favourites.product','products.id')
+        ->where('account','=', Auth::user()->id)
+        ->select('products.*','favourites.id as ifa')
+        ->distinct()
+        ->get();
+        $cart = Count($dtCart);
+        //dd($dtF);
+        return view('user.pages.cart',compact('dtProT','dtC','dtCart','cart','dtF'));
+    }
+
+    public function addFavourite($id)
+    {
+        $check =DB::table('products')
+        ->join('favourites','favourites.product','products.id')
+        ->where('account','=', Auth::user()->id)
+        ->where('product','=', $id)
+        ->get();
+        //dd($check);
+        if(count($check)>1){
+            Favourite::destroy($check[0]->id);
+        }
+       
+        $f = new Favourite();
+        $f->account=Auth::user()->id;
+        $f->product=$id;
+        $f -> save();
+        return redirect()->route('user.favourite');
+    }
+
+    public function deleteFavourite($id)
+    {
+        $delete = Favourite::find($id);
+        $delete->delete();
+        return redirect()->route('user.favourite');
     }
 
     public function checkout(Request $req)
@@ -255,8 +327,7 @@ class HomeController extends Controller
             $file = $request->file('files');
             $name = $file->getClientOriginalName();
             $exection = $file->getClientOriginalExtension();
-            $file_name= 'user/images/profile/'.$name;
-            
+            $file_name= 'images/profile/'.$name;
             $file->move(public_path('images/profile'), $name);
             $acc = Account::find($request->id);
             $acc->avatar = $file_name;
