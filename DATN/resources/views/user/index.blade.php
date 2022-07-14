@@ -115,7 +115,7 @@
                                             class="tf-ion-ios-search-strong"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#!"><i class="tf-ion-ios-heart"></i></a>
+                                    <a href="{{route('user.favourite.add',['id'=>$SP->id])}}"><i class="tf-ion-ios-heart"></i></a>
                                 </li>
                                 <li >
                                     <a class="like" data-url="{{ route('user.like',$SP->id)}}"><i

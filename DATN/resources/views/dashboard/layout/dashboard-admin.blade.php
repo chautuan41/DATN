@@ -463,7 +463,21 @@
     CKEDITOR.replace('my-editor', options);
     </script> -->
 
-
+    <script>
+    var data = <?= json_encode($stats) ?>;
+    
+    Morris.Bar({
+        element: 'bar-chart2',
+        data: data,
+        xkey: 'year',
+        ykeys: ['count'],
+        labels: ['Cost'],
+        barColors: ['#7571f9'],
+        hideHover: 'auto',
+        gridLineColor: 'transparent',
+        resize: true
+    });
+    </script>
 </body>
 
 </html>

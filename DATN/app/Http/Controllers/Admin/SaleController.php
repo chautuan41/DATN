@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ImportInvoice;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
@@ -39,7 +40,7 @@ class SaleController extends Controller
             ->where('status','=', 1)
             ->where('created_at','LIKE', "%{$date1}%")
             ->get();
-            
+           
             $order = DB::table('invoices')
             ->join('accounts','invoices.account','=','accounts.id')
             ->select('invoices.id','invoices.date_time','invoices.shipping_address','invoices.total','full_name','phone','email')
@@ -52,12 +53,31 @@ class SaleController extends Controller
             ->where('invoices.status','=', 1)
             ->get();
             $tracking=count($tracking);
-            return view('dashboard.sale.index',compact('dtInvD','acc','dtInv','dtIInv','order','tracking'));
+
+           
+            $stats = Invoice::select(DB::raw("hour(date_time) as year"),DB::raw("SUM(total) as count"))
+            ->where('date_time','LIKE', "%{$date1}%")
+            ->where('status',2)
+            ->orderBy('date_time')
+            ->groupBy(DB::raw("hour(date_time)"))
+            ->get();
+
+            $stats1 = ImportInvoice::select(DB::raw("day(date) as year"),DB::raw("SUM(total) as count"))
+            ->where('date','LIKE', "%{$date1}%")
+            ->where('status',1)
+            ->orderBy('date')
+            ->groupBy(DB::raw("day(date)"))
+            ->get();
+            //$stats=array_column($stats, 'count');
+            //dd($stats1);
+            $check=1;
+            return view('dashboard.sale.index',compact('dtInvD','acc','dtInv','dtIInv','order','tracking','stats','stats1','check'));
         }
         return redirect()->back();
     }
 
     public function order(){
+        $check=0;
         $dtInv = DB::table('invoices')
         ->join('accounts','invoices.account','=','accounts.id')
         ->select('invoices.id','invoices.date_time','invoices.shipping_address','invoices.total','full_name','phone','email')
@@ -72,11 +92,12 @@ class SaleController extends Controller
         ->get();
         $tracking=count($tracking);
         //dd($dtInv);
-        return view('dashboard.sale.order',compact('dtInv','order','tracking'));
+        return view('dashboard.sale.order',compact('dtInv','order','tracking','check'));
     }
 
    function orderDetails($id)
    {
+    
     $dtInvD = DB::table('products')
     ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
     ->where('invoice_details.invoice','=', $id)
@@ -89,6 +110,7 @@ class SaleController extends Controller
    }
 
    public function orderTracking(){
+    $check=0;
     $dtInv = DB::table('invoices')
     ->join('accounts','invoices.account','=','accounts.id')
     ->select('invoices.id','invoices.date_time','invoices.shipping_address','invoices.total','full_name','phone','email')
@@ -103,21 +125,21 @@ class SaleController extends Controller
         ->get();
     $order=count($order);
     //dd($dtInv);
-    return view('dashboard.sale.ordertracking',compact('dtInv','order','tracking'));
-}
+    return view('dashboard.sale.ordertracking',compact('dtInv','order','tracking','check'));
+    }
 
-function orderTrackingDetails($id)
-{
-$dtInvD = DB::table('products')
-->join('invoice_details', 'invoice_details.product', '=', 'products.id')
-->where('invoice_details.invoice','=', $id)
-->where('invoice_details.status','=', 1)
-->get();
-//dd($dtInvD);
-return response()->json(['data'=>$dtInvD],200);
-   
-    //return view('dashboard.product.create',compact('dtC','dtB','dtS','dtProT'));
-}
+    function orderTrackingDetails($id)
+    {
+    $dtInvD = DB::table('products')
+    ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
+    ->where('invoice_details.invoice','=', $id)
+    ->where('invoice_details.status','=', 1)
+    ->get();
+    //dd($dtInvD);
+    return response()->json(['data'=>$dtInvD],200);
+    
+        //return view('dashboard.product.create',compact('dtC','dtB','dtS','dtProT'));
+    }
 
    function processed($id){
        
