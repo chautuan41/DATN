@@ -31,50 +31,28 @@
                                     <thead>
                                         <tr>
                                             <th class="">Item Name</th>
-                                            <th class="">Item Quantity</th>
-                                            <th class="">Item Price</th>
                                             <th class="">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php $total=0 @endphp
-                                        @foreach($dtCart as $Cart)
-                                        @php
-                                        $price=$Cart->discount != 0 ? $Cart->discount : $Cart->price;
-                                        $subtotal = $price *$Cart->quantity;
-                                        $total += $subtotal ;
-                                        @endphp
+                                        
+                                        @foreach($dtF as $Cart)
+                                    
+                                    
                                         <tr class="">
                                             <td class="">
 
                                                 <div class="product-info">
                                                     <img width="80" src="{{asset($Cart->image)}}" alt="" />
-                                                    <a href="#!">{{$Cart->product_name}}, {{$Cart->size}}</a>
+                                                    <a href="{{route('user.productdetail',['id'=>$Cart->id])}}">{{$Cart->product_name}} </a>
 
                                                 </div>
                                             </td>
-
-
+                                            
+                                           
                                             <td class="">
-                                               
-                                                    <div class="product-quantity">
-                                                    <div class="col-md-5">
-                                                        <div class="product-quantity-slider">
-                                                            <input id="product-quantity" type="text" value="1"
-                                                                name="quantity" max="5" style="height:34px;">
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </td>
-                                            <td class="">
-                                                ${{number_format($price)}}
-                                            </td>
-
-
-                                            <td class="">
-                                                <a class="product-update btn-solid-border" href="#!">Add to cart</a>
-                                                <a class="product-remove" href="#!">Remove</a>
+                                                <a class="product-update btn-solid-border" href="{{route('user.productdetail',['id'=>$Cart->id])}}">Add to cart</a>
+                                                <a class="product-remove" href="{{route('user.favourite.delete',['id'=>$Cart->ifa])}}">Remove</a>
                                             </td>
                                         </tr>
 

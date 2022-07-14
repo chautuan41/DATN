@@ -12,7 +12,8 @@
     <link href="{{asset('dashboard/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
     <!-- Chartist -->
     <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist/css/chartist.min.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
+    <link rel="stylesheet"
+        href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
 
@@ -96,7 +97,7 @@
     <script src="{{asset('dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js')}}"></script>
 
     <script src="{{asset('dashboard/js/dashboard/dashboard-1.js')}}"></script>
-    
+
     <!-- Bootstrap 3.1 -->
     <script src="{{asset('user/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -126,6 +127,38 @@
             event.preventDefault();
     })
     </script>
+    @if ($check == 1) 
+    <script>
+    var data = <?= json_encode($stats) ?>;
+    
+    Morris.Bar({
+        element: 'bar-chart',
+        data: data,
+        xkey: 'year',
+        ykeys: ['count'],
+        labels: ['Aturnover'],
+        barColors: ['#7571f9'],
+        hideHover: 'auto',
+        gridLineColor: 'transparent',
+        resize: true
+    });
+    </script>
+    <script>
+    var data = <?= json_encode($stats1) ?>;
+    
+    Morris.Bar({
+        element: 'bar-chart1',
+        data: data,
+        xkey: 'year',
+        ykeys: ['count'],
+        labels: ['Cost'],
+        barColors: ['#FC6C8E'],
+        hideHover: 'auto',
+        gridLineColor: 'transparent',
+        resize: true
+    });
+    </script>
+    @endif
 </body>
 
 </html>

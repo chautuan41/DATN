@@ -117,4 +117,32 @@
         </div><!-- /.modal -->
     </div>
 </div>
+<script>
+    $('.abc').on('click', function() {
+        var data = $(this).attr('data-url');
+        $.ajax({
+                url: data, // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
+                type: "get", // phương thức gửi dữ liệu.
+                dataType: "json",
+                success: function(response) {
+                    $('#cthd').html("");
+                    $.each(response.data, function(key, item) {
+                        $('#cthd').append('<tr>\
+                        <th>' + item.invoice + '</th>\
+                        <td>' + item.product_name + '</td>\
+                        <td>' + item.size + '</td>\
+                        <td>' + item.amount + '</td>\
+                        <td>$' + item.price + '</td>\
+                        <td>$' + item.total + '</td>\
+                    \</tr>');
+                    });
+                },
+                error: function(data, textStatus, errorThrown) {},
+            }),
+            event.preventDefault();
+    })
+
+    
+
+    </script>
 @endsection

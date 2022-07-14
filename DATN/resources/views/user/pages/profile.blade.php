@@ -47,7 +47,7 @@
                                 <li><span>Date of Birth:</span>{{$dtProF->date_of_birth}}</li>
                                 <li><a class="btn btn-main btn-small btn-round-full btn-solid-border " href="{{route('user.profile.edit',['id'=>$dtProF->id])}}">Edit
                                         Profile</a>
-                                    <a class="btn btn-main btn-small btn-round-full btn-solid-border " href="#">Change
+                                    <a class="btn btn-main btn-small btn-round-full btn-solid-border " href="{{route('user.profile.change',['id'=>$dtProF->id])}}">Change 
                                         Password</a>
                                 </li>
                             </ul>
