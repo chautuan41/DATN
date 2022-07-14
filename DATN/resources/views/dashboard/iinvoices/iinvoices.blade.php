@@ -62,8 +62,17 @@
                                 <tr>
                                     <td>{{$iin->date}}</td>
                                     <td>{{$iin->total}}</td>
-                                    <td>{{$iin->account}}</td>
-                                    <td>{{$iin->supplier}}</td>
+                                    @foreach($Acc as $acc)
+                                    @if($acc->id == $iin->account)
+                                    <td>{{$acc->email}}</td>
+                                    @endif
+                                    @endforeach
+
+                                    @foreach($Sup as $sup)
+                                    @if($sup->id == $iin->supplier)
+                                    <td>{{$sup->supplier_name}}</td>
+                                    @endif
+                                    @endforeach
                                     <td>{{$iin->status}}</td>
                                     <td>
                                         <!-- <a href="#"

@@ -11,6 +11,7 @@ use App\Models\Supplier;
 use App\Models\Categories;
 use App\Models\ProductType;
 use App\Models\Brand;
+use App\Models\Account;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -22,18 +23,26 @@ class ImportInvoiceController extends Controller
 {
     public function listIInvoices(){
         $lsIInvoice = ImportInvoice::all();
-        return view('dashboard.iinvoices.iinvoices',compact('lsIInvoice'));
+        $Sup = Supplier::all();
+        $Acc=Account::all();
+        return view('dashboard.iinvoices.iinvoices',compact('lsIInvoice','Sup','Acc'));
     }
 
     public function listWaitIInvoices(){
         $lsIInvoice = ImportInvoice::all();
-        return view('dashboard.iinvoices.waitii',compact('lsIInvoice'));
+        $Sup = Supplier::all();
+        $Acc=Account::all();
+        return view('dashboard.iinvoices.waitii',compact('lsIInvoice','Sup','Acc'));
     }
 
     public function listIIStaff(){
         $lsIInvoice = ImportInvoice::all();
-        return view('dashboard.iinvoices.iistaff',compact('lsIInvoice'));
+        $Sup = Supplier::all();
+        $Acc=Account::all();
+        return view('dashboard.iinvoices.iistaff',compact('lsIInvoice','Sup','Acc'));
     }
+
+    
 
     public function formAddIInvoices(){
         $Pro = Product::all();
@@ -79,7 +88,7 @@ class ImportInvoiceController extends Controller
         $Pro->save();
 
         $II = ImportInvoice::find($request->import_invoice);
-        $II->total = $request->price * $request->amount;
+        $II->total += $request->price * $request->amount;
         $II->save();
 
         return response()->json([
