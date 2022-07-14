@@ -3,6 +3,7 @@
 <div class="row page-titles mx-0">
     <div class="col p-md-0">
         <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Product</a></li>
         </ol>
     </div>
@@ -48,6 +49,7 @@
                                     <th>Amount</th>
                                     <th>Discount</th>
                                     <th>Image</th>
+                                    <th>Image Details</th>
                                     <!-- <th>Categorie</th>
                                     <th>Product Type</th>
                                     <th>Supplier</th>
@@ -70,6 +72,7 @@
                                     <td>
                                         <img src="{{asset($product->image)}}" style="width:70px;height:70px;border-radius:100%;" alt="">
                                     </td>
+                                    <td><a href="{{route('admin.images',['product_id'=>$product->id])}}">View Images</a></td>
                                     <!-- <td>{{$product->categories}}</td>
                                     <td>{{$product->product_type}}</td>
                                     <td>{{$product->supplier}}</td>
@@ -102,6 +105,7 @@
                                     <th>Amout</th>
                                     <th>Discount</th>
                                     <th>Image</th>
+                                    <th>Image Details</th>
                                     <!-- <th>Categorie</th>
                                     <th>Product Type</th>
                                     <th>Supplier</th>

@@ -73,8 +73,7 @@ class HomeController extends Controller
         ->join('products', 'sizes.product', '=', 'products.id')
         ->where('products.id','=', $id)->get();
         $dtProP = DB::table('pictures')
-        ->join('products', 'pictures.product', '=', 'products.id')
-        ->where('products.id','=', $id)->get();
+        ->where('product','=', $id)->get();
         $dtCm=DB::table('comments')
         ->join('accounts', 'comments.account', '=', 'accounts.id')
         ->select('comments.status','comments.date_time','comments.comment','accounts.full_name','accounts.avatar')

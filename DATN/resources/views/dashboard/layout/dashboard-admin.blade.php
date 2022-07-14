@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>2001</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/icon.jpg')}}">
@@ -92,7 +93,7 @@
                     <ul class="clearfix">
                         <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
                                 <i class="mdi mdi-email-outline"></i>
-                                <span class="badge badge-pill gradient-1">3</span>
+                                <!-- <span class="badge badge-pill gradient-1">3</span> -->
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-heading d-flex justify-content-between">
@@ -151,7 +152,7 @@
                         <li class="icons dropdown">
                             <a href="javascript:void(0)" data-toggle="dropdown">
                                 <i class="mdi mdi-bell-outline"></i>
-                                <span class="badge badge-pill gradient-2">3</span>
+                                <!-- <span class="badge badge-pill gradient-2">3</span> -->
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
                                 <div class="dropdown-content-heading d-flex justify-content-between">
@@ -326,11 +327,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('admin.listCategories')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Categories</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{route('admin.listProductType')}}" aria-expanded="false">
                             <i class="icon-menu menu-icon"></i><span class="nav-text">Product Type</span>
                         </a>
@@ -448,7 +444,7 @@
     <script src="{{asset('dashboard/js/dashboard/dashboard-1.js')}}"></script>
     <!-- <script src="{{asset('dashboard/ckeditor/ckeditor.js')}}"></script> -->
     <!-- <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script> -->
-    
+
     <!-- <script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script> -->
     <!-- <script>
     CKEDITOR.replace(ckeditor01);

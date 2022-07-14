@@ -1,4 +1,4 @@
-@extends('dashboard.layout.dashboard-watches')
+@extends('dashboard.layout.dashboard-seller')
 @section('content')
 
 <div class="container-fluid">
@@ -7,7 +7,7 @@
     </div>
     <ul class="app-breadcrumb breadcrumb" style="background-color:#fff">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#">Staff</a></li>
     </ul>
 </div>
 
@@ -29,7 +29,7 @@
                     <div class="alert alert-danger">{{ $error }}</div>
                 @endforeach
             @endif
-            <form acction="{{route('admin.handleChangePWWC',['id_staff'=>$lsStaff->id])}}"  method="POST">
+            <form acction="{{route('admin.handleChangePWSL',['id_staff'=>$lsStaff->id])}}"  method="POST">
                 {{ csrf_field() }}
                   <div class="form-group">
                     <label for="exampleInputEmail1">Current Password</label>

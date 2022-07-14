@@ -144,7 +144,7 @@
                 <a href="product-single.html"></a>
                 <div class="product-item">
                     <div class="product-thumb">
-                        <img class="img-responsive" src="../user/images/shop/products/TO1_C.jpg" alt="product-img" />
+                        <img class="img-responsive" src="{{asset($SP->image)}}" alt="product-img" />
                         <div class="preview-meta">
                             <ul>
                                 <li>

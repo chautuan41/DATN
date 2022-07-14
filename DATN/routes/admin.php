@@ -13,21 +13,19 @@ Route::group(['prefix' => '/'], function () {
     Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
 
 
-    
 
     Route::group(['middleware' => ['auth:admin']], function(){
         
+        
+
         Route::get('/',[Admin\AdminController::class,'indexAdmin'])->name('admin.index');
+        Route::get('layout/{id}',[Admin\AdminController::class,'indexLayoutAdmin'])->name('admin.indexLayoutAdmin');
         Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
         Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
         Route::get('warehouse',[Admin\AdminController::class,'indexAdminWH'])->name('admin.indexWH');
 
-        
-        Route::group(['prefix' => 'output-invoice'], function() {
-            Route::get('/',[Admin\InvoiceController::class,'listOInvoices'])->name('admin.listOInvoices');
-            Route::get('search',[Admin\InvoiceController::class,'searchOInvoices'])->name('admin.searchOInvoices');
-        });
-
+        Route::get('seller',[Admin\AdminController::class,'indexAdminSL'])->name('admin.indexSL');
+        //sale
         Route::group(['prefix' => 'sale'], function() {
             Route::get('/',[Admin\SaleController::class,'index'])->name('admin.sale');
             Route::get('order',[Admin\SaleController::class,'order'])->name('sale.order');
@@ -64,6 +62,17 @@ Route::group(['prefix' => '/'], function () {
             Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoWH'])->name('admin.handlePersonalInfoWH');
             Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWWH'])->name('admin.formChangePWWH');
             Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWWH'])->name('admin.handleChangePWWH');
+        });
+
+        // -- Seller -- //
+        Route::group(['prefix' => 'seller'], function() {
+            Route::get('information/{id_staff}',[Admin\AdminController::class,'personalInfoSL'])->name('admin.personalInfoSL');
+            Route::post('information/{id_staff}',[Admin\AdminController::class,'handlePersonalInfoSL'])->name('admin.handlePersonalInfoSL');
+            Route::get('changepw/{id_staff}',[Admin\AdminController::class,'formChangePWSL'])->name('admin.formChangePWSL');
+            Route::post('changepw/{id_staff}',[Admin\AdminController::class,'handleChangePWSL'])->name('admin.handleChangePWSL');
+            Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
+            Route::get('cart/{id}',[Admin\CartController::class,'invoicedetails'])->name('admin.cart.get');
+            Route::get('processed/{id}',[Admin\CartController::class,'processed'])->name('admin.cart.post');
         });
 
         // -- Account -- //
@@ -109,6 +118,9 @@ Route::group(['prefix' => '/'], function () {
             Route::get('delete/{product_id}',[Admin\ProductController::class, 'deleteProduct'])->name('admin.deleteProduct');
             Route::get('edit/{product_id}',[Admin\ProductController::class, 'formEditProduct'])->name('admin.formEditProduct');
             Route::post('edit/{product_id}',[Admin\ProductController::class, 'handleEditProduct'])->name('admin.handleEditProduct');
+            Route::get('product-images/{product_id}',[Admin\ProductController::class, 'images'])->name('admin.images');
+            Route::get('delete-product-images/{product_id}',[Admin\ProductController::class, 'deleteImages'])->name('admin.deleteImages');
+            Route::post('add-product-images/{product_id}',[Admin\ProductController::class, 'addImages'])->name('admin.addImages');
             Route::get('search',[Admin\ProductController::class,'searchProduct'])->name('admin.searchProduct');
             // Route::group(['prefix' => 'laravel-filemanager', 'middleware'] , function () {
             //     \UniSharp\LaravelFilemanager\Lfm::routes();

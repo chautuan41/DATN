@@ -16,11 +16,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="header-left ">
+                    <!-- <div class="header-left ">
                         <p>
                             <a href="{{route('admin.formAddUser')}}" class="btn btn-primary pull-right">Add User</a>
                         </p>
-                    </div>
+                    </div> -->
                     <div class="header-content clearfix">
                         <div>
                             <div class="header-right">
@@ -62,10 +62,10 @@
                                     <td>{{$user->address}}</td>
                                     <td>{{$user->status}}</td>
                                     <td>
-                                        <a href="{{route('admin.formEditUser',['id_user' => $user->id])}}"
+                                        <!-- <a href="{{route('admin.formEditUser',['id_user' => $user->id])}}"
                                             data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
+                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp; -->
                                         <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
                                                 href="{{route('admin.deleteUser',['id_user' => $user->id])}}"
                                                 data-toggle="tooltip" data-placement="top" title="Delete"><i
