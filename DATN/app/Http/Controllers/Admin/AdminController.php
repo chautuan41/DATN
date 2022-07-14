@@ -1,15 +1,14 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Account;
+
 use App\Models\InvoiceDetail;
 use App\Models\Invoice;
 use App\Models\Categories;
@@ -20,6 +19,7 @@ class AdminController extends Controller
         $CT = Categories::all();
         return view('dashboard.layout.dashboard-admin',compact('CT'));
     }
+
 
     public function indexAdmin(){
         $dtInvD = DB::table('invoice_details')

@@ -57,8 +57,11 @@ class SearchController extends Controller
        }
        else{
         $dtSP=DB::table('products')
+        ->join('product_types','product_types.id','products.product_type')
         ->where('product_name', 'LIKE', "%{$request->country_name}%")
+        ->orwhere('product_type_name', 'LIKE', "%{$request->country_name}%")
         ->get();
+        
          $dtC = Categories::all();
          $dtProT = ProductType::all();
          $cart = Count(Cart::all());

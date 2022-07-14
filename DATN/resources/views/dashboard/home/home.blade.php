@@ -18,7 +18,6 @@
         </div>
     </div>
 </div>
-
 @php $count=0; $date=now(); $total=0; @endphp
 @foreach($dtInvD as $InvD)
 @php $count+=$InvD->amount @endphp

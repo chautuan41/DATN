@@ -51,11 +51,13 @@ class HomeController extends Controller
         $cart = Count(Cart::all());
         $dtSP = DB::table('invoice_details')
         ->join('products', 'invoice_details.product', '=', 'products.id')
-        ->where('invoice_details.status',1)
+        ->where('invoice_details.status',2)
         ->orderBy('invoice_details.amount', 'desc')
         ->skip(0)->take(6)->get();
         //dd($dtSP);
-        $dtPro = DB::table('products')->orderBy('created_at', 'desc')->skip(0)->take(6)->get();
+        $dtPro = DB::table('products')
+        ->orderBy('created_at', 'desc')
+        ->skip(0)->take(6)->get();
         //dd($total);
         return view('user.index',compact('dtSP','dtPro','dtProT','dtC','cart'));
     }
@@ -70,13 +72,15 @@ class HomeController extends Controller
         $dtProD = DB::table('sizes')
         ->join('products', 'sizes.product', '=', 'products.id')
         ->where('products.id','=', $id)->get();
+        $dtProP = DB::table('pictures')
+        ->where('product','=', $id)->get();
         $dtCm=DB::table('comments')
         ->join('accounts', 'comments.account', '=', 'accounts.id')
         ->select('comments.status','comments.date_time','comments.comment','accounts.full_name','accounts.avatar')
         ->where('product','=', $id)
         ->get();
         //dd($dtProD);
-        return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro','dtC','cart','dtCm'));
+        return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro','dtC','cart','dtCm','dtProP'));
     }
     public function Comment(Request $req, $id)
     {
@@ -95,6 +99,8 @@ class HomeController extends Controller
     
     public function Profile($id)
     {
+        //dd($id);
+        
         $dtC = Categories::all();
         $dtProT = ProductType::all();
         $dtProF = Account::find($id);
@@ -166,6 +172,19 @@ class HomeController extends Controller
         return view('user.pages.checkout',compact('dtProT','dtC','dtCart','cart'));
     }
 
+    public function favourite()
+    {
+        $dtC = Categories::all();
+        $dtProT = ProductType::all();
+        $cart = Count(Cart::all());
+        $dtCart = DB::table('products')
+        ->join('carts','carts.product','=','products.id')
+        ->where('account','=', Auth::user()->id)
+        ->get();
+        //dd($dtCart);
+        return view('user.pages.cart',compact('dtProT','dtC','dtCart','cart'));
+    }
+
     public function deleteCart($id)
     {
         $delete = Cart::find($id);
@@ -229,18 +248,6 @@ class HomeController extends Controller
         return response()->json(['data'=>$dtInvD],200);                      
     }
 
-    public function OrderDetails()
-    {
-        $dtProT = ProductType::all();
-        $dtC = Categories::all();
-        $cart = Count(Cart::all());
-        $dtInvD = DB::table('products')
-        ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
-        ->get();
-        //dd($dtInvD);
-        return view('user.pages.orderdetails',compact('dtProT','dtC','cart','dtInvD'));
-    }
-
     function upload(Request $request)
     {
        
@@ -250,7 +257,7 @@ class HomeController extends Controller
             $exection = $file->getClientOriginalExtension();
             $file_name= 'user/images/profile/'.$name;
             
-            $file->move(public_path('user/images/profile'), $name);
+            $file->move(public_path('images/profile'), $name);
             $acc = Account::find($request->id);
             $acc->avatar = $file_name;
             $acc->save();
@@ -259,10 +266,16 @@ class HomeController extends Controller
         }
         return redirect()->route('user.profile',Auth::user()->id);
         
-        
-
     }
 
+    public function like($id = null)
+    {
+        
+        $like = Product::find($id);
+        $like->like=$like->like + 1;
+        $like->save();
+        
+    }
     
     
 }

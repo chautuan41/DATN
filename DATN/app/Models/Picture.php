@@ -12,5 +12,6 @@ class Picture extends Model
     protected $fillable = [
         'image',
         'product',
+        'status',
     ];
 }

@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content">
-                    <h1 class="page-name">Cart</h1>
+                    <h1 class="page-name">Favourite</h1>
                     <ol class="breadcrumb">
                         <li><a href="index.html">Home</a></li>
-                        <li class="active">cart</li>
+                        <li class="active">Favourite</li>
                     </ol>
                 </div>
             </div>
@@ -33,7 +33,6 @@
                                             <th class="">Item Name</th>
                                             <th class="">Item Quantity</th>
                                             <th class="">Item Price</th>
-                                            <th class="">Subtotal</th>
                                             <th class="">Actions</th>
                                         </tr>
                                     </thead>
@@ -49,19 +48,32 @@
                                             <td class="">
 
                                                 <div class="product-info">
-                                                    <img width="80" src="../user/images/shop/cart/cart-1.jpg" alt="" />
+                                                    <img width="80" src="{{asset($Cart->image)}}" alt="" />
                                                     <a href="#!">{{$Cart->product_name}}, {{$Cart->size}}</a>
 
                                                 </div>
                                             </td>
-                                            <td class="">{{$Cart->quantity}}</td>
+
+
+                                            <td class="">
+                                               
+                                                    <div class="product-quantity">
+                                                    <div class="col-md-5">
+                                                        <div class="product-quantity-slider">
+                                                            <input id="product-quantity" type="text" value="1"
+                                                                name="quantity" max="5" style="height:34px;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </td>
                                             <td class="">
                                                 ${{number_format($price)}}
                                             </td>
-                                            <td class="">${{ number_format($subtotal, 0,'','.') }}</td>
+
 
                                             <td class="">
-                                                <a class="product-update btn-solid-border" href="#!">Update</a>
+                                                <a class="product-update btn-solid-border" href="#!">Add to cart</a>
                                                 <a class="product-remove" href="#!">Remove</a>
                                             </td>
                                         </tr>
@@ -70,48 +82,15 @@
 
                                     </tbody>
 
-                                   
+
 
                                 </table>
 
-                                <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 col-md-3">
-                    <div class="block billing-details">
-                        <h4 class="widget-title">Billing Details</h4>
-                        
-                        <form class="checkout-form">
-                            <div class="form-group">
-                                <label for="full_name">Full Name</label>
-                                <input type="text" class="form-control" id="full_name" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="user_address">Address</label>
-                                <input type="text" class="form-control" id="user_address" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <label for="user_post_code">Phone</label>
-                                <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
-                            </div>
-                            <div class="product-checkout-details">
-                        <div class="block">
-                            <ul class="summary-prices">
-
-                            </ul>
-                            <div class="summary-total">
-                                <span>Total</span>
-                                <span>$250</span>
-                            </div>
-                        </div>
-                    </div>
-                            <a href="confirmation.html" class="btn btn-main mt-20">Place Order</a>
-                        </form>
-                    </div>
-                    
-                </div>
+                
             </div>
         </div>
     </div>

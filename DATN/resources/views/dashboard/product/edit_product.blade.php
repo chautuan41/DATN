@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Image</label>
                 <br>
-                <img src="{{asset('uploads/'.$dt->image)}}" alt="" style="width:250px; height:250px">
+                <img src="{{asset($dt->image)}}" alt="" style="width:250px; height:250px">
             </div>
     </div>
 </div>

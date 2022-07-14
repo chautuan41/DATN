@@ -70,7 +70,7 @@
                                     <td>{{$product->amount}}</td>
                                     <td>{{$product->discount}}</td>
                                     <td>
-                                        <img src="{{asset('uploads/'.$product->image)}}" alt="" style="width:90px; height:90px">
+                                        <img src="{{asset($product->image)}}" style="width:70px;height:70px;border-radius:100%;" alt="">
                                     </td>
                                     <td><a href="{{route('admin.images',['product_id'=>$product->id])}}">View Images</a></td>
                                     <!-- <td>{{$product->categories}}</td>

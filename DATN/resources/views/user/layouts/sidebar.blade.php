@@ -88,34 +88,12 @@
                             </div><!-- / .row -->
                         </div><!-- / .dropdown-menu -->
                     </li><!-- / Men -->
+                    <li class="dropdown ">
+                        <a href="{{route('user.sale')}}" >Sale</a>
+                    </li>
 
 
-
-                    <!-- Blog -->
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                            data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Blog <span
-                                class="tf-ion-ios-arrow-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                            <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                            <li><a href="blog-full-width.html">Blog Full Width</a></li>
-                            <li><a href="blog-grid.html">Blog 2 Columns</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
-                        </ul>
-                    </li><!-- / Blog -->
-
-                    <!-- Shop -->
-                    <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                            data-delay="350" role="button" aria-haspopup="true" aria-expanded="false">Elements <span
-                                class="tf-ion-ios-arrow-down"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="typography.html">Typography</a></li>
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="alerts.html">Alerts</a></li>
-                        </ul>
-                    </li><!-- / Blog -->
+                    
                 </ul><!-- / .nav .navbar-nav -->
 
             </div>

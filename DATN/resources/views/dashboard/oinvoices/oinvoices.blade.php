@@ -53,7 +53,7 @@
                             </thead>
                             <tbody>
                                 @forelse($lsOInvoice as $oin)
-                                @if($oin->status == 1)
+                                @if($oin->status == 2)
                                 <tr>
                                     <td>{{$oin->id}}</td>
                                     <td>{{$oin->shipping_address}}</td>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\InvoiceDetail;
 
 class InvoiceController extends Controller
 {
@@ -27,8 +28,12 @@ class InvoiceController extends Controller
    
     public function searchOInvoices(){
         $search_text=$_GET['query'];
-        $lsOInvoice = Invoice::where('date_time','LIKE','%'.$search_text.'%')->where('status','=',1)->get();
+
+        $lsOInvoice = Invoice::where('date_time','LIKE','%'.$search_text.'%')->where('status','=',2)->get();
         $lsAcc = Account::all();
         return view('dashboard.oinvoices.oinvoices',compact('lsOInvoice','lsAcc'));
+
     }
+
+    
 }

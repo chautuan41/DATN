@@ -33,14 +33,17 @@ class ProductTypeSeeder extends Seeder
                 'categories'=>1,
                 'status'=>1],
 
-            [   'product_type_name'=>'Classic Rolex',
+            [   'product_type_name'=>'Luxury',
                 'categories'=>2,
                 'status'=>1],
-            [   'product_type_name'=>'Professional Rolex',
+            [   'product_type_name'=>'Sport',
                 'categories'=>2,
                 'status'=>1],
 
-            [   'product_type_name'=>'Fragrances',
+            [   'product_type_name'=>'Eau de Parfum',
+                'categories'=>3,
+                'status'=>1],
+            [   'product_type_name'=>'Eau de Toilette',
                 'categories'=>3,
                 'status'=>1],
         ]);

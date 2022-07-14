@@ -78,7 +78,7 @@ public function login(Request $request)
             'role' => 6,
             'status' => 1,
             ], $request->get('remember'))) {
-                return redirect()->intended(route('admin.indexSL'));
+                return redirect()->intended(route('admin.sale'));
             }
         return redirect()->back()->with("error","Login Failed");
         return back()->withInput($request->only('email', 'remember'));

@@ -46,13 +46,14 @@
                 @foreach($IMG as $image)
                 @if($Pro->id == $image->product)
                 <div class="col-lg-4" style="margin:10px">
-                    <img src="/all_images/{{$image->image}}" class="card-img-top"  alt="">
-                    <button class="btn btn-light" style="margin:10px">
-                        <a href="{{route('admin.deleteImages',['product_id'=>$image->id])}}" data-toggle="tooltip"
-                            data-placement="top" title="Delete">
+                    <img src="{{asset($image->image)}}" class="card-img-top"  alt="">
+                    <a href="{{route('admin.deleteImages',['product_id'=>$image->id])}}" data-toggle="tooltip"
+                            data-placement="top" title="Delete" class="btn btn-light" style="margin:10px">
+                    
+                        
                             <i class="fa fa-trash"></i>
-                        </a>
-                    </button>
+                        
+                    </a>
                 </div>
                 @endif
                 @endforeach
