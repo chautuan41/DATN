@@ -12,6 +12,7 @@ use App\Models\Supplier;
 use App\Models\Brand;
 use App\Models\Categories;
 use App\Models\Picture;
+use App\Models\Size;
 
 
 class ProductController extends Controller
@@ -82,6 +83,45 @@ class ProductController extends Controller
         $IMG = Picture::all();
         return view('dashboard.product.all_image',compact('Pro','IMG'));
     }
+
+    public function sizes($product_id){
+        $Pro = Product::find($product_id);
+        $Size = Size::all();
+        return view('dashboard.product.size',compact('Pro','Size'));
+    }
+    public function deleteSizes($product_id){       
+        $Size = Size::find($product_id)->forceDelete();
+        $Pro = Product::find($product_id);
+        $Size = Size::all();
+        return redirect()->back()->with("success","Delete Successful");
+    } 
+
+    public function hideSizes($product_id){       
+        $Size = Size::find($product_id);
+        $Size -> status = 0;
+        $Size -> save();  
+        $Pro = Product::find($product_id);
+        $Size = Size::all();
+        return redirect()->back()->with("success","Delete Successful");
+    }
+
+    public function handleAddSizes(Request $request, $product_id)
+    {
+        $Pro = Product::find($product_id);
+        $Size = Size::all();
+        // Size::create([
+        //     'product'=>$Pro->id,
+        //     'size'=>$request->size,
+        //     'status'=>1
+        // ]);
+        $Size = new Size();
+        $Size->size = $request->size;
+        $Size->product = $Pro->id;
+        $Size->status = 1;
+        $Size -> save();
+        return redirect()->back()->with("success","Add Size successful");
+    }
+
     public function addImages(Request $req, $product_id){
         $Pro = Product::find($product_id);
         $IMG = Picture::all();

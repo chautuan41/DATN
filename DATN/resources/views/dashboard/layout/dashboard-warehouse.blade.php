@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
@@ -67,7 +69,7 @@
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
                     </div>
                 </div>
-                <div class="header-left">
+                <!-- <div class="header-left">
                     <div class="input-group icons">
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
@@ -79,7 +81,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="header-right">
                     <ul class="clearfix">
                         <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
@@ -152,24 +154,21 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <a  href="javascript:void()" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
-                        <ul aria-expanded="false">
+                        <!-- <ul aria-expanded="false">
                             <li><a href="#">Home</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     
                     <li class="nav-label">Table</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">WareHouse Staff</span>
+                    <li>
+                        <a href="{{route('admin.listIIStaff')}}" aria-expanded="false">
+                            <i class="icon-menu menu-icon"></i><span class="nav-text">Input Invoices</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="#" aria-expanded="false">Watches</a></li>
-                            <li><a href="#" aria-expanded="false">Product Types</a></li>
-                            <li><a href="#" aria-expanded="false">Supplier</a></li>
-                        </ul>
+                    </li>
                     </li>
                 </ul>
             </div>

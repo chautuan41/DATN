@@ -23,7 +23,8 @@
                     </div>
                     <div class="header-left " style="margin-bottom:20px;">
                         <p>
-                            <a href="{{route('admin.listConfirmComment')}}" class="btn btn-primary pull-right">Wait for confirmation</a>
+                            <a href="{{route('admin.listConfirmComment')}}" class="btn btn-primary pull-right">Wait for
+                                confirmation</a>
                         </p>
                     </div>
                     <br>
@@ -56,19 +57,17 @@
                                     @endforeach
                                     <td value="{{$comment->status}}">Wait for confirmation</td>
                                     <td>
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.confirmComment',['id_comment'=>$comment->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Comfirm">
-                                                <i class="fa fa-check"></i>
-                                            </a></button>
-
+                                        <a href="{{route('admin.confirmComment',['id_comment'=>$comment->id])}}"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')"
+                                            data-toggle="tooltip" data-placement="top" title="Comfirm">
+                                            <i class="fa fa-check"></i>
+                                        </a>
                                         &emsp;
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.hardDeleteCmt',['id_comment'=>$comment->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="fa fa-trash"></i>
-                                            </a></button>
-
+                                        <a href="{{route('admin.hardDeleteCmt',['id_comment'=>$comment->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @empty

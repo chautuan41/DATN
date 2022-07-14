@@ -66,10 +66,10 @@
                                             data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp; -->
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
-                                                href="{{route('admin.deleteUser',['id_user' => $user->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Delete"><i
-                                                    class="fa fa-trash"></i></a></button>
+                                        <a href="{{route('admin.deleteUser',['id_user' => $user->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Delete"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')"><i
+                                                class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endif

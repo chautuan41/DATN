@@ -57,12 +57,11 @@
                                     @endforeach
                                     <td value="{{$comment->status}}">Confirmed</td>
                                     <td>
-                                        <button class="btn btn-light" onclick="return confirm('Are you sure?')">
-                                            <a href="{{route('admin.cancelComment',['id_comment'=>$comment->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Cancel">
-                                                <i class="fa fa-close color-danger"></i>
-                                            </a>
-                                        </button>
+                                        <a href="{{route('admin.cancelComment',['id_comment'=>$comment->id])}}"
+                                            data-toggle="tooltip" data-placement="top" title="Cancel"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')">
+                                            <i class="fa fa-close color-danger"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @empty

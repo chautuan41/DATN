@@ -60,11 +60,11 @@
                                     <td>
                                         <a class="abc" data-url="{{ route('sale.ordertracking.get',$Inv->id)}}"
                                             data-toggle="modal" data-placement="top" data-target="#product-modal"
-                                            title="View"><i class="fa fa-eye color-muted m-r-5"></i></a>
+                                            title="View" class="btn btn-light"><i class="fa fa-eye color-muted m-r-5"></i></a>
                                     </td>
                                     <td>
                                         <a href="{{ route('sale.confirm',$Inv->id)}}" data-toggle="tooltip"
-                                            data-placement="top" title="Confirm"><i
+                                            data-placement="top" title="Confirm" class="btn btn-light" onclick="return confirm('Are you sure?')"><i
                                                 class="fa fa-check color-muted m-r-5"></i></a>
                                     </td>
                                 </tr>
