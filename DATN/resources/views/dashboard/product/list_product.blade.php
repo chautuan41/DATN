@@ -68,7 +68,7 @@
                                     <td>{{$product->amount}}</td>
                                     <td>{{$product->discount}}</td>
                                     <td>
-                                        <img src="{{asset('uploads/'.$product->image)}}" alt="">
+                                        <img src="{{asset($product->image)}}" style="width:70px;height:70px;border-radius:100%;" alt="">
                                     </td>
                                     <!-- <td>{{$product->categories}}</td>
                                     <td>{{$product->product_type}}</td>

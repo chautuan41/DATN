@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            [   'role_name'=>'Khách Hàng',
+            [   'role_name'=>'Customer',
                 'status'=>1],
             [   'role_name'=>'Admin',
                 'status'=>1],
@@ -27,7 +27,7 @@ class RoleSeeder extends Seeder
                 'status'=>1],
             [   'role_name'=>'Admin Seller',
                 'status'=>1],
-            [   'role_name'=>'Nhân viên kho',
+            [   'role_name'=>'Saler',
                 'status'=>1],
             [   'role_name'=>'Nhân viên bán hàng',
                 'status'=>1],

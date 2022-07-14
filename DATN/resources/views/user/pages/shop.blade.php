@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="content">
-                    <h1 class="page-name">Shop</h1>
+                    <h1 class="page-name">{{$title}}</h1>
                     <ol class="breadcrumb">
                         <li><a href="/">Home</a></li>
                         <li class="active">shop</li>
@@ -25,7 +25,10 @@
             <div class="col-md-4">
                 <div class="product-item">
                     <div class="product-thumb">
-                        <img class="img-responsive" src="../user/images/shop/products/TO1_C.jpg" alt="product-img" />
+                        @if($SP->discount!=0)
+                        <span class="bage">Sale</span>
+                        @endif
+                        <img class="img-responsive" src="{{asset($SP->image)}}" alt="product-img" />
                         <div class="preview-meta">
                             <ul>
                                 <li>
@@ -43,7 +46,7 @@
                     </div>
                     <div class="product-content">
                         <h4><a href="product-single.html">{{$SP->product_name}}</a></h4>
-                        <p class="price">${{$SP->price}}</p>
+                        <p class="price">${{number_format($SP->discount != 0 ? $SP->discount : $SP->price)}}</p>
                     </div>
                 </div>
             </div>
@@ -51,4 +54,5 @@
         </div>
     </div>
 </section>
+{{$dtSP->links('name')}}
 @endsection

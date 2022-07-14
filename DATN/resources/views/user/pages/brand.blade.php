@@ -62,7 +62,7 @@
                     <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-thumb">
-                                <img class="img-responsive" src="{{asset('user/images/shop/products/TO1_C.jpg')}}"
+                                <img class="img-responsive" src="{{asset($Pro->image)}}"
                                     alt="product-img" />
                                 <div class="preview-meta">
                                     <ul>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="product-content">
                                 <h4><a href="{{route('user.productdetail',['id'=>$Pro->id])}}">{{$Pro->product_name}}</a></h4>
-                                <p class="price">${{$Pro->price}}</p>
+                                <p class="price">${{number_format($Pro->discount != 0 ? $Pro->discount : $Pro->price)}}</p>
                             </div>
                         </div>
                     </div>
@@ -89,6 +89,7 @@
                 </div>
             </div>
         </div>
+        {{$dtPro->links('name')}}
     </div>
 </section>
 @endsection

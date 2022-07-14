@@ -23,40 +23,46 @@ class ShopController extends Controller
     //
     public function shopWomen()
     {
+        $title="Women";
         $cart = Count(Cart::all());
         $dtC = Categories::all();
-        //dtSP = Product::where('gender', 2)->get();
-        //dd($dtSP);
         $dtProT = ProductType::all();
 
-        $users = Product::where('status', 1)->get();
+        $dtSP = DB::table('products')
+        ->where('products.status','=', 1)
+        ->where('products.gender','=', 0)
+        ->paginate(9);
 
-        $dtSP = $users->reject(function ($user) {
-            return $user->gender === 0;
-        })->map(function ($user) {
-            return $user;
-        });
-        return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart'));
+        return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
     }
     public function shopMen()
     {
+        $title="Men";
         $cart = Count(Cart::all());
         $dtC = Categories::all();
-        //dtSP = Product::where('gender', 2)->get();
-        //dd($dtSP);
         $dtProT = ProductType::all();
 
-        $users = Product::where('status', 1)->get();
+        $dtSP=DB::table('products')
+        ->where('products.status','=', 1)
+        ->where('products.gender','=', 1)
+        ->paginate(9);
 
-        $dtSP = $users->reject(function ($user) {
-            return $user->gender === 1;
-        })->map(function ($user) {
-            return $user;
-        });
-        //dd($Pro);
-        return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart'));
+        return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
     }
-  
+    public function sale()
+    {
+        $title="Sale";
+        $cart = Count(Cart::all());
+        $dtC = Categories::all();
+        $dtProT = ProductType::all();
+
+        $dtSP = DB::table('products')
+        ->where('products.status','=', 1)
+        ->where('products.discount','!=', 0)
+        ->paginate(9);
+
+        return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
+    }
     public function CategoriesWomen($id)
     {
         $cart = Count(Cart::all());
@@ -68,7 +74,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.categories','=', $id)
         ->where('products.gender','=', 0)
-        ->get();
+        ->paginate(9);
         //dd($dtPro);
         
         return view('user.pages.categories',compact('dtCid','dtProT','dtPro','dtC','cart','dtB'));
@@ -85,7 +91,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.categories','=', $id)
         ->where('products.gender','=', 1)
-        ->get();
+        ->paginate(9);
         //dd($dtPro);
         
         return view('user.pages.categories',compact('dtCid','dtProT','dtPro','dtC','cart','dtB'));
@@ -102,7 +108,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.product_type','=', $id)
         ->where('products.gender','=', 0)
-        ->get();
+        ->paginate(9);
         //dd($dtPro);
         
         return view('user.pages.producttype',compact('dtProTid','dtProT','dtPro','dtC','cart','dtB'));
@@ -119,7 +125,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.product_type','=', $id)
         ->where('products.gender','=', 1)
-        ->get();
+        ->paginate(9);
         //dd($dtPro);
         
         return view('user.pages.producttype',compact('dtProTid','dtProT','dtPro','dtC','cart','dtB'));
@@ -135,7 +141,7 @@ class ShopController extends Controller
         $dtPro = DB::table('brands')
         ->join('products', 'products.brand', '=', 'brands.id')
         ->where('products.brand','=', $id)
-        ->get();
+        ->paginate(9);
         //dd($dtPro);
         
         return view('user.pages.brand',compact('dtBid','dtProT','dtPro','dtC','cart','dtB'));

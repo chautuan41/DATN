@@ -58,7 +58,7 @@
                     @if (Auth::check())
                     <!-- Search -->
                     <li class="dropdown dropdown-slide">
-                        <a href="#!" class="dropdown-toggle"><i class="tf-ion-ios-heart"></i>{{$cart}}</a>
+                        <a href="#!" class="dropdown-toggle"><i class="tf-ion-ios-heart"></i>2</a>
                     </li><!-- / Search -->
 
                     <!-- Search -->

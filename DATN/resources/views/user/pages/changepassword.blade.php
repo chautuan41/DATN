@@ -50,7 +50,7 @@
                                         placeholder="Password" required>
                                     </div>
                                     <div class="form-group">
-                                        <span>onfirm Password:</span><input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"
+                                        <span>Confirm Password:</span><input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"
                                         placeholder="Confirm Password" required>
                                     </div>
                                     <div class="form-group">

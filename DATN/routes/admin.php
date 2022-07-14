@@ -12,21 +12,31 @@ Route::group(['prefix' => '/'], function () {
 
     Route::get('logout', [Admin\LoginController::class, 'logout'])->name('admin.logout');
 
-    Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
 
+    
 
     Route::group(['middleware' => ['auth:admin']], function(){
         
-
         Route::get('/',[Admin\AdminController::class,'indexAdmin'])->name('admin.index');
         Route::get('watches',[Admin\AdminController::class,'indexAdminDH'])->name('admin.indexDH');
         Route::get('clothing',[Admin\AdminController::class,'indexAdminCL'])->name('admin.indexCL');
         Route::get('warehouse',[Admin\AdminController::class,'indexAdminWH'])->name('admin.indexWH');
 
-        Route::get('cart',[Admin\CartController::class,'index'])->name('admin.cart');
-        Route::get('cart/{id}',[Admin\CartController::class,'invoicedetails'])->name('admin.cart.get');
-        Route::get('processed/{id}',[Admin\CartController::class,'processed'])->name('admin.cart.post');
+        
+        Route::group(['prefix' => 'output-invoice'], function() {
+            Route::get('/',[Admin\InvoiceController::class,'listOInvoices'])->name('admin.listOInvoices');
+            Route::get('search',[Admin\InvoiceController::class,'searchOInvoices'])->name('admin.searchOInvoices');
+        });
 
+        Route::group(['prefix' => 'sale'], function() {
+            Route::get('/',[Admin\SaleController::class,'index'])->name('admin.sale');
+            Route::get('order',[Admin\SaleController::class,'order'])->name('sale.order');
+            Route::get('order/{id}',[Admin\SaleController::class,'orderDetails'])->name('sale.order.get');
+            Route::get('order-tracking',[Admin\SaleController::class,'orderTracking'])->name('sale.ordertracking');
+            Route::get('order-tracking/{id}',[Admin\SaleController::class,'orderTrackingDetails'])->name('sale.ordertracking.get');
+            Route::get('processed/{id}',[Admin\SaleController::class,'processed'])->name('sale.processed');
+            Route::get('confirm/{id}',[Admin\SaleController::class,'confirm'])->name('sale.confirm');
+        });
         // -- Admin -- //
         Route::group(['prefix' => 'admin'], function() {
             Route::get('information/{id_admin}',[Admin\AdminController::class,'personalInfo'])->name('admin.personalInfo');

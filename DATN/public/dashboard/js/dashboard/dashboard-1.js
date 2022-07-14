@@ -144,38 +144,14 @@
       // Morris bar chart
  Morris.Bar({
     element: 'morris-bar-chart',
-    data: [{
-        y: '2016',
-        a: 100,
-        b: 90,
-    }, {
-        y: '2017',
-        a: 75,
-        b: 65,
-    }, {
-        y: '2018',
-        a: 50,
-        b: 40,
-    }, {
-        y: '2019',
-        a: 75,
-        b: 65,
-    }, {
-        y: '2020',
-        a: 50,
-        b: 40,
-    }, {
-        y: '2021',
-        a: 75,
-        b: 65,
-    }, {
+    data: [  {
         y: '2022',
-        a: 100,
-        b: 90,
+        a: 17400,
+        b: 5600,
     }],
     xkey: 'y',
-    ykeys: ['a', 'b', 'c'],
-    labels: ['A', 'B', 'C'],
+    ykeys: ['a', 'b'],
+    labels: ['Cost', 'Aturnover'],
     barColors: ['#FC6C8E', '#7571f9'],
     hideHover: 'auto',
     gridLineColor: 'transparent',

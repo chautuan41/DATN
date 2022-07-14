@@ -51,19 +51,22 @@ class ProductController extends Controller
         if($req->hasfile('image')){
             $file = $req->file('image');
             $extension = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $file->move('uploads/',$filename);
-            $Pro->image = $filename;
+            $filename = $req->sku.'.'.$extension;
+            $file_name= 'images/shop/product/'.$filename;
+            $file->move('images/shop/product/',$filename);
+            $Pro->image = $file_name;
         }
         $Pro -> save();
 
         if($req->hasfile("pictures")){
             $files = $req->file('pictures');
+            $i=1;
             foreach($files as $file){
-                $imageName = time().'_'.$file->getClientOriginalName();
+                $imageName = $req->sku.'-'.$i++.'.'.$file->getClientOriginalExtension();
+                $imageName= 'images/shop/product/picture/'.$imageName;
                 $req['product'] = $Pro->id;
                 $req['link']=$imageName;
-                $file->move(\public_path("/all_images"),$imageName);
+                $file->move('images/shop/product/picture/',$imageName);
                 Picture::create($req->all());
             }
         }
@@ -89,6 +92,7 @@ class ProductController extends Controller
         // if($checkProduct == true){
         //     return redirect()->back()->with("error","Product already exists");
         // }
+        
        $Pro = Product::find($product_id);
        $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
@@ -106,19 +110,22 @@ class ProductController extends Controller
        if($req->hasfile('image')){
         $file = $req->file('image');
         $extension = $file->getClientOriginalExtension();
-        $filename = time().'.'.$extension;
-        $file->move('uploads/',$filename);
-        $Pro->image = $filename;
+        $filename = $req->sku.'.'.$extension;
+        $file_name= 'images/shop/product/'.$filename;
+        $file->move('images/shop/product/',$filename);
+        $Pro->image = $file_name;
     }
        $Pro -> save();
 
        if($req->hasfile("pictures")){
         $files = $req->file('pictures');
+        $i=1;
         foreach($files as $file){
-            $imageName = time().'_'.$file->getClientOriginalName();
+            $imageName = $req->sku.'-'.$i++.'.'.$file->getClientOriginalExtension();
+            $imageName= 'images/shop/product/picture/'.$imageName;
             $req['product'] = $Pro->id;
             $req['link']=$imageName;
-            $file->move(\public_path("/all_images"),$imageName);
+            $file->move('images/shop/product/picture/',$imageName);
             Picture::create($req->all());
         }
     }
@@ -137,7 +144,7 @@ class ProductController extends Controller
    } 
    public function searchProduct(){
         $search_text=$_GET['query'];
-        $lsProduct=Product::where('product_name','LIKE','%'.$search_text.'%')->where('status','=',1)->get();
+        $lsProduct=Product::where('sku','LIKE','%'.$search_text.'%')->where('status','=',1)->get();
         return view('dashboard.product.list_product',compact('lsProduct'));
     }
 

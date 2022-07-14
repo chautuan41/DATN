@@ -80,14 +80,14 @@ class AccountSeeder extends Seeder
                 'role'=>1
             ],
             [   
-                'email'=>'nv01@gmail.com',
+                'email'=>'tuan@sale.com',
                 'password'=>bcrypt('1234567'),
                 'full_name'=>'Tuấn Võ',
                 'phone'=>'0907111111',
                 'address'=>'Thailand',
                 'date_of_birth'=>'11/11/2001',
                 'avatar'=>'empty',
-                'role'=>7
+                'role'=>6
             ],
         ]);
     }

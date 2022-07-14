@@ -11,12 +11,6 @@
                     <li class="active">Single Product</li>
                 </ol>
             </div>
-            <div class="col-md-6">
-                <ol class="product-pagination text-right">
-                    <li><a href="blog-left-sidebar.html"><i class="tf-ion-ios-arrow-left"></i> Next </a></li>
-                    <li><a href="blog-left-sidebar.html">Preview <i class="tf-ion-ios-arrow-right"></i></a></li>
-                </ol>
-            </div>
         </div>
         <div class="row mt-20">
             <div class="col-md-5">
@@ -26,30 +20,18 @@
                             <!-- me art lab slider -->
                             <div class='carousel-inner '>
                                 <div class='item active'>
-                                    <img src='../user/images/shop/single-products/versace.jpg' alt=''
-                                        data-zoom-image="images/shop/single-products/product-1.jpg" />
+                                    <a href="product-single.html" class="pull-right" style="font-size: 30px;"><i
+                                            class="heart tf-ion-ios-heart-outline"></i></a>
+                                    <img src='{{asset($dtPro->image)}}' alt='' data-zoom-image="{{$dtPro->image}}" />
                                 </div>
+                                @foreach($dtProP as $ProP)
                                 <div class='item'>
-                                    <img src='images/shop/single-products/product-2.jpg' alt=''
-                                        data-zoom-image="images/shop/single-products/product-2.jpg" />
+                                <a href="product-single.html" class="pull-right" style="font-size: 30px;"><i
+                                            class="heart tf-ion-ios-heart-outline"></i></a>
+                                    <img src='{{asset($ProP->link)}}' alt='' data-zoom-image="{{$ProP->link}}" />
                                 </div>
+                                @endforeach
 
-                                <div class='item'>
-                                    <img src='images/shop/single-products/product-3.jpg' alt=''
-                                        data-zoom-image="images/shop/single-products/product-3.jpg" />
-                                </div>
-                                <div class='item'>
-                                    <img src='images/shop/single-products/product-4.jpg' alt=''
-                                        data-zoom-image="images/shop/single-products/product-4.jpg" />
-                                </div>
-                                <div class='item'>
-                                    <img src='images/shop/single-products/product-5.jpg' alt=''
-                                        data-zoom-image="images/shop/single-products/product-5.jpg" />
-                                </div>
-                                <div class='item'>
-                                    <img src='images/shop/single-products/product-6.jpg' alt=''
-                                        data-zoom-image="images/shop/single-products/product-6.jpg" />
-                                </div>
 
                             </div>
 
@@ -65,26 +47,13 @@
                         <!-- thumb -->
                         <ol class='carousel-indicators mCustomScrollbar meartlab'>
                             <li data-target='#carousel-custom' data-slide-to='0' class='active'>
-                                <img src='../user/images/shop/single-products/versace.jpg' alt='' />
+                                <img src='{{asset($dtPro->image)}}' alt='' />
                             </li>
+                            @foreach($dtProP as $ProP)
                             <li data-target='#carousel-custom' data-slide-to='1'>
-                                <img src='images/shop/single-products/product-2.jpg' alt='' />
+                                <img src='{{asset($ProP->link)}}' alt='' />
                             </li>
-                            <li data-target='#carousel-custom' data-slide-to='2'>
-                                <img src='images/shop/single-products/product-3.jpg' alt='' />
-                            </li>
-                            <li data-target='#carousel-custom' data-slide-to='3'>
-                                <img src='images/shop/single-products/product-4.jpg' alt='' />
-                            </li>
-                            <li data-target='#carousel-custom' data-slide-to='4'>
-                                <img src='images/shop/single-products/product-5.jpg' alt='' />
-                            </li>
-                            <li data-target='#carousel-custom' data-slide-to='5'>
-                                <img src='images/shop/single-products/product-6.jpg' alt='' />
-                            </li>
-                            <li data-target='#carousel-custom' data-slide-to='6'>
-                                <img src='images/shop/single-products/product-7.jpg' alt='' />
-                            </li>
+                            @endforeach
                         </ol>
                     </div>
                 </div>
@@ -94,16 +63,12 @@
                     @csrf
                     <div class="single-product-details">
                         <h2>{{$dtPro->product_name}}</h2>
-                        <p class="product-price">${{$dtPro->price}}</p>
+                        <p class="product-price">${{number_format($dtPro->discount != 0 ? $dtPro->discount : $dtPro->price)}}</p>
 
                         <p class="product-description mt-20">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ipsum dicta quod, quia
-                            doloremque aut deserunt commodi quis. Totam a consequatur beatae nostrum, earum
-                            consequuntur? Eveniet consequatur ipsum dicta recusandae.
+                            {{$dtPro->description}}
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, velit, sunt temporibus,
-                            nulla accusamus similique sapiente tempora, at atque cumque assumenda minus asperiores est
-                            esse sequi dolore magnam. Debitis, explicabo.</p>
+
 
                         <div class="product-size">
                             <span>Size:</span>
@@ -128,8 +93,11 @@
                                 <li><a href="product-single.html">{{$dtProTid->product_type_name}}</a></li>
                             </ul>
                         </div>
-                        <button type="submit" class="btn btn-main mt-20">Add To Cart</button>
+                        <div class="product-category">
 
+                        </div>
+
+                        <button type="submit" class="btn btn-main mt-20">Add To Cart</button>
                     </div>
                 </form>
             </div>
@@ -146,29 +114,20 @@
                     <div class="tab-content patternbg">
                         <div id="details" class="tab-pane fade active in">
                             <h4>Product Description</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum. Sed ut per spici</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis delectus quidem
-                                repudiandae veniam distinctio repellendus magni pariatur molestiae asperiores animi, eos
-                                quod iusto hic doloremque iste a, nisi iure at unde molestias enim fugit, nulla
-                                voluptatibus. Deserunt voluptate tempora aut illum harum, deleniti laborum animi neque,
-                                praesentium explicabo, debitis ipsa?</p>
+                            <p>{{$dtPro->description}}</p>
+
                         </div>
                         <div id="reviews" class="tab-pane fade">
                             <div class="post-comments">
                                 <ul class="media-list comments-list m-bot-50 clearlist">
                                     <!-- Comment Item start-->
                                     @foreach($dtCm as $cm)
-                                    
+
                                     @if($cm->status == 1)
                                     <li class="media">
                                         <a class="pull-left" href="#!">
-                                            <img class="media-object comment-avatar" src="images/blog/{{$cm->avatar}}"
-                                                alt="" width="50" height="50" />
+                                            <img class="media-object comment-avatar" src="{{asset($cm->avatar)}}" alt=""
+                                                width="50" height="50" />
                                         </a>
                                         <div class="media-body">
                                             <div class="comment-info">
@@ -187,8 +146,8 @@
                                     @else
                                     <li class="media">
                                         <a class="pull-left" href="#!">
-                                            <img class="media-object comment-avatar" src="images/blog/{{$cm->avatar}}"
-                                                alt="" width="50" height="50" />
+                                            <img class="media-object comment-avatar" src="{{asset($cm->avatar)}}" alt=""
+                                                width="50" height="50" />
                                         </a>
                                         <div class="media-body">
                                             <div class="comment-info">
@@ -198,7 +157,7 @@
                                                 <time datetime="2013-04-06T13:53">{{$cm->date_time}}</time>
                                             </div>
                                             <p>
-                                            Comments awaiting moderation
+                                                Comments awaiting moderation
                                             </p>
                                         </div>
                                     </li>

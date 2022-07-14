@@ -33,7 +33,7 @@
                      @endphp
                      <div class="media product-card">
                         <a class="pull-left" href="product-single.html">
-                           <img class="media-object" src="../user/images/shop/cart/cart-1.jpg" alt="Image" />
+                           <img class="media-object" src="{{asset($Cart->image)}}" alt="Image" />
                         </a>
                         <div class="media-body">
                            <h4 class="media-heading"><a href="product-single.html">{{$Cart->product_name}}</a></h4>

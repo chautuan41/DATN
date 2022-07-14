@@ -18,37 +18,43 @@ class SupplierSeeder extends Seeder
         DB::table('suppliers')->insert([
             [   
                 
-                'supplier_name'=>'Gucci',
+                'supplier_name'=>'Adidas',
                 'phone'=>'053999999',
                 'address'=>'Italia',
                 'status'=>1],
             [   
                 
-                'supplier_name'=>'Dior',
+                'supplier_name'=>'Audemars Piguet',
                 'phone'=>'053888888',
                 'address'=>'France',
                 'status'=>1],
             [   
                 
-                'supplier_name'=>'Louis Vuitton',
+                'supplier_name'=>'Balenciaga',
                 'phone'=>'054777777',
                 'address'=>'France',
                 'status'=>1],
             [   
                 
-                'supplier_name'=>'Rolex',
+                'supplier_name'=>'Burberry',
                 'phone'=>'054777777',
                 'address'=>'Switzerland ',
                 'status'=>1],
             [   
                 
-                'supplier_name'=>'Versace',
+                'supplier_name'=>'Catier',
                 'phone'=>'054777777',
                 'address'=>'Italia',
                 'status'=>1],
             [   
                 
-                'supplier_name'=>'Sanint Laurent',
+                'supplier_name'=>'Chanel',
+                'phone'=>'054777777',
+                'address'=>'Italia',
+                'status'=>1],  
+            [   
+                
+                'supplier_name'=>'Fear Of God',
                 'phone'=>'054777777',
                 'address'=>'Italia',
                 'status'=>1],  
@@ -60,19 +66,19 @@ class SupplierSeeder extends Seeder
                 'status'=>1],  
             [   
                 
-                'supplier_name'=>'Adidas',
+                'supplier_name'=>'Rolex',
                 'phone'=>'054777777',
                 'address'=>'Italia',
                 'status'=>1],  
             [   
                 
-                'supplier_name'=>'Puma',
+                'supplier_name'=>'Saint Laurent',
                 'phone'=>'054777777',
                 'address'=>'Italia',
                 'status'=>1],  
             [   
-                
-                'supplier_name'=>'Fear Of God',
+            
+                'supplier_name'=>'Versace',
                 'phone'=>'054777777',
                 'address'=>'Italia',
                 'status'=>1],  
