@@ -30,21 +30,7 @@
                         <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                         @endif
-                        <form method="post" action="{{route('admin.handleAddSizes',['product_id'=>$Pro->id])}}">
-                            @csrf
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Size</label>
-                                <input class="form-control" name="size" type="text" value=""
-                                    placeholder="Size" required>
-                                @if($errors->has('size'))
-                                <span>{{$errors->first('size')}}</span>
-                                @endif
-                            </div>
-                            <div class="tile-footer">
-                                <button type="submit" class="btn btn-primary"
-                                    onclick="return confirm('Are you sure?')">Add Size</button>
-                            </div>
-                        </form>
+                        
                     </div>
                 </div>
 
@@ -96,8 +82,9 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>#</th>
+                                <th>#</th>
                                     <th>Size</th>
+                                    <th>Amount</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>

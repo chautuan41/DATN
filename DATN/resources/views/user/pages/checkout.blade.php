@@ -94,6 +94,8 @@
                                     value="{{ Auth::user()->id }}">
                                 <input type="hidden" class="form-control" id="full_name" name="total"
                                     value="{{ $total }}">
+                                    <input type="hidden" class="form-control" id="full_name" name="email"
+                                    value="{{ Auth::user()->email }}">
                             </div>
                             <button type="submit" class="btn btn-main mt-20">Proceed to checkout</button>
 

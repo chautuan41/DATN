@@ -98,51 +98,6 @@
         </div>
         <div class="row">
             <div class="title text-center">
-                <h2>New Products</h2>
-            </div>
-        </div>
-        <div class="row">
-            @foreach($dtPro as $SP)
-            <div class="col-md-4">
-                <a href="#"></a>
-                <div class="product-item">
-
-                    <div class="product-thumb">
-
-                        @if($SP->discount!=0)
-
-                        <span class="bage">Sale</span>
-                        @endif
-                        <img class="img-responsive" src="{{asset($SP->image)}}" alt="product-img1"
-                            style="height: 500px;" />
-                        <div class="preview-meta">
-                            <ul>
-                                <li>
-                                    <a href="{{route('user.productdetail',['id'=>$SP->id])}}"><i
-                                            class="tf-ion-ios-search-strong"></i></a>
-                                </li>
-                                <li>
-                                    <a href="{{route('user.favourite.add',['id'=>$SP->id])}}"><i
-                                            class="tf-ion-ios-heart"></i></a>
-                                </li>
-                                <li>
-                                    <a class="like" data-url="{{ route('user.like',$SP->id)}}"><i
-                                            class="tf-ion-thumbsup"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div class="product-content">
-                        <h4><a href="#">{{$SP->product_name}}</a></h4>
-                        <p class="price">${{number_format($SP->discount != 0 ? $SP->discount : $SP->price)}}</p>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="row">
-            <div class="title text-center">
                 <h2>Featured products</h2>
             </div>
         </div>
