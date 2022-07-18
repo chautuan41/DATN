@@ -15,9 +15,10 @@ class CreateSizesTable extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('size');
+            $table->string('size',5);
+            $table->integer('amount')->default(50);
             $table->integer('product')->unsigned();
-            $table->integer('status')->nullable()->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
 

@@ -63,7 +63,7 @@
                         <div class="product-item">
                             <div class="product-thumb">
                                 <img class="img-responsive" src="{{asset($Pro->image)}}"
-                                    alt="product-img" />
+                                    alt="product-img" style="height:400px;"/>
                                 <div class="preview-meta">
                                     <ul>
                                         <li>

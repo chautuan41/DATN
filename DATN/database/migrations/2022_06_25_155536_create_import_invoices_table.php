@@ -15,11 +15,11 @@ class CreateImportInvoicesTable extends Migration
     {
         Schema::create('import_invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('date');
+            $table->string('date',30);
             $table->integer('total');
             $table->integer('account')->unsigned();
             $table->integer('supplier')->unsigned();
-            $table->integer('status')->nullable()->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
 

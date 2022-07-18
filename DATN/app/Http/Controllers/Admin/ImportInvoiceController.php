@@ -12,6 +12,7 @@ use App\Models\Categories;
 use App\Models\ProductType;
 use App\Models\Brand;
 use App\Models\Account;
+use App\Models\Picture;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;

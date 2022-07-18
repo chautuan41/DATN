@@ -15,11 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="author" content="Themefisher">
     <meta name="generator" content="Themefisher Constra HTML Template v1.0">
-    
-    
+
+    <!-- ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
-    
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/favicon.ico')}}" />
@@ -38,6 +36,8 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{asset('user/css/style.css')}}">
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body id="body">
@@ -49,34 +49,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <ul class="social-media">
-                        <li>
-                            <a href="https://www.facebook.com/themefisher">
-                                <i class="tf-ion-social-facebook"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/themefisher">
-                                <i class="tf-ion-social-instagram"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.twitter.com/themefisher">
-                                <i class="tf-ion-social-twitter"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.pinterest.com/themefisher/">
-                                <i class="tf-ion-social-pinterest"></i>
-                            </a>
-                        </li>
-                    </ul>
                     <ul class="footer-menu text-uppercase">
                         <li>
                             <a href="contact.html">CONTACT</a>
                         </li>
                         <li>
-                            <a href="shop.html">SHOP</a>
+                            <a href="/shop">SHOP</a>
                         </li>
                         <li>
                             <a href="pricing.html">Pricing</a>
@@ -120,10 +98,8 @@
     <!-- Main Js File -->
     <script src="{{asset('user/js/script.js')}}"></script>
 
-    <!-- Search -->
-    <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js')}}"></script>
-
-
+    
+    
 </body>
 
 </html>

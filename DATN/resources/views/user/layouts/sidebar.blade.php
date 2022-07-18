@@ -34,7 +34,7 @@
 										<!-- Introduction -->
 								<div class="col-sm-3 col-xs-12">
 									<ul>
-										<li class="dropdown-header">{{$C->categories_name}}</li>
+										<li class="dropdown-header text-center">{{$C->categories_name}}</li>
 										<li role="separator" class="divider"></li>
 										<li><a href="{{route('categories.women',['id'=>$C->id])}}">all {{$C->categories_name}}</a></li>
 										@foreach($dtProT as $ProT)
@@ -48,7 +48,7 @@
                                 <!-- Mega Menu -->
                                 <div class="col-sm-3 col-xs-12">
 									<a href="#">
-										<img class="img-responsive" src="../user/images/shop/header-img.jpg" alt="menu image" />
+										<img class="img-responsive" src="{{asset('user/images/shop/bb.jpg')}}" alt="menu image" />
 									</a>
 								</div>
                             </div><!-- / .row -->
@@ -66,7 +66,7 @@
 										<!-- Introduction -->
 								<div class="col-sm-3 col-xs-12">
 									<ul>
-										<li class="dropdown-header">{{$C->categories_name}}</li>
+										<li class="dropdown-header text-center">{{$C->categories_name}}</li>
 										<li role="separator" class="divider"></li>
 										<li><a href="{{route('categories.men',['id'=>$C->id])}}">all {{$C->categories_name}}</a></li>
 										@foreach($dtProT as $ProT)
@@ -82,7 +82,7 @@
                                 <!-- Mega Menu -->
                                 <div class="col-sm-3 col-xs-12">
 									<a href="#">
-										<img class="img-responsive" src="../user/images/shop/header-img.jpg" alt="menu image" />
+										<img class="img-responsive" src="{{asset('user/images/shop/rl.jpg')}}" alt="menu image" />
 									</a>
 								</div>
                             </div><!-- / .row -->

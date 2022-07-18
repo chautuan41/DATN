@@ -46,7 +46,6 @@
                                     <th>Product Name</th>
                                     <th>Description</th>
                                     <th>Price</th>
-                                    <th>Amount</th>
                                     <th>Discount</th>
                                     <th>Image</th>
                                     <th>Image Details</th>
@@ -68,7 +67,6 @@
                                     <td>{{$product->product_name}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>${{$product->price}}</td>
-                                    <td>{{$product->amount}}</td>
                                     <td>{{$product->discount}}</td>
                                     <td>
                                         <img src="{{asset($product->image)}}"
@@ -85,11 +83,11 @@
                                     <td>{{$product->status}}</td>
                                     <td>
                                         <a href="{{route('admin.formEditProduct',['product_id'=>$product->id])}}"
-                                            data-toggle="tooltip" data-placement="top" title="Edit"
+                                        data-toggle="tooltip" data-placement="top" title="Edit"
                                             class="btn btn-light"><i
                                                 class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
                                         <a href="{{route('admin.deleteProduct',['product_id'=>$product->id])}}"
-                                            data-toggle="tooltip" data-placement="top" title="Delete"
+                                        data-toggle="tooltip" data-placement="top" title="Delete"
                                             class="btn btn-light" onclick="return confirm('Are you sure?')"><i
                                                 class="fa fa-trash"></i></a>
                                     </td>

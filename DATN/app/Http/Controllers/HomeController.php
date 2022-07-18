@@ -16,7 +16,7 @@ use App\Models\Comment;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use App\Models\Favourite;
-
+use App\Models\Size;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -51,12 +51,12 @@ class HomeController extends Controller
         $dtProT = ProductType::all();
         $dtC = Categories::all();
         $cart = Count(Cart::all());
-        $dtSP = DB::table('products')
+        $dtSP = DB::table('invoice_details')
         ->select('products.*')
-        ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
+        ->join('products', 'invoice_details.product', '=', 'products.id')
         ->where('invoice_details.status',2)
         ->skip(0)->take(6)->distinct()->get();
-        //dd($dtSP);
+         //dd($dtSP);
         $dtPro = DB::table('products')
         ->orderBy('created_at', 'desc')
         ->skip(0)->take(6)->get();
@@ -72,8 +72,8 @@ class HomeController extends Controller
         //$dtProD = ProductDetail::find($id);
         $dtProTid=ProductType::find($dtPro->product_type);
         $dtProD = DB::table('sizes')
-        ->join('products', 'sizes.product', '=', 'products.id')
-        ->where('products.id','=', $id)->get();
+        ->where('product','=', $id)
+        ->get();
         $dtProP = DB::table('pictures')
         ->where('product','=', $id)->get();
         $dtCm=DB::table('comments')
@@ -82,8 +82,9 @@ class HomeController extends Controller
         ->where('product','=', $id)
         ->get();
         $dtProR=DB::table('products')
-        ->where('product_type','=', $dtPro->product_type)->distinct()
-        ->get()->skip(0)->take(5);
+        ->where('product_type','=', $dtPro->product_type)
+        ->distinct()
+        ->skip(0)->take(4)->inRandomOrder()->get();
         //dd($dtProR);
         return view('user.pages.productdetail',compact('dtProTid','dtProT','dtProD','dtPro','dtC','cart','dtCm','dtProP','dtProR'));
     }
@@ -132,7 +133,7 @@ class HomeController extends Controller
         $Acc->phone = $req->phone;
         $Acc->date_of_birth = $req->birth;
         $Acc->save();
-        return redirect()->route('user.profile',$id);
+        return redirect()->route('user.profile',$id)->with("success1","Successfully changed information");
     }
 
     public function showChange($id)
@@ -150,10 +151,10 @@ class HomeController extends Controller
         
         $Acc=Account::find($id);
         if(!(Hash::check($req->password, $Acc->password))){
-            return redirect()->back();
+            return redirect()->back()->with("error1","Incorrect password");
         }
         if($req->newpassword!=$req->confirmation){
-            return redirect()->back();
+            return redirect()->back()->with("error2","Confirmation password is incorrect");
         }
         $req->validate([
             'password' => 'required',
@@ -164,19 +165,18 @@ class HomeController extends Controller
         $Acc->password = bcrypt($req->confirmation);
         $Acc->save();
         
-        return redirect()->route('user.profile',$id);
+        return redirect()->route('user.profile',$id)->with("success2","Password successfully changed");
     }
     
     public function addCart(Request $req, $id)
     {
-       
-        $pro=Product::find($id);
         $check = DB::table('carts')
         ->where('account','=', Auth::user()->id)
         ->where('product','=',$id)
         ->where('size','=',$req->size)
         ->get();
-
+       
+        $pro=Product::find($id);
         if(count($check)>0){
             $cart=Cart::find($check[0]->id);
             $cart->quantity += $req->quantity;
@@ -206,9 +206,10 @@ class HomeController extends Controller
         ->where('account','=', Auth::user()->id)
         ->select('products.*','carts.id as icart', 'carts.total','carts.quantity','carts.size')
         ->get();
+        $dtsize = Size::all();
         $cart = Count($dtCart);
         //dd($dtCart);
-        return view('user.pages.checkout',compact('dtProT','dtC','dtCart','cart'));
+        return view('user.pages.checkout',compact('dtProT','dtC','dtCart','cart','dtsize'));
     }
     public function deleteCart($id)
     {
@@ -247,14 +248,14 @@ class HomeController extends Controller
         ->where('product','=', $id)
         ->get();
         //dd($check);
-        if(count($check)>1){
-            Favourite::destroy($check[0]->id);
+        if(count($check)==0){
+            $f = new Favourite();
+            $f->account=Auth::user()->id;
+            $f->product=$id;
+            $f -> save();
         }
        
-        $f = new Favourite();
-        $f->account=Auth::user()->id;
-        $f->product=$id;
-        $f -> save();
+        
         return redirect()->route('user.favourite');
     }
 
@@ -269,17 +270,19 @@ class HomeController extends Controller
     {
        
        //dd($req->all());
-       $C = Cart::all();
+       
        
        $Inv= Invoice::create([
             'date_time' => now(),
+            'shipping_name' => $req->name,
+            'shipping_phone' => $req->phone,
             'shipping_address' => $req->address,
             'total' => $req->total,
             'account' => $req->account,
             'status' => 0,
         ]);
-        $n=count($C);
-        for($i=0;$i<$n;$i++){
+        $C = Cart::all();
+        for($i=0;$i<count($C);$i++){
             InvoiceDetail::create([
                 'amount' => $C[$i]->quantity,
                 'size' => $C[$i]->size,
@@ -288,15 +291,15 @@ class HomeController extends Controller
                 'product' =>  $C[$i]->product,
                 'status' => 0,
             ]); 
-            $Pro = Product::find($C[$i]->product);
-            $Pro->amount=$Pro->amount - $C[$i]->quantity;
-            $Pro->save();
+            $size = Size::find($C[$i]->size);
+            $size->amount=$size->amount - $C[$i]->quantity;
+            $size->save();
             Cart::destroy($C[$i]->id);
         }
 
         SendMail::dispatch($req->email)->delay(now()->addSecond(2));
 
-        return redirect()->route('user.home');
+        return redirect()->route('user.order')->with("success","Change photo successfully");
     }
     public function order()
     {
@@ -312,41 +315,37 @@ class HomeController extends Controller
     public function OrderDetailsId($id)
     {
         
-        $dtInvD = DB::table('products')
-        ->join('invoice_details', 'invoice_details.product', '=', 'products.id')
+        $dtInvD = DB::table('invoice_details')
+        ->join('sizes', 'invoice_details.size', 'sizes.id')
+        ->join('products', 'invoice_details.product','products.id')
         ->where('invoice_details.invoice','=', $id)
+        ->select('invoice_details.*','products.*','sizes.size')
         ->get();
-        //dd($dtInvD);
+        
         return response()->json(['data'=>$dtInvD],200);                      
     }
 
     function upload(Request $request)
     {
-       
        if($request->hasFile('files')){
             $file = $request->file('files');
             $name = $file->getClientOriginalName();
-            $exection = $file->getClientOriginalExtension();
             $file_name= 'images/profile/'.$name;
             $file->move(public_path('images/profile'), $name);
             $acc = Account::find($request->id);
             $acc->avatar = $file_name;
             $acc->save();
             //echo public_path().'/uploads/';
-            
+            return redirect()->route('user.profile',Auth::user()->id)->with("success","Change photo successfully");
         }
-        return redirect()->route('user.profile',Auth::user()->id);
-        
+        return redirect()->route('user.profile',Auth::user()->id)->with("error","Photo change failed");
     }
 
-    public function like($id = null)
+    public function like($id)
     {
-        
         $like = Product::find($id);
-        $like->like=$like->like + 1;
+        $like->like += 1;
         $like->save();
-        
     }
-    
     
 }

@@ -21,16 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <div class="widget">
-                    <h4 class="widget-title">Short By</h4>
-                    <form method="post" action="#">
-                        <select class="form-control">
-                            <option>New Arrivals</option>
-                            <option>High To Low</option>
-                            <option>Low To High</option>
-                        </select>
-                    </form>
-                </div>
+                
                 <div class="widget product-category">
                     <div class="panel-group commonAccordion" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -55,7 +46,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
             <div class="col-md-9">
                 <div class="row">
@@ -67,7 +57,7 @@
                                 <span class="bage">Sale</span>
                                 @endif
                                 <img class="img-responsive" src="{{asset($Pro->image)}}"
-                                    alt="product-img" />
+                                    alt="product-img" style="height:400px;"/>
                                 <div class="preview-meta">
                                     <ul>
                                         <li>

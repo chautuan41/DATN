@@ -28,7 +28,7 @@
                         @if($SP->discount!=0)
                         <span class="bage">Sale</span>
                         @endif
-                        <img class="img-responsive" src="{{asset($SP->image)}}" alt="product-img" />
+                        <img class="img-responsive" src="{{asset($SP->image)}}" alt="product-img" style="height: 500px;"/>
                         <div class="preview-meta">
                             <ul>
                                 <li>

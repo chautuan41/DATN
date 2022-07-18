@@ -29,8 +29,6 @@ class RoleSeeder extends Seeder
                 'status'=>1],
             [   'role_name'=>'Saler',
                 'status'=>1],
-            [   'role_name'=>'Nhân viên bán hàng',
-                'status'=>1],
         ]);
     }
 }

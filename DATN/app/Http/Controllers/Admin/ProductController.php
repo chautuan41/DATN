@@ -41,7 +41,6 @@ class ProductController extends Controller
        $Pro->description = $req->description;
        $Pro->gender = $req->gender;
        $Pro->price = $req->price;
-       $Pro->amount = $req->amount;
        $Pro->discount = $req->discount;
        $Pro->like = $req->like;
        $Pro->categories = $req->categories;
@@ -63,7 +62,7 @@ class ProductController extends Controller
         if($req->has("images")){
             $i=1;
             foreach($req->file('images') as $image){
-                $imageName = $req->sku.'-'.$i++.'.'.$file->getClientOriginalExtension();
+                $imageName = $req->sku.'-'.$i++.'.'.$image->getClientOriginalExtension();
                 $imageName= 'images/shop/product/picture/'.$imageName;
                 $image->move('images/shop/product/picture/',$imageName);
                 Picture::create([
@@ -170,7 +169,6 @@ class ProductController extends Controller
        $Pro->description = $req->description;
        $Pro->gender = $req->gender;
        $Pro->price = $req->price;
-       $Pro->amount = $req->amount;
        $Pro->discount = $req->discount;
        $Pro->like = $req->like;
        $Pro->categories = $req->categories;
@@ -191,9 +189,9 @@ class ProductController extends Controller
        if($req->has("images")){
         $i=0;
         foreach($req->file('images') as $image){
-            $imageName = $req->sku.'-'.$i++.'.'.$file->getClientOriginalExtension();
-                $imageName= 'images/shop/product/picture/'.$imageName;
-                $image->move('images/shop/product/picture/',$imageName);
+            $imageName = $req->sku.'-'.$i++.'.'.$image->getClientOriginalExtension();
+            $imageName= 'images/shop/product/picture/'.$imageName;
+            $image->move('images/shop/product/picture/',$imageName);
             Picture::create([
                 'product'=>$Pro->id,
                 'image'=>$imageName

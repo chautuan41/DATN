@@ -136,7 +136,7 @@
         data: data,
         xkey: 'year',
         ykeys: ['count'],
-        labels: ['Aturnover'],
+        labels: ['Revenue'],
         barColors: ['#7571f9'],
         hideHover: 'auto',
         gridLineColor: 'transparent',

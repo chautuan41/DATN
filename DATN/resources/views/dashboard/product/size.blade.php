@@ -64,6 +64,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Size</th>
+                                    <th>Amount</th>
                                     <th>Status</th>
                                     <th>Options</th>
                                 </tr>
@@ -74,6 +75,7 @@
                                 <tr>@if($size->product == $Pro->id)
                                     <td>{{$Pro->sku}}</td>
                                     <td>{{$size->size}}</td>
+                                    <td>{{$size->amount}}</td>
                                     <td>{{$size->status}}</td>
                                     <td>
                                         <a href="{{route('admin.hideSizes',['product_id'=>$size->id])}}" data-toggle="tooltip" data-placement="top" title="Edit"
