@@ -35,14 +35,11 @@ class ProductController extends Controller
 
    public function handleAddProduct(Request $req)
    {
+    //dd($req->all());
        $Pro = new Product();
-       $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
        $Pro->description = $req->description;
        $Pro->gender = $req->gender;
-       $Pro->price = $req->price;
-       $Pro->discount = $req->discount;
-       $Pro->like = $req->like;
        $Pro->categories = $req->categories;
        $Pro->product_type = $req->product_type;
        $Pro->supplier = $req->supplier;
@@ -164,11 +161,9 @@ class ProductController extends Controller
         // }
         
        $Pro = Product::find($product_id);
-       $Pro->sku = $req->sku;
        $Pro->product_name = $req->product_name;
        $Pro->description = $req->description;
        $Pro->gender = $req->gender;
-       $Pro->price = $req->price;
        $Pro->discount = $req->discount;
        $Pro->like = $req->like;
        $Pro->categories = $req->categories;

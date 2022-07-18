@@ -34,12 +34,6 @@
                         <form action="{{ route('admin.handleAddProduct') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputEmail1">SKU</label>
-
-                                <input type="text" class="form-control" id="val-username" name="sku" placeholder="SKU">
-
-                            </div>
-                            <div class="form-group">
 
                                 <label for="exampleInputEmail1">Product Name</label>
 
@@ -64,31 +58,6 @@
                                     <option value="0">Women</option>
                                     <option value="1">Men</option>
                                 </select>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Price</label>
-
-                                <input type="text" class="form-control" id="val-currency" name="price" placeholder="$">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Amount</label>
-
-                                <input type="text" class="form-control" id="val-currency" name="amount" placeholder="0">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Discount</label>
-
-                                <input type="text" class="form-control" id="val-currency" name="discount"
-                                    placeholder="$">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Like</label>
-
-                                <input type="text" class="form-control" id="val-currency" name="like" placeholder="0">
 
                             </div>
                             <div class="form-group">

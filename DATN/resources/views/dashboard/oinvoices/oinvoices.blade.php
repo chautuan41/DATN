@@ -44,11 +44,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Shipping Name</th>
+                                    <th>Shipping Phone</th>
                                     <th>Shipping Address</th>
                                     <th>Date</th>
                                     <th>Total</th>
-                                    <th>Account</th>
-                                    <th>Status</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -56,15 +57,11 @@
                                 @if($oin->status == 2)
                                 <tr>
                                     <td>{{$oin->id}}</td>
+                                    <td>{{$oin->shipping_name}}</td>
+                                    <td>{{$oin->shipping_phone}}</td>
                                     <td>{{$oin->shipping_address}}</td>
                                     <td>{{$oin->date_time}}</td>
-                                    <td>{{$oin->total}}</td>
-                                    @foreach($lsAcc as $acc)
-                                    @if($acc->id == $oin->account)
-                                    <td value="{{$acc->id}}">{{$acc->account}}</td>
-                                    @endif
-                                    @endforeach
-                                    <td>{{$oin->status}}</td>
+                                    <td>$ {{number_format($oin->total)}}</td>
                                 </tr>
                                 @endif
                                 @empty

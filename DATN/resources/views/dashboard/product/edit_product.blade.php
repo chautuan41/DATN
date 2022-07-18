@@ -44,16 +44,6 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputEmail1">SKU</label>
-
-                                <input type="text" class="form-control" id="val-username" name="sku"
-                                    value="{{$dt->sku}}" placeholder="SKU">
-                                @if($errors->has('sku'))
-                                <span>{{$errors->first('sku')}}</span>
-                                @endif
-
-                            </div>
-                            <div class="form-group">
 
                                 <label for="exampleInputEmail1">Product Name</label>
 
@@ -85,20 +75,6 @@
                                     <option value="0">Women</option>
                                     <option value="1">Men</option>
                                 </select>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Price</label>
-
-                                <input type="text" class="form-control" id="val-currency" name="price"
-                                    value="{{$dt->price}}" placeholder="$">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Amount</label>
-
-                                <input type="text" class="form-control" id="val-currency" name="amount"
-                                    value="{{$dt->amount}}" placeholder="0">
 
                             </div>
                             <div class="form-group">
