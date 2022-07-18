@@ -54,7 +54,7 @@
                                             type="submit">Change
                                         Password</button>
                                     </div>
-                            </div>
+                            
                             </form>
                         </div>
                     </div>
@@ -65,8 +65,26 @@
     </div>
 </section>
 
+@if (session('error1'))
 <script>
-
+Swal.fire({
+    icon: 'error',
+  title: 'Sorry!',
+  text: 'Incorrect password',
+    showConfirmButton: false,
+  timer: 1500
+})
 </script>
-
+@endif
+@if (session('error2'))
+<script>
+Swal.fire({
+    icon: 'error',
+  title: 'Sorry!',
+  text: 'Confirmation password is incorrect',
+    showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
 @endsection

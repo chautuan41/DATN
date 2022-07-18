@@ -15,15 +15,15 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
+            $table->string('email',50)->unique();
             $table->string('password');
-            $table->string('full_name');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('date_of_birth');
-            $table->string('avatar');
+            $table->string('full_name',50)->nullable();
+            $table->string('phone',11)->nullable();
+            $table->string('address')->nullable();
+            $table->string('date_of_birth',30)->nullable();
+            $table->string('avatar')->nullable();
             $table->integer('role')->unsigned();
-            $table->integer('status')->nullable()->default(1);
+            $table->integer('status')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

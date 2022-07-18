@@ -16,11 +16,11 @@ class CreateInvoiceDetailsTable extends Migration
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
-            $table->string('size');
             $table->integer('total');
             $table->integer('invoice')->unsigned();
             $table->integer('product')->unsigned();
-            $table->integer('status')->nullable()->default(1);
+            $table->integer('size')->unsigned();
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
 
@@ -29,6 +29,9 @@ class CreateInvoiceDetailsTable extends Migration
             ->onDelete('cascade');
             $table->foreign('invoice')
             ->references('id')->on('invoices')
+            ->onDelete('cascade');
+            $table->foreign('size')
+            ->references('id')->on('sizes')
             ->onDelete('cascade');
         });
     }

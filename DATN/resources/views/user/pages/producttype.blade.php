@@ -66,7 +66,7 @@
                                 <span class="bage">Sale</span>
                                 @endif
                                 <img class="img-responsive" src="{{asset($Pro->image)}}"
-                                    alt="product-img" />
+                                    alt="product-img" style="height:400px;"/>
                                 <div class="preview-meta">
                                     <ul>
                                         <li>

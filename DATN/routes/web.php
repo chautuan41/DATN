@@ -23,12 +23,12 @@ use App\Models\ProductType;
 // });
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/',[HomeController::class,'index'])->name('user.home');
+Route::get('/shop',[ShopController ::class,'shop'])->name('user.shop');
 Route::get('shop/products/{id}',[HomeController::class,'ProductDetails'])->name('user.productdetail');
 Route::get('shop/brand/{id}',[ShopController::class,'Brand'])->name('user.brand');
 Route::get('shop/sale',[ShopController::class,'Sale'])->name('user.sale');
 Route::get('/search',[SearchController ::class,'getSearchAjax']);
 Route::post('/search',[SearchController ::class,'postSearchAjax'])->name('search');
-
 
 Route::group(['prefix' => 'women'], function() {
     Route::get('/',[ShopController::class, 'shopWomen'])->name('shop.women');

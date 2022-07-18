@@ -51,9 +51,11 @@
                                     <td>{{$Inv->date_time}}</td>
                                     <td>{{$item}}</td>
                                     <td>{{$Inv->shipping_address}}</td>
-                                    <td>${{$Inv->total}}</td>
+                                    <td>${{number_format($Inv->total)}}</td>
                                     @if($Inv->status==0)
                                     <td><span class="label label-primary">Processing</span></td>
+                                    @elseif($Inv->status==1)
+                                    <td><span class="label label-info">Waiting Delivery</span></td>
                                     @else
                                     <td><span class="label label-success">Completed</span></td>
                                     @endif
@@ -89,6 +91,7 @@
                                                         <th>Size</th>
                                                         <th>Amount</th>
                                                         <th>Price</th>
+                                                        <th>Discount</th>
                                                         <th>Total</th>
                                                     </tr>
                                                 </thead>
@@ -109,8 +112,8 @@
         </div>
     </div>
 </section>
+
 <script>
-	
 	$('.abc').on('click', function(){
 		var data = $(this).attr('data-url');
 		$.ajax({
@@ -122,25 +125,34 @@
                 $.each(response.data, function (key, item) {
                     $('#cthd').append('<tr>\
                         <td>' + item.invoice + '</td>\
-                        <td>' + item.product_name + '</td>\
+                        <td>\
+                        <a href="/shop/products/'+item.id+'"</a>'+ item.product_name + 
+                        '</td>\
                         <td>' + item.size + '</td>\
                         <td>' + item.amount + '</td>\
-                        <td>' + item.price + '</td>\
+                        <td>' + item.price  + '</td>\
+                        <td>' + item.discount  + '</td>\
                         <td>' + item.total + '</td>\
                     \</tr>');
                 });
-				
-                
             },
             error: function(data, textStatus, errorThrown) {
 
             },        
      	}),
-
-     
-       
      	event.preventDefault();
  	})
 	 
 </script>
+@if(session('success'))
+<script>
+    Swal.fire({
+    icon: 'success',
+  title: 'Thank you!',
+  text: 'Your order has been placed successfully',
+    showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
 @endsection

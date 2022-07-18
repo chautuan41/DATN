@@ -15,11 +15,13 @@ class CreateImportInvoiceDetailsTable extends Migration
     {
         Schema::create('import_invoice_details', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('sku',50);
             $table->integer('amount');
             $table->integer('price');
             $table->integer('import_invoice')->unsigned();
             $table->integer('product')->unsigned();
-            $table->integer('status')->nullable()->default(1);
+            $table->integer('size')->unsigned();
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
 
@@ -28,6 +30,9 @@ class CreateImportInvoiceDetailsTable extends Migration
             ->onDelete('cascade');
             $table->foreign('product')
             ->references('id')->on('products')
+            ->onDelete('cascade');
+            $table->foreign('size')
+            ->references('id')->on('sizes')
             ->onDelete('cascade');
         });
     }

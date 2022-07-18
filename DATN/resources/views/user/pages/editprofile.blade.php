@@ -35,43 +35,49 @@
                             </form>
                         </div>
                         <div class="media-body">
-                            <div class="col-md-6 col-md-4">
+                            <div class="col-md-12 col-md-8">
                                 <form class="text-left clearfix" method="POST"
                                     action="{{ route('profile.edit.post',['id'=>$dtProF->id]) }}">
                                     @csrf
-                                    <div class="form-group">
-                                        <span>Full Name:</span><input class="form-control" type="text" name="name"
-                                            value="{{$dtProF->full_name}}" required>
+                                    <div class="col-md-6 col-md-8">
+                                        <div class="form-group">
+                                            <span>Full Name:</span><input class="form-control" type="text" name="name"
+                                                value="{{$dtProF->full_name}}" required>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <span>Address:</span><input class="form-control" type="text" name="adddress"
+                                                value="{{$dtProF->address}}" required>
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <button class="btn btn-main btn-small btn-round-full btn-solid-border"
+                                                type="submit">Save
+                                                Profile</button>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6 col-md-8">
                                     <div class="form-group">
-                                        <span>Address:</span><input class="form-control" type="text" name="adddress"
-                                            value="{{$dtProF->address}}" required>
+                                            <span>Email:</span><input class="form-control" readonly type="text"
+                                                name="email" value="{{$dtProF->email}}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <span>Phone:</span><input class="form-control" type="text" name="phone"
+                                                value="{{$dtProF->phone}}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <span>Date of Birth:</span><input class="form-control" type="text"
+                                                name="birth" value="{{$dtProF->date_of_birth}}" required>
+                                        </div>
+                                        
                                     </div>
-                                    <div class="form-group">
-                                        <span>Email:</span><input class="form-control" readonly type="text" name="email"
-                                            value="{{$dtProF->email}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <span>Phone:</span><input class="form-control" type="text" name="phone"
-                                            value="{{$dtProF->phone}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <span>Date of Birth:</span><input class="form-control" type="text" name="birth"
-                                            value="{{$dtProF->date_of_birth}}" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-main btn-small btn-round-full btn-solid-border"
-                                            type="submit">Save
-                                            Profile</button>
-                                    </div>
+                                </form>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
 

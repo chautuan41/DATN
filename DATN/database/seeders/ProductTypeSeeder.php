@@ -39,13 +39,6 @@ class ProductTypeSeeder extends Seeder
             [   'product_type_name'=>'Sport',
                 'categories'=>2,
                 'status'=>1],
-
-            [   'product_type_name'=>'Eau de Parfum',
-                'categories'=>3,
-                'status'=>1],
-            [   'product_type_name'=>'Eau de Toilette',
-                'categories'=>3,
-                'status'=>1],
         ]);
     }
 }

@@ -20,8 +20,6 @@ class CategorieTableSeeder extends Seeder
                 'status'=>1],
             [   'categories_name'=>'Watches',
                 'status'=>1],
-            [   'categories_name'=>'Fragrances',
-                'status'=>1],
         ]);
     }
 }

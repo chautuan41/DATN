@@ -21,6 +21,20 @@ use Carbon\Carbon;
 class ShopController extends Controller
 {
     //
+    public function shop()
+    {
+        $title="Shop";
+        $cart = Count(Cart::all());
+        $dtC = Categories::all();
+        $dtProT = ProductType::all();
+
+        $dtSP = DB::table('products')
+        ->where('products.status','=', 1)
+        ->inRandomOrder()
+        ->paginate(9);
+
+        return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
+    }
     public function shopWomen()
     {
         $title="Women";
@@ -31,6 +45,7 @@ class ShopController extends Controller
         $dtSP = DB::table('products')
         ->where('products.status','=', 1)
         ->where('products.gender','=', 0)
+        ->inRandomOrder()
         ->paginate(9);
 
         return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
@@ -45,6 +60,7 @@ class ShopController extends Controller
         $dtSP=DB::table('products')
         ->where('products.status','=', 1)
         ->where('products.gender','=', 1)
+        ->inRandomOrder()
         ->paginate(9);
 
         return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
@@ -59,6 +75,7 @@ class ShopController extends Controller
         $dtSP = DB::table('products')
         ->where('products.status','=', 1)
         ->where('products.discount','!=', 0)
+        ->inRandomOrder()
         ->paginate(9);
 
         return view('user.pages.shop',compact('dtSP','dtProT','dtC','cart','title'));
@@ -74,6 +91,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.categories','=', $id)
         ->where('products.gender','=', 0)
+        ->inRandomOrder()
         ->paginate(9);
         //dd($dtPro);
         
@@ -91,6 +109,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.categories','=', $id)
         ->where('products.gender','=', 1)
+        ->inRandomOrder()
         ->paginate(9);
         //dd($dtPro);
         
@@ -108,6 +127,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.product_type','=', $id)
         ->where('products.gender','=', 0)
+        ->inRandomOrder()
         ->paginate(9);
         //dd($dtPro);
         
@@ -125,6 +145,7 @@ class ShopController extends Controller
         ->join('products', 'products.product_type', '=', 'product_types.id')
         ->where('products.product_type','=', $id)
         ->where('products.gender','=', 1)
+        ->inRandomOrder()
         ->paginate(9);
         //dd($dtPro);
         
@@ -141,6 +162,7 @@ class ShopController extends Controller
         $dtPro = DB::table('brands')
         ->join('products', 'products.brand', '=', 'brands.id')
         ->where('products.brand','=', $id)
+        ->inRandomOrder()
         ->paginate(9);
         //dd($dtPro);
         

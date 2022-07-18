@@ -41,7 +41,7 @@ class SearchController extends Controller
             foreach($data as $row)
             {
                $output .= '
-               <li><a href="products/'. $row->id .'">'.$row->product_name.'</a>
+               <li><a href="shop/products/'. $row->id .'">'.$row->product_name.'</a>
                             
                </li>
                ';

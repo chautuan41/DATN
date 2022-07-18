@@ -17,7 +17,7 @@ class CreatePicturesTable extends Migration
             $table->increments('id');
             $table->string('image');
             $table->integer('product')->unsigned();
-            $table->integer('status')->nullable()->default(1);
+            $table->integer('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
 

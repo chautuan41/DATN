@@ -20,12 +20,12 @@
                             <!-- me art lab slider -->
                             <div class='carousel-inner '>
                                 <div class='item active'>
-                                    
+
                                     <img src='{{asset($dtPro->image)}}' alt='' data-zoom-image="{{$dtPro->image}}" />
                                 </div>
                                 @foreach($dtProP as $ProP)
                                 <div class='item'>
-                                    
+
                                     <img src='{{asset($ProP->image)}}' alt='' data-zoom-image="{{$ProP->image}}" />
                                 </div>
                                 @endforeach
@@ -63,43 +63,62 @@
                     <div class="single-product-details">
                         <h2>{{$dtPro->product_name}}</h2>
                         <p class="product-price">
-                            ${{number_format($dtPro->discount != 0 ? $dtPro->discount : $dtPro->price)}}</p>
+                            @if($dtPro->discount!=0)
+                        <ul>
+                            <li style="display: inline-block;">
+                                ${{number_format($dtPro->discount)}}
+                            </li>
+                            <li style="text-decoration: line-through;display: inline-block;">
+                                ${{number_format($dtPro->price)}}
+                            </li>
+                        </ul>
+                        @else
+                        ${{number_format($dtPro->price)}}
+                        @endif
+                        </p>
 
                         <p class="product-description mt-20">
                             {{$dtPro->description}}
                         </p>
-
-
+                        @php $sum=0; @endphp
+                        @foreach($dtProD as $ProD)
+                        @php $sum+=$ProD->amount; @endphp
+                        @endforeach
+                        @if($sum>0)
                         <div class="product-size">
                             <span>Size:</span>
                             <select class="form-control" name="size">
                                 @foreach($dtProD as $ProD)
-                                <option value="{{$ProD->size}}">{{$ProD->size}}</option>
-                                <!-- <option>M</option>
-							<option>L</option>
-							<option>XL</option> -->
+                                @if($ProD->amount>0)
+                                <option value="{{$ProD->id}}">{{$ProD->size}}</option>
+                                @endif
                                 @endforeach
                             </select>
                         </div>
                         <div class="product-quantity">
                             <span>Quantity:</span>
                             <div class="product-quantity-slider">
-                                <input id="product-quantity" type="text" value="1" name="quantity" max="5">
+                                <input id="product-quantity" type="text" value="1" name="quantity" min="1" max="5">
+                                <!-- <ul>
+                                <li><a href="product-single.html">Out of stock</a></li>
+                            </ul> -->
                             </div>
                         </div>
                         <div class="product-category">
-                            <span>Categories:</span>
+                            <span>Product Type:</span>
                             <ul>
                                 <li><a href="product-single.html">{{$dtProTid->product_type_name}}</a></li>
                             </ul>
                         </div>
-                        <div class="product-category">
-                        <a href="{{route('user.favourite.add',['id'=>$dtPro->id])}}" style="font-size: 30px;"><i
-                                            class="heart tf-ion-ios-heart-outline"></i></a>
-                        </div>
-                       
                         <button type="submit" class="btn btn-main mt-20">Add To Cart</button>
-                       
+                        <a href="{{route('user.favourite.add',['id'=>$dtPro->id])}}" style="font-size: 12px;"
+                            class="btn btn-main btn-solid-border mt-20"><i class="heart tf-ion-ios-heart-outline"></i>
+                            Wishlist</a>
+                        @else
+                        <div>
+                            <span style="font-size: 17px;font-weight:500">Out of stock</span>
+                        </div>
+                        @endif
                     </div>
                 </form>
             </div>
@@ -137,8 +156,6 @@
                                                     <a href="#!">{{$cm->full_name}}</a>
                                                 </h4>
                                                 <time datetime="2013-04-06T13:53">{{$cm->date_time}}</time>
-                                                <a class="comment-button" href="#!"><i
-                                                        class="tf-ion-chatbubbles"></i>Reply</a>
                                             </div>
                                             <p>
                                                 {{$cm->comment}}
@@ -288,4 +305,5 @@
         </div>
     </div>
 </div>
+
 @endsection

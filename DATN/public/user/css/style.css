@@ -1422,9 +1422,11 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 .single-product-details .color-swatches {
   display: flex;
   align-items: center;
+  
 }
 
 .single-product-details .color-swatches span {
+
   width: 100px;
   color: #000;
   font-size: 13px;
@@ -1436,6 +1438,11 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   width: 36px;
   height: 36px;
   margin-right: 5px;
+  padding-top: 7px;
+  text-align: center;
+  color:white;
+  
+  
 }
 
 .single-product-details .color-swatches li {
