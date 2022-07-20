@@ -192,12 +192,12 @@ Route::group(['prefix' => '/'], function () {
         // -- Input Invoices -- //
         Route::group(['prefix' => 'input-invoice'], function() {
             Route::get('/',[Admin\ImportInvoiceController::class,'listIInvoices'])->name('admin.listIInvoices');
-
+            Route::get('inventory',[Admin\ImportInvoiceController::class,'productWH'])->name('admin.inventory');
             Route::get('iistaff',[Admin\ImportInvoiceController::class,'listIIStaff'])->name('admin.listIIStaff');
 
             Route::get('waitfor',[Admin\ImportInvoiceController::class,'listWaitIInvoices'])->name('admin.listWaitIInvoices');
             Route::get('confirm/{id_input}',[Admin\ImportInvoiceController::class,'confirmInvoices'])->name('admin.confirmInvoices');
-            
+    
             Route::get('add',[Admin\ImportInvoiceController::class,'formAddIInvoices'])->name('admin.formAddIInvoices');
             Route::post('add',[Admin\ImportInvoiceController::class,'handleAddIInvoices'])->name('admin.handleAddIInvoices');
             Route::post('handle',[Admin\ImportInvoiceController::class,'xulycreatectsp'])->name('admin.xulycreatectsp');

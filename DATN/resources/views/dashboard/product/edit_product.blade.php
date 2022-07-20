@@ -78,6 +78,13 @@
 
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Price</label>
+
+                                <input type="text" class="form-control" id="val-currency" name="price"
+                                    value="{{$dt->price}}" placeholder="0">
+
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Discount</label>
 
                                 <input type="text" class="form-control" id="val-currency" name="discount"

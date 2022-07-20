@@ -16,7 +16,7 @@ class SaleController extends Controller
     //
     public function index(){
         $check=Auth::user()->role;
-        if($check==6){
+        if($check==4){
             $date1=now()->toDateString();
 
             $dtInvD = DB::table('invoice_details')
