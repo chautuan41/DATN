@@ -52,9 +52,11 @@ class HomeController extends Controller
         $dtC = Categories::all();
         $cart = Count(Cart::all());
         $dtSP = DB::table('invoice_details')
-        ->select('products.*')
+        ->select('products.product_name','products.price','products.discount','products.image','products.id',DB::raw("sum(invoice_details.amount) as sum"),)
         ->join('products', 'invoice_details.product', '=', 'products.id')
         ->where('invoice_details.status',2)
+        ->groupby('products.product_name','products.price','products.discount','products.image','products.id')
+        ->orderBy('sum','desc')
         ->skip(0)->take(6)->distinct()->get();
          //dd($dtSP);
         $dtPro = DB::table('products')

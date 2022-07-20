@@ -58,8 +58,8 @@
                                     <td>{{$Inv->total}}</td>
                                     <td>{{$Inv->date_time}}</td>
                                     <td>
-                                        <a class="abc" data-url="{{ route('sale.order.get',$Inv->id)}}"
-                                            data-toggle="modal" data-placement="top" data-target="#product-modal"
+                                        <a  href="{{ route('sale.orderdetail',$Inv->id)}}"
+                                        data-toggle="tooltip" data-placement="top" 
                                             title="View" class="btn btn-light"><i class="fa fa-eye color-muted m-r-5"></i></a>
                                     </td>
                                     <td>

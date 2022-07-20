@@ -113,7 +113,6 @@ class ProductController extends Controller
         $Size = new Size();
         $Size->size = $request->size;
         $Size->product = $Pro->id;
-        $Size->status = 1;
         $Size -> save();
         return redirect()->back()->with("success","Add Size successful");
     }
@@ -164,6 +163,7 @@ class ProductController extends Controller
        $Pro->product_name = $req->product_name;
        $Pro->description = $req->description;
        $Pro->gender = $req->gender;
+       $Pro->price = $req->price;
        $Pro->discount = $req->discount;
        $Pro->like = $req->like;
        $Pro->categories = $req->categories;

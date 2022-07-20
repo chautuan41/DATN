@@ -89,7 +89,7 @@
 
                     </div>
                     <div class="product-content">
-                        <h4><a href="#">{{$SP->product_name}}</a></h4>
+                        <h4><a href="{{route('user.productdetail',['id'=>$SP->id])}}">{{$SP->product_name}}</a></h4>
                         <p class="price">${{number_format($SP->discount != 0 ? $SP->discount : $SP->price)}}</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
         </div>
         <div class="row">
             <div class="title text-center">
-                <h2>Featured products</h2>
+                <h2>Seller Products</h2>
             </div>
         </div>
         <div class="row">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="product-content">
-                        <h4><a href="product-single.html">{{$SP->product_name}}</a></h4>
+                        <h4><a href="{{route('user.productdetail',['id'=>$SP->id])}}">{{$SP->product_name}}</a></h4>
                         <p class="price">${{number_format($SP->discount != 0 ? $SP->discount : $SP->price)}}</p>
                     </div>
                 </div>

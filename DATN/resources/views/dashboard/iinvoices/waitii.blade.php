@@ -73,12 +73,15 @@
                                     <td>{{$sup->supplier_name}}</td>
                                     @endif
                                     @endforeach
-                                    <td>{{$iin->status}}</td>
+                                    <td value="{{$iin->status}}">Wait for confirmation</td>
                                     <td>
+                                    <a data-url="{{ route('ii.order.get1',$iin->id)}}" data-toggle="modal"
+                                            data-placement="top" data-target="#product-modal" title="View"
+                                            class="btn btn-light cthdn1"><i class="fa fa-eye color-muted m-r-5"></i></a>
                                         <a href="{{route('admin.confirmInvoices',['id_input'=>$iin->id])}}"
-                                            data-toggle="tooltip" data-placement="top" title="Edit"
-                                            class="btn btn-light"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp;
+                                            data-toggle="tooltip" data-placement="top" title="Confirm"
+                                            class="btn btn-light" onclick="return confirm('Are you sure?')"><i
+                                                class="fa fa-check color-muted m-r-5"></i></a>&emsp;
 
                                         <!-- <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
                                                 href="#"
@@ -108,7 +111,71 @@
                 </div>
             </div>
         </div>
+     <!-- Modal -->
+     <div class="modal product-modal fade" id="product-modal">
+            <div class="modal-dialog " role="document">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times color-muted m-r-10"></i>
+                </button>
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Input Invoices Detail</h4>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product ID</th>
+                                                        <th>Amount</th>
+                                                        <th>Price</th>
+                                                        <th>Size</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="cthdn1">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
     </div>
 </div>
+<script src="{{asset('user/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('.cthdn1').on('click', function() {
+    var data = $(this).attr('data-url');
+    
+    $.ajax({
+            url: data, // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
+            type: "get", // phương thức gửi dữ liệu.
+            dataType: "json",
+            success: function(response) {
+                $('#cthdn1').html("");
+                $.each(response.data, function(key, item) {
+                    $('#cthdn1').append('<tr>\
+                        <td>' + item.sku + '</td>\
+                        <td>' + item.amount + '</td>\
+                        <td>$' + item.price + '</td>\
+                        <td>' + item.size + '</td>\
+                    \</tr>');
+                });
+            },
+            error: function(data, textStatus, errorThrown) {},
+        }),
+        event.preventDefault();
+})
+</script>
 
 @endsection

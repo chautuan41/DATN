@@ -50,7 +50,7 @@
                                     <th>Account</th>
                                     <th>Supplier</th>
                                     <th>Status</th>
-                                    <th>Options</th>
+                                    <!-- <th>Options</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,8 +71,7 @@
                                     <td>{{$sup->supplier_name}}</td>
                                     @endif
                                     @endforeach
-                                    <td>Waiting for confirmation</td>
-                                    <td>{{$iin->status}}</td>
+                                    <td value="{{$iin->status}}">Waiting for confirmation</td>
                                     <td>
                                         <!-- <a href="#"
                                             data-toggle="tooltip" data-placement="top" title="Edit"
@@ -88,7 +87,7 @@
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="7">Empty data</td>
+                                    <td colspan="5">Empty data</td>
                                 </tr>
                                 @endforelse
                             </tbody>
@@ -99,7 +98,7 @@
                                     <th>Account</th>
                                     <th>Supplier</th>
                                     <th>Status</th>
-                                    <th>Options</th>
+                                    <!-- <th>Options</th> -->
                                 </tr>
                             </tfoot>
                         </table>
@@ -107,6 +106,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 

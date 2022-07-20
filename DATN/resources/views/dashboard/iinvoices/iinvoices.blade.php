@@ -24,7 +24,8 @@
                     </div>
                     <div class="header-left ">
                         <p>
-                            <a href="{{route('admin.listWaitIInvoices')}}" class="btn btn-primary pull-right">Confirm Orders</a>
+                            <a href="{{route('admin.listWaitIInvoices')}}" class="btn btn-primary pull-right">Confirm
+                                Orders</a>
                         </p>
                     </div>
                     <div class="header-content clearfix">
@@ -73,23 +74,24 @@
                                     <td>{{$sup->supplier_name}}</td>
                                     @endif
                                     @endforeach
-                                    <td>{{$iin->status}}</td>
-                                    <td>
-                                        <!-- <a href="#"
-                                            data-toggle="tooltip" data-placement="top" title="Edit"
-                                            class="btn btn-light"><i
-                                                class="fa fa-pencil color-muted m-r-5"></i></a>&emsp; -->
+                                    <td value="{{$iin->status}}">Confirmed</td>
 
-                                        <!-- <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
+                                    <td>
+                                        <a data-url="{{ route('ii.order.get',$iin->id)}}" data-toggle="modal"
+                                            data-placement="top" data-target="#product-modal" title="View"
+                                            class="btn btn-light cthdn"><i class="fa fa-eye color-muted m-r-5"></i></a>
+                                    </td>
+
+                                    <!-- <button class="btn btn-light" onclick="return confirm('Are you sure?')"><a
                                                 href="#"
                                                 data-toggle="tooltip" data-placement="top" title="Delete">
                                                 <i class="fa fa-trash"></i></a></button> -->
-                                    </td>
+
                                 </tr>
                                 @endif
                                 @empty
                                 <tr>
-                                    <td colspan="7">Empty data</td>
+                                    <td colspan="5">Empty data</td>
                                 </tr>
                                 @endforelse
                             </tbody>
@@ -108,7 +110,70 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal product-modal fade" id="product-modal">
+            <div class="modal-dialog " role="document">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times color-muted m-r-10"></i>
+                </button>
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Input Invoices Detail</h4>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Product ID</th>
+                                                        <th>Amount</th>
+                                                        <th>Price</th>
+                                                        <th>Size</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="cthdn">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
     </div>
 </div>
-
+<script src="{{asset('user/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('.cthdn').on('click', function() {
+    var data = $(this).attr('data-url');
+   
+    $.ajax({
+            url: data, // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
+            type: "get", // phương thức gửi dữ liệu.
+            dataType: "json",
+            success: function(response) {
+                $('#cthdn').html("");
+                $.each(response.data, function(key, item) {
+                    $('#cthdn').append('<tr>\
+                        <td>' + item.sku + '</td>\
+                        <td>' + item.amount + '</td>\
+                        <td>$' + item.price + '</td>\
+                        <td>' + item.size + '</td>\
+                    \</tr>');
+                });
+            },
+            error: function(data, textStatus, errorThrown) {},
+        }),
+        event.preventDefault();
+})
+</script>
 @endsection

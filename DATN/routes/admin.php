@@ -29,7 +29,10 @@ Route::group(['prefix' => '/'], function () {
         Route::group(['prefix' => 'sale'], function() {
             Route::get('/',[Admin\SaleController::class,'index'])->name('admin.sale');
             Route::get('order',[Admin\SaleController::class,'order'])->name('sale.order');
-            Route::get('order/{id}',[Admin\SaleController::class,'orderDetails'])->name('sale.order.get');
+            Route::get('orderdetail/edit/{id}',[Admin\SaleController::class,'showeditorderDetails'])->name('sale.orderdetail.edit');
+            Route::post('orderdetail/edit/{id}',[Admin\SaleController::class,'editorderDetails'])->name('sale.orderdetail.post');
+            Route::get('orderdetail/delete/{id}',[Admin\SaleController::class,'deleteorderDetails'])->name('sale.orderdetail.delete');
+            Route::get('orderdetail/{id}',[Admin\SaleController::class,'orderDetails'])->name('sale.orderdetail');
             Route::get('order-tracking',[Admin\SaleController::class,'orderTracking'])->name('sale.ordertracking');
             Route::get('order-tracking/{id}',[Admin\SaleController::class,'orderTrackingDetails'])->name('sale.ordertracking.get');
             Route::get('processed/{id}',[Admin\SaleController::class,'processed'])->name('sale.processed');
@@ -192,12 +195,14 @@ Route::group(['prefix' => '/'], function () {
         // -- Input Invoices -- //
         Route::group(['prefix' => 'input-invoice'], function() {
             Route::get('/',[Admin\ImportInvoiceController::class,'listIInvoices'])->name('admin.listIInvoices');
-
+            Route::get('inventory',[Admin\ImportInvoiceController::class,'productWH'])->name('admin.inventory');
             Route::get('iistaff',[Admin\ImportInvoiceController::class,'listIIStaff'])->name('admin.listIIStaff');
 
             Route::get('waitfor',[Admin\ImportInvoiceController::class,'listWaitIInvoices'])->name('admin.listWaitIInvoices');
             Route::get('confirm/{id_input}',[Admin\ImportInvoiceController::class,'confirmInvoices'])->name('admin.confirmInvoices');
-            
+            Route::get('size/{id}',[Admin\ImportInvoiceController::class,'size'])->name('admin.size');
+            Route::get('sku/{id}',[Admin\ImportInvoiceController::class,'sku'])->name('admin.sku');
+            Route::get('pro/{id}',[Admin\ImportInvoiceController::class,'pro']);
             Route::get('add',[Admin\ImportInvoiceController::class,'formAddIInvoices'])->name('admin.formAddIInvoices');
             Route::post('add',[Admin\ImportInvoiceController::class,'handleAddIInvoices'])->name('admin.handleAddIInvoices');
             Route::post('handle',[Admin\ImportInvoiceController::class,'xulycreatectsp'])->name('admin.xulycreatectsp');
@@ -208,6 +213,9 @@ Route::group(['prefix' => '/'], function () {
 
             Route::get('add-p',[Admin\ImportInvoiceController::class, 'addProduct'])->name('admin.addProduct');
             Route::post('add-p',[Admin\ImportInvoiceController::class, 'handleaddProduct'])->name('admin.handleaddProduct');
+
+            Route::get('ii/{id}',[Admin\ImportInvoiceController::class,'hdDetails'])->name('ii.order.get');
+            Route::get('ii1/{id}',[Admin\ImportInvoiceController::class,'hdDetails1'])->name('ii.order.get1');
         });
         // -- Ouput Invoices -- //
         Route::group(['prefix' => 'output-invoice'], function() {

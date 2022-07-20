@@ -15,7 +15,6 @@ class Invoice extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'invoice_id',
         'date_time',
         'shipping_name',
         'shipping_phone',

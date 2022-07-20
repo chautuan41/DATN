@@ -40,9 +40,9 @@
         Main wrapper start
     ***********************************-->
     <div id="main-wrapper">
-
         @include('dashboard.layout.header')
         @include('dashboard.layout.sidebar')
+
         <!--**********************************
             Content body start
         ***********************************-->
@@ -127,10 +127,10 @@
             event.preventDefault();
     })
     </script>
-    @if ($check == 1) 
+    @if ($check == 1)
     <script>
     var data = <?= json_encode($stats) ?>;
-    
+
     Morris.Bar({
         element: 'bar-chart',
         data: data,
@@ -145,7 +145,7 @@
     </script>
     <script>
     var data = <?= json_encode($stats1) ?>;
-    
+
     Morris.Bar({
         element: 'bar-chart1',
         data: data,
@@ -159,6 +159,7 @@
     });
     </script>
     @endif
+    
 </body>
 
 </html>

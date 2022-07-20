@@ -87,6 +87,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Order ID</th>
+                                                        <th>Image</th>
                                                         <th>Product</th>
                                                         <th>Size</th>
                                                         <th>Amount</th>
@@ -125,6 +126,9 @@
                 $.each(response.data, function (key, item) {
                     $('#cthd').append('<tr>\
                         <td>' + item.invoice + '</td>\
+                        <td>\
+                        <img style="width:50px;height:70px" src="' +item.image+ '">' + 
+                        '</td>\
                         <td>\
                         <a href="/shop/products/'+item.id+'"</a>'+ item.product_name + 
                         '</td>\
