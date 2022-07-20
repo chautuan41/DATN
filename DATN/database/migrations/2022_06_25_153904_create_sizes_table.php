@@ -18,7 +18,7 @@ class CreateSizesTable extends Migration
             $table->string('size',5);
             $table->integer('amount')->default(0);
             $table->integer('product')->unsigned();
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

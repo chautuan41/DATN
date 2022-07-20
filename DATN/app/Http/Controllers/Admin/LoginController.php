@@ -54,7 +54,7 @@ public function login(Request $request)
             'role' => 3,
             'status' => 1,
             ], $request->get('remember'))) {
-                return redirect()->intended(route('admin.indexDH'));
+                return redirect()->intended(route('admin.indexWH'));
             }
         elseif (Auth::guard('admin')->attempt([
                 'email' => $request->email,
@@ -62,24 +62,9 @@ public function login(Request $request)
                 'role' => 4,
                 'status' => 1,
                 ], $request->get('remember'))) {
-                    return redirect()->intended(route('admin.indexCL'));
+                    return redirect()->intended(route('admin.sale'));
                 }
-        elseif (Auth::guard('admin')->attempt([
-                'email' => $request->email,
-                'password' => $request->password,
-                'role' => 5,
-                'status' => 1,
-                ], $request->get('remember'))) {
-                    return redirect()->intended(route('admin.indexWH'));
-                }
-        elseif (Auth::guard('admin')->attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-            'role' => 6,
-            'status' => 1,
-            ], $request->get('remember'))) {
-                return redirect()->intended(route('admin.sale'));
-            }
+        
         return redirect()->back()->with("error","Login Failed");
         return back()->withInput($request->only('email', 'remember'));
     }

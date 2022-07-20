@@ -30,7 +30,22 @@
                         <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                         @endif
-                        
+                        <form action="{{ route('admin.handleAddSizes',$Pro->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+
+                                <label for="exampleInputEmail1">Size</label>
+
+                                <input type="text" class="form-control" id="val-username" name="size"
+                                    placeholder="Size">
+
+                            </div>
+                            
+                            <div class="tile-footer">
+                                <button type="submit" class="btn btn-primary"
+                                    onclick="return confirm('Are you sure?')">Add Product</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

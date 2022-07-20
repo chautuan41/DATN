@@ -33,10 +33,10 @@ class ProductTypeSeeder extends Seeder
                 'categories'=>1,
                 'status'=>1],
 
-            [   'product_type_name'=>'Luxury',
+            [   'product_type_name'=>'Luxury Watches',
                 'categories'=>2,
                 'status'=>1],
-            [   'product_type_name'=>'Sport',
+            [   'product_type_name'=>'Sport Watches',
                 'categories'=>2,
                 'status'=>1],
         ]);

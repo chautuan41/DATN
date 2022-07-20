@@ -12,7 +12,8 @@
     <link href="{{asset('dashboard/plugins/pg-calendar/css/pignose.calendar.min.css')}}" rel="stylesheet">
     <!-- Chartist -->
     <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist/css/chartist.min.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
+    <link rel="stylesheet"
+        href="{{asset('dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{asset('dashboard/css/style.css')}}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -36,7 +37,7 @@
         Preloader end
     ********************-->
 
-    
+
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -49,7 +50,8 @@
             <div class="brand-logo">
                 <a href="{{route('admin.indexWH')}}">
                     <span class="brand-title">
-                        <img src="{{asset('assets/logo.png')}}" style="width:100%; height:100%;margin-top: -30px;margin-left:-3.30px" alt="">
+                        <img src="{{asset('assets/logo.png')}}"
+                            style="width:100%; height:100%;margin-top: -30px;margin-left:-3.30px" alt="">
                     </span>
                 </a>
             </div>
@@ -61,9 +63,9 @@
         <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">    
+        <div class="header">
             <div class="header-content clearfix">
-                
+
                 <div class="nav-control">
                     <div class="hamburger">
                         <span class="toggle-icon"><i class="icon-menu"></i></span>
@@ -90,9 +92,9 @@
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-heading d-flex justify-content-between">
-                                    
+
                                 </div>
-                                
+
                             </div>
                         </li>
                         <li class="icons dropdown">
@@ -102,14 +104,14 @@
                             </a>
                             <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
                                 <div class="dropdown-content-heading d-flex justify-content-between">
-                                   
+
                                 </div>
-                                
+
                             </div>
                         </li>
                         <li class="icons dropdown d-none d-md-flex">
-                            <a href="javascript:void(0)" class="log-user"  data-toggle="dropdown">
-                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                            <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
+                                <span>English</span> <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
                             </a>
                             <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
                                 <div class="dropdown-content-body">
@@ -121,7 +123,7 @@
                             </div>
                         </li>
                         <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                                 <span class="activity active"></span>
                                 <img src="{{asset('dashboard/images/user/1.png')}}" height="40" width="40" alt="">
                             </div>
@@ -129,11 +131,13 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="{{route('admin.personalInfoWH',['id_staff'=>Auth::user()->id])}}"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="{{route('admin.personalInfoWH',['id_staff'=>Auth::user()->id])}}"><i
+                                                    class="icon-user"></i> <span>Profile</span></a>
                                         </li>
-                                       
+
                                         <hr class="my-2">
-                                        <li><a href="{{route('admin.logout')}}"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="{{route('admin.logout')}}"><i class="icon-key"></i>
+                                                <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -149,30 +153,27 @@
         <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="nk-sidebar">           
+        <div class="nk-sidebar">
             <div class="nk-nav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label">Dashboard</li>
-                    <li>
-                        <a  href="javascript:void()" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                        </a>
-                        <!-- <ul aria-expanded="false">
-                            <li><a href="#">Home</a></li>
-                        </ul> -->
-                    </li>
                     
-                    <li class="nav-label">Table</li>
-                    <li>
+
+                    <li class="nav-label">Warehouse Dashboard</li>
+
                     <li>
                         <a href="{{route('admin.listIIStaff')}}" aria-expanded="false">
-                            <i class="icon-menu menu-icon"></i><span class="nav-text">Input Invoices</span>
+                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Warehouse Receipt</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.inventory')}}" aria-expanded="false">
+                            <i class="icon-home menu-icon"></i><span class="nav-text">Products In Stock</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
+        
         <!--**********************************
             Sidebar end
         ***********************************-->
@@ -182,22 +183,22 @@
         ***********************************-->
         <div class="content-body">
 
-        @yield('content')
+            @yield('content')
             <!-- #/ container -->
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
-        
-        
+
+
         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>2001 &copy; ALL RIGHTS RESERVED  <a href="{{route('admin.indexWH')}}">2001</a> 2022</p>
+                <p>2001 &copy; ALL RIGHTS RESERVED <a href="{{route('admin.indexWH')}}">2001</a> 2022</p>
             </div>
-        </div>  
+        </div>
         <!--**********************************
             Footer end
         ***********************************-->
@@ -209,7 +210,7 @@
     <!--**********************************
         Scripts
     ***********************************-->
-    <script src="{{asset('dashboard/plugins/common/common.min.js')}}"></script> 
+    <script src="{{asset('dashboard/plugins/common/common.min.js')}}"></script>
     <script src="{{asset('dashboard/js/custom.min.js')}}"></script>
     <script src="{{asset('dashboard/js/settings.js')}}"></script>
     <script src="{{asset('dashboard/js/gleek.js')}}"></script>
@@ -222,7 +223,7 @@
     <!-- Datamap -->
     <script src="{{asset('dashboard/plugins/d3v3/index.js')}}"></script>
     <script src="{{asset('dashboard/plugins/topojson/topojson.min.js')}}"></script>
-    <script src="{{asset('dashboard/plugins/datamaps/datamaps.world.min.js')}}"></script> 
+    <script src="{{asset('dashboard/plugins/datamaps/datamaps.world.min.js')}}"></script>
     <!-- Morrisjs -->
     <script src="{{asset('dashboard/plugins/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('dashboard/plugins/morris/morris.min.js')}}"></script>

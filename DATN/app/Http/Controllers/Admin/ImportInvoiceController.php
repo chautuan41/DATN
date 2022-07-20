@@ -13,6 +13,7 @@ use App\Models\ProductType;
 use App\Models\Brand;
 use App\Models\Account;
 use App\Models\Picture;
+use App\Models\Size;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -46,7 +47,9 @@ class ImportInvoiceController extends Controller
     
 
     public function formAddIInvoices(){
-        $Pro = Product::all();
+        $Pro = DB::table('products')
+        ->orderBy('product_name', 'asc')
+        ->get();
         $Sup = Supplier::all();
         return view('dashboard.iinvoices.hdn',compact('Pro','Sup'));
     }
@@ -74,27 +77,33 @@ class ImportInvoiceController extends Controller
     }
 
     function xulycreatectsp(Request $request){
-        
+
         $TK = new ImportInvoiceDetail();
+        $TK->sku = $request->product_id;
         $TK->amount = $request->amount;
         $TK->price = $request->price;
         $TK->import_invoice = $request->import_invoice;
         $TK->product = $request->product;
-        $TK->status = 1;
+        $TK->size = $request->size;
+        $TK->status = 0;
         $TK->save();
 
         $Pro = Product::find($request->product);
+        $Pro->sku = $request->product_id;
         $Pro->price = $request->price * 1.3;
-        $Pro->amount = $request->amount;
         $Pro->save();
+
+        $size=Size::find($request->size);
+        $size->amount+= $request->amount;
+        $size->status= 0;
+        $size->save();
 
         $II = ImportInvoice::find($request->import_invoice);
         $II->total += $request->price * $request->amount;
+        
         $II->save();
 
-        return response()->json([
-            'data'=>$TK,
-        ],200); // 200 là mã lỗi
+        return redirect()->back()->with("success","Add Input Invoices successful");
 
     }
 
@@ -109,6 +118,19 @@ class ImportInvoiceController extends Controller
         $iinvoices = ImportInvoice::find($id_input);
         $iinvoices->status = 1;
         $iinvoices->save();
+        $iinvoicesD = DB::table('import_invoice_details')
+        ->where('import_invoice',$id_input)
+        ->get();
+        $n=count($iinvoicesD);
+        for($i=0;$i<$n;$i++){
+            $iiD = ImportInvoiceDetail::find($iinvoicesD[$i]->id);
+            $iiD->status=1;
+            $iiD->save();
+            $size=Size::find($iiD->size);
+            $size->status=1;
+            $size->save();
+        }
+        
         $lsIInvoice = ImportInvoice::all();
         return redirect()->route('admin.listWaitIInvoices');
     }
@@ -151,14 +173,10 @@ class ImportInvoiceController extends Controller
    public function handleaddProduct(Request $req)
    {
        $Pro = new Product();
-       $Pro->sku = $req->sku;
+       
        $Pro->product_name = $req->product_name;
        $Pro->description = $req->description;
        $Pro->gender = $req->gender;
-       $Pro->price = $req->price;
-       $Pro->amount = $req->amount;
-       $Pro->discount = $req->discount;
-       $Pro->like = $req->like;
        $Pro->categories = $req->categories;
        $Pro->product_type = $req->product_type;
        $Pro->supplier = $req->supplier;
@@ -192,4 +210,18 @@ class ImportInvoiceController extends Controller
        $dtPro = Product::all();
       return redirect()->route('admin.formAddIInvoices',compact('dtPro'));
    }
+
+   public function size($id){
+        $size=Size::where('product','=',$id)->get();
+
+        return response()->json($size);
+   }
+
+   public function productWH(){
+    $wh=DB::table('sizes')
+    ->join('products', 'sizes.product', 'products.id')
+    ->where('sizes.status',1)
+    ->get();
+    return view('dashboard.iinvoices.prowh',compact('wh'));
+}
 }

@@ -12,13 +12,14 @@
     @foreach($dtIInv as $Inv)
     @php $cost += $Inv->total @endphp
     @endforeach
+    @php $profit = $revenue - $cost @endphp
     <div class="row">
         <div class="col-lg-3 col-sm-6">
             <div class="card gradient-1">
                 <div class="card-body">
                     <h3 class="card-title text-white">Products Sold</h3>
                     <div class="d-inline-block">
-                        <h2 class="text-white">{{$count}}</h2>
+                        <h2 class="text-white" >{{$count}}</h2>
                         <p class="text-white mb-0">{{$date->toFormattedDateString()}}</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
@@ -42,14 +43,14 @@
                 <div class="card-body">
                     <h3 class="card-title text-white">Profit</h3>
                     <div class="d-inline-block">
-                        @php $profit = $revenue - $cost @endphp
-                        <h2 class="text-white">$ {{$profit}}</h2>
+                        <h2 class="text-white" >$ {{number_format($profit)}}</h2>
                         <p class="text-white mb-0">{{$date->toFormattedDateString()}}</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
                 </div>
             </div>
         </div>
+        
         <div class="col-lg-3 col-sm-6">
             <div class="card gradient-4">
                 <div class="card-body">
